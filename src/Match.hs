@@ -57,6 +57,7 @@ parseSet a = case a of
 
 parseVolley :: [String] -> Volley
 parseVolley a
+  | length a < 4 = Unknown $ show a
   | isTimeout = Timeout
   | isSub     = Sub subTeam subPlayers
   | isKillBy  = KillBy pointTeam bracketPlayer killPlayer fromPlayer
@@ -69,10 +70,10 @@ parseVolley a
   where
   pointTeam = a !! 0
   text      = a !! 3
-  isSub     = words text !! 1 == "subs:"
-  subTeam   = words text !! 0
+  subTeam   = head $ words text
   subPlayers = splitSemi . init . unwords . drop 2 . words $ text
   textHas = flip isInfixOf text
+  isSub          = textHas "subs:"
   isTimeout      = textHas "Timeout"
   isKillBy       = textHas "Kill by"
   isAttackError  = textHas "Attack error by"
