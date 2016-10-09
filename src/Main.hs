@@ -11,14 +11,13 @@ main = do
   case args of
     ["matches", file] -> do
       f <- readFile file
-      mapM_ printMatch [ head $ words l | l <- lines f, isPrefixOf "http" l ]
+      m <- mapM matches [ head $ words l | l <- lines f, isPrefixOf "http" l ]
+      mapM_ printMatch $ concat m
     _ -> return ()
 
-printMatch :: String -> IO ()
-printMatch url = do
-  m <- match url
-  flip mapM_ (zip [1 ..] m) $ \ (n, s) -> do
-    putStrLn $ "Set " ++ show n
-    mapM_ print s
-    putStrLn ""
+printMatch :: Match -> IO ()
+printMatch m = flip mapM_ (zip [1 ..] m) $ \ (n, s) -> do
+  putStrLn $ "Set " ++ show n
+  mapM_ print s
+  putStrLn ""
 

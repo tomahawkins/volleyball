@@ -2,6 +2,7 @@ module Match
   ( Match
   , Set
   , Volley (..)
+  , matches
   , match
   ) where
 
@@ -13,31 +14,18 @@ import Text.HTML.TagSoup
 import PageCache
 import Tables
 
-{-
-boxscoreURLs :: String -> Int -> IO [String]
-boxscoreURLs school year = case id of
-  Nothing -> return []
-  Just id -> do
-    tags <- getPage (url school "schedule" $ Just id) >>= return . parseTags
-    return [ "http://" ++ school ++ "/" ++ a | TagOpen "a" [("href", a)] <- tags, isPrefixOf "boxscore.aspx" a ]
+matches :: String -> IO [Match]
+matches url = do
+  putStrLn $ "Getting schedule: " ++ url
+  a <- getPage url >>= return . parseTags
+  mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path ]
   where
-  id = lookup school schedules >>= lookup year
-
-data Game = Game [Set]  deriving Show
-data Set  = Set  Table  deriving Show
--}
+  f a = take 10 url ++ takeWhile (/= '/') (drop 10 url) ++ "/" ++ a
 
 match :: String -> IO Match
-match url = getPage url >>= return . parseMatch
-{-
-  putStrLn $ "Fetching " ++ url ++ " ..."
-  a <- getPage url
-  flip mapM_ (zip [1 ..] $ parseMatch a) $ \ (n, s) -> do
-    putStrLn $ "Set " ++ show n
-    mapM_ print s
-    putStrLn ""
-  return ()
-  -}
+match url = do
+  putStrLn $ "Getting match: " ++ url
+  getPage url >>= return . parseMatch
 
 parseMatch :: String -> Match
 parseMatch
