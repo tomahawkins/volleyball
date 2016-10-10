@@ -9,15 +9,13 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
-    ["matches", file] -> do
-      f <- readFile file
-      m <- mapM matches [ head $ words l | l <- lines f, isPrefixOf "http" l ]
-      mapM_ printMatch $ concat m
+    ["matches", file] -> matches' False file
+    ["matches", "-n", file] -> matches' True file
     _ -> return ()
 
-printMatch :: Match -> IO ()
-printMatch m = flip mapM_ (zip [1 ..] m) $ \ (n, s) -> do
-  putStrLn $ "Set " ++ show n
-  mapM_ print s
-  putStrLn ""
+matches' :: Bool -> FilePath -> IO ()
+matches' refetch schedulesFile = do
+  f <- readFile schedulesFile
+  m <- mapM (matches refetch) [ head $ words l | l <- lines f, isPrefixOf "http" l ]
+  mapM_ (putStr . show) $ concat m
 

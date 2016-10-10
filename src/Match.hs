@@ -14,8 +14,9 @@ import Text.HTML.TagSoup
 import PageCache
 import Tables
 
-matches :: String -> IO [Match]
-matches url = do
+matches :: Bool -> String -> IO [Match]
+matches refetch url = do
+  if refetch then deletePage url else return ()
   putStrLn $ "Getting schedule: " ++ url
   a <- getPage url >>= return . parseTags
   mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path ]
@@ -24,12 +25,13 @@ matches url = do
 
 match :: String -> IO Match
 match url = do
-  putStrLn $ "Getting match: " ++ url
+  putStrLn $ "Getting match:    " ++ url
   getPage url >>= return . parseMatch
 
 parseMatch :: String -> Match
 parseMatch
-  = map parseSet
+  = Match
+  . map parseSet
   . mapMaybe playByPlay
   . tables
   . filter (not . isWhitespace)
@@ -53,46 +55,67 @@ parseMatch
 parseSet :: [[String]] -> Set
 parseSet a = case a of
   [] -> error "No sets in match."
-  _ : m-> map parseVolley m
+  _ : m-> Set $ map parseVolley m
 
 parseVolley :: [String] -> Volley
 parseVolley a
-  | length a < 4 = Unknown $ show a
-  | isTimeout = Timeout
-  | isSub     = Sub subTeam subPlayers
-  | isKillBy  = KillBy pointTeam bracketPlayer killPlayer fromPlayer
-  | isAttackError  = AttackError pointTeam bracketPlayer attackErrorPlayer blockingPlayers
-  | isServiceError = ServiceError pointTeam bracketPlayer
-  | isServiceAce   = ServiceAce pointTeam bracketPlayer aceReceivePlayer
+  | length a < 4        = Unknown $ show a
+  | isTimeout           = Timeout
+  | isSub               = Sub subTeam subPlayers
+  | isKillBy            = KillBy pointTeam bracketPlayer killPlayer fromPlayer
+  | isAttackError       = AttackError pointTeam bracketPlayer attackErrorPlayer blockingPlayers
+  | isServiceError      = ServiceError pointTeam bracketPlayer
+  | isServiceAce        = ServiceAce pointTeam bracketPlayer aceReceivePlayer
   | isBallHandlingError = BallHandlingError pointTeam bracketPlayer handlingErrorPlayer
   | isBadSet            = BadSet pointTeam bracketPlayer badSetPlayer
-  | otherwise = Unknown text
+  | isPointAwarded      = PointAwarded pointTeam
+  | otherwise           = Unknown textFull
   where
   pointTeam = a !! 0
-  text      = a !! 3
-  subTeam   = head $ words text
-  subPlayers = splitSemi . init . unwords . drop 2 . words $ text
-  textHas = flip isInfixOf text
-  isSub          = textHas "subs:"
-  isTimeout      = textHas "Timeout"
-  isKillBy       = textHas "Kill by"
-  isAttackError  = textHas "Attack error by"
-  isServiceError = textHas "Service error"
-  isServiceAce   = textHas "Service ace"
-  isBadSet       = textHas "Bad set by"
+
+  {-
+  init' m a = case a of
+    [] -> error $ "init' (" ++ m ++ "): \"" ++ textFull ++ "\""
+    a -> init a
+
+  tail' m a = case a of
+    [] -> error $ "tail' (" ++ m ++ "): \"" ++ textFull ++ "\""
+    a -> tail a
+  -}
+
+  -- Text segments.
+  textFull         = a !! 3
+  textMinusBracket
+    | head textFull == '[' = init . drop 2 . dropWhile (/= ']') $ textFull
+    | otherwise            = textFull
+  textBase
+    | elem '(' textMinusBracket = init . takeWhile (/= '(') $ textMinusBracket
+    | otherwise                 = textMinusBracket
+  textParens
+    | elem '(' textMinusBracket = init . tail . dropWhile (/= '(') $ textMinusBracket
+    | otherwise                 = ""
+
+  bracketPlayer = takeWhile (/= ']') . tail $ textFull
+
+  subTeam    = head $ words textFull
+  subPlayers = splitSemi . init . drop 2 . dropWhile (/= ':') $ textFull
+  textHas             = flip isPrefixOf textBase
+  isSub               = isInfixOf "subs:" textFull
+  isTimeout           = textHas "Timeout"
+  isKillBy            = textHas "Kill by"
+  isAttackError       = textHas "Attack error by"
+  isServiceError      = textHas "Service error"
+  isServiceAce        = textHas "Service ace"
+  isBadSet            = textHas "Bad set by"
   isBallHandlingError = textHas "Ball handling error by"
-  bracketPlayer = takeWhile (/= ']') . tail $ text
-  action        = init . drop 2 . dropWhile (/= ']') $ text
-  parenText
-    | elem '(' action = takeWhile (/= ')') . tail . dropWhile (/= '(') $ action
-    | otherwise       = ""
-  fromPlayer    = drop 5 parenText
-  killPlayer    = takeWhile (/= '(') . drop 8 $ action
-  attackErrorPlayer = takeWhile (/= '(') . drop 16 $ action
-  aceReceivePlayer = parenText
-  blockingPlayers = splitSemi . drop 9 $ parenText
-  handlingErrorPlayer = drop 23 $ action
-  badSetPlayer = drop 11 $ action
+  isPointAwarded      = textHas "Point awarded by official to"
+  fromPlayer          = drop  5 textParens
+  killPlayer          = drop  8 textBase
+  attackErrorPlayer   = drop 16 textBase
+  aceReceivePlayer    = textParens
+  blockingPlayers     = splitSemi . drop 9 $ textParens
+  handlingErrorPlayer = drop 23 textBase
+  badSetPlayer        = drop 11 textBase
 
 splitSemi :: String -> [String]
 splitSemi a = case n of
@@ -103,8 +126,8 @@ splitSemi a = case n of
 
 type Name  = String
 type Team  = String
-type Match = [Set]
-type Set   = [Volley]
+data Match = Match [Set]
+data Set   = Set   [Volley]
 
 data Volley
   = Timeout
@@ -115,6 +138,10 @@ data Volley
   | ServiceAce        Team Name Name        -- ^ Team, bracket player (serving), receiving player.
   | BallHandlingError Team Name Name        -- ^ Team, bracket player, erroring player.
   | BadSet            Team Name Name        -- ^ Team, bracket player, setting player.
+  | PointAwarded      Team                  -- ^ Team.  Point awarded for unknown reason.
   | Unknown           String
-  deriving Show
+  deriving (Show, Read)
+
+instance Show Match where show (Match sets)  = "Match\n" ++ concatMap show sets
+instance Show Set   where show (Set volleys) = "Set\n"   ++ concatMap ((++ "\n") . show) volleys
 
