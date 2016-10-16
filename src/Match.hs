@@ -1,7 +1,9 @@
 module Match
-  ( Match
-  , Set
+  ( Match  (..)
+  , Set    (..)
   , Volley (..)
+  , Team
+  , Name
   , matches
   , match
   , teams
@@ -71,6 +73,7 @@ parseSet a = case a of
 parseVolley :: [String] -> Volley
 parseVolley a
   | length a < 4        = Unknown $ show a
+  | null textFull       = Unknown ""
   | isTimeout           = Timeout
   | isSub               = Sub subTeam subPlayers
   | isKillBy            = KillBy pointTeam bracketPlayer killPlayer fromPlayer
@@ -92,6 +95,10 @@ parseVolley a
   tail' m a = case a of
     [] -> error $ "tail' (" ++ m ++ "): \"" ++ textFull ++ "\""
     a -> tail a
+
+  head' m a = case a of
+    [] -> error $ "head' (" ++ m ++ "): \"" ++ textFull ++ "\""
+    a -> head a
   -}
 
   -- Text segments.
