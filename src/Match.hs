@@ -1,10 +1,11 @@
 module Match
-  ( Match  (..)
+  ( Season (..)
+  , Match  (..)
   , Set    (..)
   , Volley (..)
   , Team
   , Name
-  , matches
+  , season
   , match
   , teams
   , team
@@ -19,13 +20,36 @@ import Text.HTML.TagSoup
 import PageCache
 import Tables
 
-matches :: Bool -> String -> IO [Match]
-matches refetch url = do
+type Name   = String
+type Team   = String
+data Season = Season Team [Match]
+data Match  = Match String [Set]    -- ^ Date and a list of sets.
+data Set    = Set   [Volley]
+
+data Volley
+  = Timeout
+  | Sub               Team [Name]           -- ^ Players going in.
+  | KillBy            Team Name Name Name   -- ^ Team, bracket player, scoring player, assisting player.
+  | AttackError       Team Name Name [Name] -- ^ Team, bracket player, error player, blocking players.
+  | ServiceError      Team Name             -- ^ Team, bracket player.
+  | ServiceAce        Team Name Name        -- ^ Team, bracket player (serving), receiving player.
+  | BallHandlingError Team Name Name        -- ^ Team, bracket player, erroring player.
+  | BadSet            Team Name Name        -- ^ Team, bracket player, setting player.
+  | PointAwarded      Team                  -- ^ Team.  Point awarded for unknown reason.
+  | Unknown           String
+  deriving (Show, Read)
+
+instance Show Season where show (Season team matches)  = "Season " ++ team ++ "\n" ++ concatMap show matches
+instance Show Match  where show (Match  date sets)  = "Match " ++ date ++ "\n" ++ concatMap show sets
+instance Show Set    where show (Set volleys) = "Set\n" ++ concatMap ((++ "\n") . show) volleys
+
+season :: Bool -> String -> IO Season
+season refetch url = do
   if refetch then deletePage url else return ()
   putStrLn $ "Getting schedule: " ++ url
   a <- getPage url >>= return . parseTags
-  m <- mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path || isPrefixOf "/boxscore.aspx" path ]
-  return $ catMaybes m
+  m <- mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path || isPrefixOf "/boxscore.aspx" path ] >>= return . catMaybes
+  return $ Season (team m) m
   where
   f a = take 10 url ++ takeWhile (/= '/') (drop 10 url) ++ "/" ++ a
 
@@ -141,27 +165,6 @@ splitSemi a = case n of
   n -> n : splitSemi (drop 2 rest)
   where
   (n, rest) = span (/= ';') a
-
-type Name  = String
-type Team  = String
-data Match = Match String [Set]    -- ^ Date and a list of sets.
-data Set   = Set   [Volley]
-
-data Volley
-  = Timeout
-  | Sub               Team [Name]           -- ^ Players going in.
-  | KillBy            Team Name Name Name   -- ^ Team, bracket player, scoring player, assisting player.
-  | AttackError       Team Name Name [Name] -- ^ Team, bracket player, error player, blocking players.
-  | ServiceError      Team Name             -- ^ Team, bracket player.
-  | ServiceAce        Team Name Name        -- ^ Team, bracket player (serving), receiving player.
-  | BallHandlingError Team Name Name        -- ^ Team, bracket player, erroring player.
-  | BadSet            Team Name Name        -- ^ Team, bracket player, setting player.
-  | PointAwarded      Team                  -- ^ Team.  Point awarded for unknown reason.
-  | Unknown           String
-  deriving (Show, Read)
-
-instance Show Match where show (Match date sets)  = "Match (" ++ date ++ ")\n" ++ concatMap show sets
-instance Show Set   where show (Set volleys) = "Set\n"   ++ concatMap ((++ "\n") . show) volleys
 
 -- | Teams competing in a match.
 teams :: Match -> (Team, Team)

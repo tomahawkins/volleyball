@@ -11,8 +11,8 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
-    ["matches",        file] -> matches'  False file
-    ["matches",  "-n", file] -> matches'  True  file
+    ["season",         file] -> season'   False file
+    ["season",   "-n", file] -> season'   True  file
     ["rankings",       file] -> rankings' False file
     ["rankings", "-n", file] -> rankings' True  file
     _ -> return ()
@@ -23,14 +23,14 @@ schedules file = do
   f <- readFile file
   return [ head $ words l | l <- lines f, isPrefixOf "http" l ]
 
-matches' :: Bool -> FilePath -> IO ()
-matches' refetch file = do
-  m <- schedules file >>= mapM (matches refetch)
+season' :: Bool -> FilePath -> IO ()
+season' refetch file = do
+  m <- schedules file >>= mapM (season refetch)
   mapM_ print m
 
 rankings' :: Bool -> FilePath -> IO ()
 rankings' refetch file = do
-  m <- schedules file >>= mapM (matches refetch)
+  m <- schedules file >>= mapM (season refetch)
   mapM_ (\ (t, r) -> printf "%-5s  %2.0f%%\n" t $ r * 100) $ rankings m
   
 

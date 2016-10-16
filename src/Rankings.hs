@@ -7,16 +7,16 @@ import Data.List
 
 import Match
 
-rankings :: [[Match]] -> [(Team, Double)]
-rankings teamMatches = reverse $ sortBy (compare `on` snd) $ map rankTeam teamMatches
+rankings :: [Season] -> [(Team, Double)]
+rankings seasons = reverse $ sortBy (compare `on` snd) $ map rankTeam seasons
   where
-  allTeams = map team teamMatches
+  allTeams = [ t | Season t _ <- seasons ]
 
-  rankTeam :: [Match] -> (Team, Double)
-  rankTeam matches = (team matches, ranking)
+  rankTeam :: Season -> (Team, Double)
+  rankTeam (Season team matches) = (team, ranking)
     where
     points' = concatMap matchPoints matches
-    myPoints = filter (== team matches) points'
+    myPoints = filter (== team) points'
     ranking = fromIntegral (length myPoints) / fromIntegral (length points')
 
     matchPoints :: Match -> [Team]
