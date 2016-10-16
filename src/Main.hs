@@ -17,5 +17,5 @@ matches' :: Bool -> FilePath -> IO ()
 matches' refetch schedulesFile = do
   f <- readFile schedulesFile
   m <- mapM (matches refetch) [ head $ words l | l <- lines f, isPrefixOf "http" l ]
-  mapM_ (putStr . show) $ concat m
+  mapM_ (putStrLn . team) m
 

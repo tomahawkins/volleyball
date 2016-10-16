@@ -4,6 +4,9 @@ module Match
   , Volley (..)
   , matches
   , match
+  , teams
+  , team
+  , points
   ) where
 
 import Data.Char
@@ -19,24 +22,32 @@ matches refetch url = do
   if refetch then deletePage url else return ()
   putStrLn $ "Getting schedule: " ++ url
   a <- getPage url >>= return . parseTags
-  mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path ]
+  m <- mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path || isPrefixOf "/boxscore.aspx" path ]
+  return $ catMaybes m
   where
   f a = take 10 url ++ takeWhile (/= '/') (drop 10 url) ++ "/" ++ a
 
-match :: String -> IO Match
+match :: String -> IO (Maybe Match)
 match url = do
   putStrLn $ "Getting match:    " ++ url
-  getPage url >>= return . parseMatch
+  m@(Match _ sets) <- getPage url >>= return . parseMatch . parseTags
+  if null sets then return Nothing else return $ Just m
 
-parseMatch :: String -> Match
-parseMatch
-  = Match
+parseMatch :: [Tag String] -> Match
+parseMatch a
+  = Match (date a)
   . map parseSet
   . mapMaybe playByPlay
   . tables
   . filter (not . isWhitespace)
-  . parseTags
+  $ a
   where
+  date :: [Tag String] -> String
+  date a = case a of
+    TagOpen "dt" [] : TagText "Date:" : TagClose "dt" : TagText _ : TagOpen "dd" [] : TagText a : _ -> a
+    _ : rest -> date rest
+    [] -> error "Match date not found."
+
   isWhitespace :: Tag String -> Bool
   isWhitespace a = case a of
     TagText a -> all isSpace a
@@ -126,7 +137,7 @@ splitSemi a = case n of
 
 type Name  = String
 type Team  = String
-data Match = Match [Set]
+data Match = Match String [Set]    -- ^ Date and a list of sets.
 data Set   = Set   [Volley]
 
 data Volley
@@ -142,6 +153,43 @@ data Volley
   | Unknown           String
   deriving (Show, Read)
 
-instance Show Match where show (Match sets)  = "Match\n" ++ concatMap show sets
+instance Show Match where show (Match date sets)  = "Match (" ++ date ++ ")\n" ++ concatMap show sets
 instance Show Set   where show (Set volleys) = "Set\n"   ++ concatMap ((++ "\n") . show) volleys
+
+-- | Teams competing in a match.
+teams :: Match -> (Team, Team)
+teams m@(Match _ sets)
+  | length a == 2 = (a !! 0, a !! 1)
+  | otherwise     = error $ "Error infering teams with match:\n" ++ show m
+  where
+  a = nub $ concatMap points sets
+
+-- | Points of a set.
+points :: Set -> [Team]
+points (Set a) = mapMaybe f a
+  where
+  f :: Volley -> Maybe Team
+  f a = case a of
+    Sub               t _     -> Just t
+    KillBy            t _ _ _ -> Just t
+    AttackError       t _ _ _ -> Just t
+    ServiceError      t _     -> Just t
+    ServiceAce        t _ _   -> Just t
+    BallHandlingError t _ _   -> Just t
+    BadSet            t _ _   -> Just t
+    PointAwarded      t       -> Just t
+    Timeout                   -> Nothing
+    Unknown _                 -> Nothing
+
+-- | Team of a list of matches.
+team :: [Match] -> Team
+team a = case a of
+  m1 : m2 : _ -> case (teams m1, teams m2) of
+    ((a, b), (c, d))
+      | a == c -> a
+      | a == d -> a
+      | b == c -> b
+      | b == d -> b
+      | otherwise -> error "team"
+  _ -> error "team"
 
