@@ -10,6 +10,7 @@ module Match
   , teams
   , team
   , points
+  , parseSeasons
   ) where
 
 import Data.Char
@@ -46,7 +47,7 @@ instance Show Set    where show (Set volleys) = "Set\n" ++ concatMap ((++ "\n") 
 season :: Bool -> String -> IO Season
 season refetch url = do
   if refetch then deletePage url else return ()
-  putStrLn $ "Getting schedule: " ++ url
+  putStrLn $ "-- Getting schedule: " ++ url
   a <- getPage url >>= return . parseTags
   m <- mapM match [ f path | TagOpen "a" [("href", path)] <- a, isPrefixOf "boxscore.aspx" path || isPrefixOf "/boxscore.aspx" path ] >>= return . catMaybes
   return $ Season (team m) m
@@ -55,7 +56,7 @@ season refetch url = do
 
 match :: String -> IO (Maybe Match)
 match url = do
-  putStrLn $ "Getting match:    " ++ url
+  putStrLn $ "-- Getting match:    " ++ url
   m@(Match _ sets) <- getPage url >>= return . parseMatch . parseTags
   if null sets then return Nothing else return $ Just m
 
@@ -165,6 +166,39 @@ splitSemi a = case n of
   n -> n : splitSemi (drop 2 rest)
   where
   (n, rest) = span (/= ';') a
+
+parseSeasons :: String -> [Season]
+parseSeasons = f0 . filter (not . isPrefixOf "--") . lines
+  where
+  mark :: [String] -> String -> Bool
+  mark a b = not $ any (flip isPrefixOf b) a
+
+  f0 :: [String] -> [Season]
+  f0 a = case a of
+    [] -> []
+    a : rest
+      | isPrefixOf "Season" a -> Season (words a !! 1) (f1 (takeWhile (mark ["Season"]) rest)) : 
+                                 f0                        (dropWhile (mark ["Season"]) rest)
+      | otherwise -> error "Parse error on parseSeasons.f0."
+
+  f1 :: [String] -> [Match]
+  f1 a = case a of
+    [] -> []
+    a : rest
+      | isPrefixOf "Match" a -> Match (words a !! 1) (f2 (takeWhile (mark ["Season", "Match"]) rest)) : 
+                                f1                       (dropWhile (mark ["Season", "Match"]) rest)
+      | otherwise -> error "Parse error on parseSeasons.f1."
+
+  f2 :: [String] -> [Set]
+  f2 a = case a of
+    [] -> []
+    a : rest
+      | isPrefixOf "Set" a -> Set (f3 (takeWhile (mark ["Season", "Match", "Set"]) rest)) : 
+                              f2      (dropWhile (mark ["Season", "Match", "Set"]) rest)
+      | otherwise -> error "Parse error on parseSeasons.f2."
+
+  f3 :: [String] -> [Volley]
+  f3 = map read
 
 -- | Teams competing in a match.
 teams :: Match -> (Team, Team)
