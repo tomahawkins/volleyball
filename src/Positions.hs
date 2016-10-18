@@ -20,11 +20,14 @@ teamPlayers team (Set events) = nub $ concatMap f events
   f a = case a of
     Timeout -> []
     Unknown _ -> []
+    {-
     Sub t a
       | t == team -> a
       | otherwise -> []
-    Volley _ _ PointAwarded -> []
-    Volley _ t (KillBy _ a b c)
+    Volley _ s t PointAwarded
+      | t == team -> maybeToList s
+      | otherwise -> []
+    Volley _ s t (KillBy a b c)
       | t == team -> a : maybeToList b
       | otherwise -> maybeToList c
     Volley _ t (AttackError _ a b)
@@ -42,4 +45,5 @@ teamPlayers team (Set events) = nub $ concatMap f events
     Volley _ t (BadSet _ a)
       | t == team -> []
       | otherwise -> [a]
+      -}
 

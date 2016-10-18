@@ -22,19 +22,19 @@ data Match  = Match String [Set]    -- ^ Date and a list of sets.
 data Set    = Set   [Event]
 data Event
   = Timeout
-  | Sub     Team [Name]         -- ^ Players going in.
-  | Volley  Team Team Volley    -- ^ Serving team, winning team, volley info.
+  | Sub     Team [Name]                      -- ^ Players going in.
+  | Volley  Team (Maybe Name) Team Volley    -- ^ Serving team, serving player, winning team, volley info.
   | Unknown String
   deriving (Show, Read)
 
 data Volley
-  = KillBy            Name Name (Maybe Name) (Maybe Name)   -- ^ Bracket player, scoring player, setting player, blocking player.
-  | AttackError       Name Name [Name]                      -- ^ Bracket player, error player, blocking players.
-  | ServiceError      Name                                  -- ^ Bracket player (the serving player).
-  | ServiceAce        Name Name                             -- ^ Bracket player (serving), receiving player.
-  | BallHandlingError Name Name                             -- ^ Bracket player, erroring player.
-  | BadSet            Name Name                             -- ^ Bracket player, setting player.
-  | PointAwarded                                            -- ^ Point awarded for unknown reason.
+  = KillBy            (Maybe Name) (Maybe Name) (Maybe Name)   -- ^ Scoring player, setting player, blocking player.
+  | AttackError       (Maybe Name) [Name]                      -- ^ Error player, blocking players.
+  | ServiceError
+  | ServiceAce        (Maybe Name)                             -- ^ Receiving player.
+  | BallHandlingError (Maybe Name)                             -- ^ Erroring player.
+  | BadSet            (Maybe Name)                             -- ^ Setting player.
+  | PointAwarded                                               -- ^ Point awarded for unknown reason.
   deriving (Show, Read)
 
 instance Show Season where show (Season team matches)  = "Season " ++ team ++ "\n" ++ concatMap show matches
@@ -86,7 +86,7 @@ points (Set a) = mapMaybe f a
   where
   f :: Event -> Maybe Team
   f a = case a of
-    Volley _ a _ -> Just a
+    Volley _ _ a _ -> Just a
     _ -> Nothing
 
 -- | Team of a list of matches.

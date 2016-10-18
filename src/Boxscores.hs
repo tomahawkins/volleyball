@@ -8,6 +8,7 @@ import Text.HTML.TagSoup
 import Match
 import PageCache
 import Tables
+import VolleyParse
 
 -- | Fetch and parse all the boxscores on a team's schedule.
 boxscores :: Bool -> String -> IO Season
@@ -74,7 +75,7 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     | isTimeout           -> Timeout                : rest'
     | isSub               -> Sub subTeam subPlayers : rest'
     | servingTeam == "--" -> Unknown (show a) : rest'
-    | otherwise     -> Volley servingTeam scoringTeam (parseVolley textFull) : rest''
+    | otherwise           -> Volley servingTeam servingPlayer scoringTeam volley' : rest''
     where
     servingTeam = a !! 0
     scoringTeam = if vScore == vScore' then hTeam else vTeam
@@ -87,56 +88,12 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     isTimeout   = isPrefixOf "Timeout" textFull
     subTeam     = head $ words textFull
     subPlayers  = splitSemi . init . drop 2 . dropUntil ':' $ textFull
+    (servingPlayer, volley') = volley . words . concatMap f $ textFull
+    f a
+      | elem a ",."    = " "
+      | elem a "[]();" = " " ++ [a] ++ " "
+      | otherwise      = [a]
 
-parseVolley :: String -> Volley
-parseVolley textFull
-  | isKillBy            = KillBy            bracketPlayer killPlayer fromPlayer blockingPlayer
-  | isAttackError       = AttackError       bracketPlayer attackErrorPlayer blockingPlayers
-  | isServiceError      = ServiceError      bracketPlayer
-  | isServiceAce        = ServiceAce        bracketPlayer aceReceivePlayer
-  | isBallHandlingError = BallHandlingError bracketPlayer handlingErrorPlayer
-  | isBadSet            = BadSet            bracketPlayer badSetPlayer
-  | isPointAwarded      = PointAwarded
-  | otherwise           = error $ "parseVolley: " ++ show textFull
-  where
-
-  -- XXX This doesn't parse:  [Someone] Kill by Someone Else, block error by Somebody.
-
-  -- Text segments.
-  textMinusBracket
-    | head textFull == '[' = init . drop 2 . dropUntil ']' $ textFull
-    | otherwise            = textFull
-  textBase
-    | elem '(' textMinusBracket = init . takeUntil '(' $ textMinusBracket
-    | otherwise                 = textMinusBracket
-  textParens
-    | elem '(' textMinusBracket = takeUntil ')' . tail . dropUntil '(' $ textMinusBracket
-    | otherwise                 = ""
-  textPostParens
-    | elem '(' textMinusBracket = drop 3 . dropUntil ')' $ textMinusBracket
-    | otherwise                 = ""
-
-  bracketPlayer = takeUntil ']' . tail $ textFull
-
-  textHas             = flip isPrefixOf textBase
-  isKillBy            = textHas "Kill by"
-  isAttackError       = textHas "Attack error by"
-  isServiceError      = textHas "Service error"
-  isServiceAce        = textHas "Service ace"
-  isBadSet            = textHas "Bad set by"
-  isBallHandlingError = textHas "Ball handling error by"
-  isPointAwarded      = textHas "Point awarded by official to"
-  fromPlayer'         = drop  5 textParens
-  fromPlayer          = if null fromPlayer' then Nothing else Just fromPlayer'
-  killPlayer          = drop  8 textBase
-  blockingPlayer
-    | isPrefixOf "block error by " textPostParens = Just . drop 15 $ textPostParens
-    | otherwise                                   = Nothing
-  attackErrorPlayer   = drop 16 textBase
-  aceReceivePlayer    = textParens
-  blockingPlayers     = splitSemi . drop 9 $ textParens
-  handlingErrorPlayer = drop 23 textBase
-  badSetPlayer        = drop 11 textBase
 
 splitSemi :: String -> [String]
 splitSemi a = case n of
