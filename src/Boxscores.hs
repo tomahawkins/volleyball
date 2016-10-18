@@ -86,6 +86,7 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     textFull    = a !! 3
     isSub       = isInfixOf "subs:" textFull
     isTimeout   = isPrefixOf "Timeout" textFull
+    -- XXX Somtimes sub team is CLAR, sometimes CLARION.
     subTeam     = head $ words textFull
     subPlayers  = splitSemi . init . drop 2 . dropUntil ':' $ textFull
     (servingPlayer, volley') = volley . words . concatMap f $ textFull

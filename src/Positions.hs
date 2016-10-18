@@ -20,30 +20,25 @@ teamPlayers team (Set events) = nub $ concatMap f events
   f a = case a of
     Timeout -> []
     Unknown _ -> []
-    {-
     Sub t a
       | t == team -> a
       | otherwise -> []
-    Volley _ s t PointAwarded
-      | t == team -> maybeToList s
-      | otherwise -> []
-    Volley _ s t (KillBy a b c)
-      | t == team -> a : maybeToList b
-      | otherwise -> maybeToList c
-    Volley _ t (AttackError _ a b)
-      | t == team -> b
-      | otherwise -> [a]
-    Volley _ t (ServiceError a)
-      | t == team -> []
-      | otherwise -> [a]
-    Volley _ t (ServiceAce a b)
-      | t == team -> [a]
-      | otherwise -> [b]
-    Volley _ t (BallHandlingError _ a)
-      | t == team -> []
-      | otherwise -> [a]
-    Volley _ t (BadSet _ a)
-      | t == team -> []
-      | otherwise -> [a]
-      -}
-
+    Volley st sp wt v -> (if st == team then maybeToList sp else []) ++ case v of
+      PointAwarded -> []
+      KillBy a b c
+        | wt == team -> catMaybes [a, b]
+        | otherwise  -> maybeToList c
+      AttackError a b
+        | wt == team -> b
+        | otherwise  -> maybeToList a
+      ServiceError -> []
+      ServiceAce a
+        | wt == team -> []
+        | otherwise  -> maybeToList a
+      BallHandlingError a
+        | wt == team -> []
+        | otherwise  -> maybeToList a
+      BadSet a
+        | wt == team -> []
+        | otherwise  -> maybeToList a
+       

@@ -36,6 +36,7 @@ import Match
 "to"         { "to"       }
 "official"   { "official" }
 "awarded"    { "awarded"  }
+"Team"       { "Team"     }
 name         { _ }
 
 %%
@@ -58,8 +59,9 @@ Server :: { Maybe Name }
 : "[" Name "]"  { Just $2 }
 
 MaybeName :: { Maybe Name }
-:       { Nothing }
-| Name  { Just $1 }
+:         { Nothing }
+| "Team"  { Nothing }
+| Name    { Just $1 }
 
 Name :: { Name }
 :          name  { $1 }
