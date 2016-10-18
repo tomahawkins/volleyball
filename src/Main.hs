@@ -5,23 +5,25 @@ import System.Environment
 import System.IO
 import Text.Printf
 
+import Boxscores
 import Match
+import Positions
 import Rankings
 
 main :: IO ()
 main = do
   args <- getArgs
   case args of
-    ["season",         file] -> season'   False file
-    ["season",   "-n", file] -> season'   True  file
+    ["create-db",       file] -> schedules file >>= mapM_ (\ f -> boxscores False f >>= putStr . show >> hFlush stdout)
+    ["create-db", "-f", file] -> schedules file >>= mapM_ (\ f -> boxscores True  f >>= putStr . show >> hFlush stdout)
+
+    ["print-db", file] -> readFile file >>= mapM_ (putStr . show) . parseSeasons
 
     ["rankings", file] -> do
       f <- readFile file
       mapM_ (\ (t, r) -> printf "%-5s  %2.2f%%\n" t $ r * 100) $ rankings $ parseSeasons f
 
-    ["load", file] -> do
-      f <- readFile file
-      mapM_ (putStr . show) $ parseSeasons f
+    ["test", file] -> readFile file >>= test . parseSeasons
 
     _ -> return ()
 
@@ -31,6 +33,12 @@ schedules file = do
   f <- readFile file
   return [ head $ words l | l <- lines f, isPrefixOf "http" l ]
 
-season' :: Bool -> FilePath -> IO ()
-season' refetch file = schedules file >>= mapM_ (\ f -> season refetch f >>= putStr . show >> hFlush stdout)
+test :: [Season] -> IO ()
+test seasons = do
+  --mapM_ print volleys
+  mapM_ print $ nub $ concatMap (teamPlayers "CLAR") sets
+  where
+  --Match _ sets = last $ head [ m | Season "CLAR" m <- seasons ]
+  sets = concat [ concat [ sets | Match _ sets <- m ] | Season "CLAR" m <- seasons ]
+  --set@(Set volleys) : _ = sets
 
