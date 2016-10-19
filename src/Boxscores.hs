@@ -93,13 +93,19 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     isSub       = isInfixOf "subs:" textFull
     isTimeout   = isPrefixOf "Timeout" textFull
     subTeam     = team' $ head $ words textFull
-    subPlayers  = splitSemi . init . drop 2 . dropUntil ':' $ textFull
+    subPlayers  = subGroups textFull . map formatPlayer . splitSemi . init . drop 2 . dropUntil ':' $ textFull
     (servingPlayer, volley') = volley . words . concatMap f $ textFull
+    formatPlayer = unwords . words . filter (flip notElem ",.")
     f a
       | elem a ",."    = " "
       | elem a "[]();" = " " ++ [a] ++ " "
       | otherwise      = [a]
 
+subGroups :: String -> [a] -> [(a, a)]
+subGroups m a = case a of
+  [] -> []
+  a : b : rest -> (a, b) : subGroups m rest
+  [_] -> error $ "subGroups: " ++ m
 
 splitSemi :: String -> [String]
 splitSemi a = case n of
@@ -108,8 +114,8 @@ splitSemi a = case n of
   where
   (n, rest) = span (/= ';') a
 
-takeUntil :: Char -> String -> String
-takeUntil a b = takeWhile (/= a) b
+--takeUntil :: Char -> String -> String
+--takeUntil a b = takeWhile (/= a) b
 
 dropUntil :: Char -> String -> String
 dropUntil a b = dropWhile (/= a) b

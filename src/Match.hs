@@ -22,7 +22,7 @@ data Match  = Match String [Set]    -- ^ Date and a list of sets.
 data Set    = Set   [Event]
 data Event
   = Timeout
-  | Sub     Team [Name]                      -- ^ Players going in.
+  | Sub     Team [(Name, Name)]              -- ^ Players going in/coming out.
   | Volley  Team (Maybe Name) Team Volley    -- ^ Serving team, serving player, winning team, volley info.
   | Unknown String
   deriving (Show, Read)
@@ -35,7 +35,7 @@ data Volley
   | BallHandlingError (Maybe Name)                             -- ^ Erroring player.
   | BadSet            (Maybe Name)                             -- ^ Setting player.
   | PointAwarded                                               -- ^ Point awarded for unknown reason.
-  deriving (Show, Read)
+  deriving (Show, Read, Eq)
 
 instance Show Season where show (Season team matches)  = "Season " ++ team ++ "\n" ++ concatMap show matches
 instance Show Match  where show (Match  date sets)  = "Match " ++ date ++ "\n" ++ concatMap show sets
