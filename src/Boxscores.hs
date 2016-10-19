@@ -60,7 +60,13 @@ parseMatch a
 parseSet :: [[String]] -> Set
 parseSet a = case a of
   [] -> error "No sets in match."
-  a : b -> Set $ parseEvents (index "paseSet" a 4, index "parseSet" a 8) (0, 0) b
+  a : b -> Set $ parseEvents (team' $ index "parseSet" a 4, team' $ index "parseSet" a 8) (0, 0) b
+
+-- Fixes the problem of Somtimes sub team is CLAR, sometimes CLARION.
+team' :: String -> String
+team' a = case a of
+  "CLARION" -> "CLAR"  
+  a -> a
 
 index :: Show a => String -> [a] -> Int -> a
 index msg a b
@@ -77,7 +83,7 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     | servingTeam == "--" -> Unknown (show a) : rest'
     | otherwise           -> Volley servingTeam servingPlayer scoringTeam volley' : rest''
     where
-    servingTeam = a !! 0
+    servingTeam = team' $ a !! 0
     scoringTeam = if vScore == vScore' then hTeam else vTeam
     vScore'     = read $ index "vScore" a 5
     hScore'     = read $ index "hScore" a 7
@@ -86,8 +92,7 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     textFull    = a !! 3
     isSub       = isInfixOf "subs:" textFull
     isTimeout   = isPrefixOf "Timeout" textFull
-    -- XXX Somtimes sub team is CLAR, sometimes CLARION.
-    subTeam     = head $ words textFull
+    subTeam     = team' $ head $ words textFull
     subPlayers  = splitSemi . init . drop 2 . dropUntil ':' $ textFull
     (servingPlayer, volley') = volley . words . concatMap f $ textFull
     f a
