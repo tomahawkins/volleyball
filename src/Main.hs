@@ -37,7 +37,7 @@ test :: [Season] -> IO ()
 test seasons = do
   --mapM_ print volleys
   --mapM_ print $ nub $ concatMap (teamPlayers "CLAR") sets
-  mapM_ print $ positions "CLAR" set1
+  mapM_ print $ positions "CLAR" "Catherine Ferragonio" set1
   where
   --sets = concat [ concat [ sets | Match _ sets <- m ] | Season "CLAR" m <- seasons ]
   Match _ sets = last $ head [ m | Season "CLAR" m <- seasons ]

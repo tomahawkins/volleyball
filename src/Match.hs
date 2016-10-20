@@ -22,7 +22,7 @@ data Match  = Match String [Set]    -- ^ Date and a list of sets.
 data Set    = Set   [Event]
 data Event
   = Timeout
-  | Sub     Team [(Name, Name)]              -- ^ Players going in/coming out.
+  | Sub     Team [Name]                      -- ^ Players going in or going out.  No convention.
   | Volley  Team (Maybe Name) Team Volley    -- ^ Serving team, serving player, winning team, volley info.
   | Unknown String
   deriving (Show, Read)
