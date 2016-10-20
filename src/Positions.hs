@@ -27,7 +27,7 @@ instance Functor Positions where
 
 data P a
   = Volley' Team (Maybe Name) Team Volley (Positions a)
-  | Sub'    [Name]
+  | Sub'    [a]
   deriving Eq
 
 instance Show a => Show (P a) where
@@ -37,7 +37,7 @@ instance Show a => Show (P a) where
 
 instance Functor P where
   fmap f a = case a of
-    Sub' a -> Sub' a
+    Sub' a -> Sub' $ map f a
     Volley' a b c d e -> Volley' a b c d $ fmap f e
 
 -- | Infers player positions of a team throughout a set.
@@ -47,6 +47,8 @@ positions team libero set = map (fmap convert) p
   (p, convert) = solve $ do
     p <- initP team libero set
     applyServers team libero p
+    rotationsBetweenSubs team p
+    rotationsAcrossSubs  team p
     return p
 
 {-
@@ -79,65 +81,42 @@ applyServers team libero = mapM_ $ \ a -> case a of
     -- | t == team && server /= libero -> error $ "applyServers: " ++ t ++ " " ++ server ++ " " ++ show (p1 p)
   _ -> return ()
 
-{-
-rotateF :: Positions a -> Positions a
-rotateF (Positions p) = Positions $ tail p ++ [head p]
-
-rotateB :: Positions a -> Positions a
-rotateB (Positions p1 p2 p3 p4 p5 p6) = Position p6 p1 p2 p3 p4 p5
--}
-
-{-
-unify :: Position [Name] -> Position [Name] -> Position [Name]
-unify (Position a1 a2 a3 a4 a5 a6) (Position b1 b2 b3 b4 b5 b6) = Position (i a1 b1) (i a2 b2) (i a3 b3) (i a4 b4) (i a5 b5) (i a6 b6)
-  where
-  i = intersect
-
-propagate :: Team -> [P] -> [P]
-propagate team a
-  | a == propagateSubs (propagateRotations team a) = a
-  | otherwise = propagate team $ propagateSubs $ propagateRotations team a
+-- Propagate info between subs.
+rotationsBetweenSubs :: Team -> [P Var] -> FD Name ()
+rotationsBetweenSubs team a = case a of
+  [] -> return ()
+  Volley' st0 _ _ _ a : v@(Volley' st1 _ _ _ b) : rest -> do
+    if st0 == st1 || st1 /= team
+      then do
+        assert $ p1 a :== p1 b 
+        assert $ p2 a :== p2 b 
+        assert $ p3 a :== p3 b 
+        assert $ p4 a :== p4 b 
+        assert $ p5 a :== p5 b 
+        assert $ p6 a :== p6 b 
+      else do
+        assert $ p1 a :== p6 b 
+        assert $ p2 a :== p1 b 
+        assert $ p3 a :== p2 b 
+        assert $ p4 a :== p3 b 
+        assert $ p5 a :== p4 b 
+        assert $ p6 a :== p5 b 
+    rotationsBetweenSubs team $ v : rest
+  _ : rest -> rotationsBetweenSubs team rest
 
 -- Propagate info across subs.
-propagateSubs :: [P] -> [P]
-propagateSubs a = case a of
-  [] -> []
-  Volley' a1 a2 a3 a4 a5 : Sub' subs : Volley' b1 b2 b3 b4 b5 : rest -> Volley' a1 a2 a3 a4 a5' : Sub' subs : propagateSubs (Volley' b1 b2 b3 b4 b5' : rest)
-    where
-    a5' = filterKnowns (subs `intersect` knowns b5) a5
-    b5' = filterKnowns (subs `intersect` knowns a5) b5
-  a : b -> a : propagateSubs b
-
--- Known players in a fixed position.
-knowns :: Position [Name] -> [Name]
-knowns (Position p1 p2 p3 p4 p5 p6) = flip concatMap [p1, p2, p3, p4, p5, p6] $ \ a -> if length a == 1 then a else []
-
-filterKnowns :: [Name] -> Position [Name] -> Position [Name]
-filterKnowns knowns (Position p1 p2 p3 p4 p5 p6) = Position (f p1) (f p2) (f p3) (f p4) (f p5) (f p6)
+rotationsAcrossSubs :: Team -> [P Var] -> FD Name ()
+rotationsAcrossSubs team a = case a of
+  [] -> return ()
+  Volley' st0 _ _ _ a : Sub' subs : v@(Volley' st1 _ _ _ b) : rest -> do
+    sequence_ [ assert $ sub :== f0 a :-> sub :/= f1 b | sub <- subs, f0 <- ps, f1 <- ps ]  -- XXX Does not work.
+    sequence_ [ assert $ sub :== f0 b :-> sub :/= f1 a | sub <- subs, f0 <- ps, f1 <- ps ]
+    rotationsBetweenSubs team $ v : rest
+  _ : rest -> rotationsBetweenSubs team rest
   where
-  f a
-    | length a == 1 = a
-    | otherwise     = filter (flip notElem knowns) a
+  ps = [p1, p2, p3, p4, p5, p6]
 
-filterKnowns' :: Position [Name] -> Position [Name]
-filterKnowns' a = filterKnowns (knowns a) a
-
--- Propagate info between subs.
-propagateRotations :: Team -> [P] -> [P]
-propagateRotations team = f
-  where
-  f :: [P] -> [P]
-  f a = case a of
-    [] -> []
-    Volley' st0 s0 wt0 v0 p0 : Volley' st1 s1 wt1 v1 p1 : rest
-      | st0 == st1 || st1 /= team -> Volley' st0 s0 wt0 v0 p   : f (Volley' st1 s1 wt1 v1 p   : rest)
-      | otherwise                 -> Volley' st0 s0 wt0 v0 p0' : f (Volley' st1 s1 wt1 v1 p1' : rest)
-      where
-      p   = filterKnowns' $ unify p0 p1
-      p0' = filterKnowns' $ unify p0 (rotateB p1)
-      p1' = filterKnowns' $ unify (rotateF p0) p1
-    a : b -> a : f b
-
+{-
 extractPositions :: [P] -> [Position [Name]]
 extractPositions = mapMaybe $ \ a -> case a of
   Sub' _ -> Nothing
@@ -155,7 +134,10 @@ initP team libero set@(Set events) = f events
       Timeout -> f rest
       Unknown _ -> f rest
       Sub t a
-        | t == team -> f rest >>= return . (Sub' a :)
+        | t == team -> do
+            a <- mapM (newVar . (:[])) a
+            rest <- f rest
+            return $ Sub' a : rest
         | otherwise -> f rest
       Volley a b c d -> do
         p1 <- newVar all
@@ -164,6 +146,21 @@ initP team libero set@(Set events) = f events
         p4 <- newVar all
         p5 <- newVar all
         p6 <- newVar all
+        assert $ p1 :/= p2
+        assert $ p1 :/= p3
+        assert $ p1 :/= p4
+        assert $ p1 :/= p5
+        assert $ p1 :/= p6
+        assert $ p2 :/= p3
+        assert $ p2 :/= p4
+        assert $ p2 :/= p5
+        assert $ p2 :/= p6
+        assert $ p3 :/= p4
+        assert $ p3 :/= p5
+        assert $ p3 :/= p6
+        assert $ p4 :/= p5
+        assert $ p4 :/= p6
+        assert $ p5 :/= p6
         rest <- f rest
         return $ Volley' a b c d (Positions [p1, p2, p3, p4, p5, p6]) : rest
       
