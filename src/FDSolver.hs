@@ -3,11 +3,12 @@
 -- | A finite domain constraint solver.
 module FDSolver
   ( FD
-  , Var
+  , Var (..)
   , E (..)
   , solve
   , newVar
   , assert
+  , constraints'
   ) where
 
 import Data.List
@@ -24,6 +25,7 @@ data FDDB a = FDDB
 
 -- | Variable.
 data Var = Var Int
+instance Show Var where show (Var i) = show i
 
 -- | Constraint expressions.
 data E where
@@ -32,6 +34,7 @@ data E where
   (:->) :: E -> E -> E
   (:==) :: Var -> Var -> E
   (:/=) :: Var -> Var -> E
+  deriving Show
 
 infix  4 :==, :/=
 --infixl 3 :&&
@@ -44,6 +47,11 @@ solve fd =  (b, \ (Var i) -> solvedVars !! i)
   where
   (b, db) = runId $ runStateT (FDDB 0 [] []) fd
   solvedVars = f0 (constraints db) $ variables db
+
+constraints' :: FD a b -> [E]
+constraints' a = constraints db
+  where
+  (_, db) = runId $ runStateT (FDDB 0 [] []) a
 
 f0 :: Eq a => [E] -> [[a]] -> [[a]]
 f0 constraints vars

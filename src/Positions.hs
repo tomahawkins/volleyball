@@ -41,28 +41,20 @@ instance Functor P where
     Volley' a b c d e -> Volley' a b c d $ fmap f e
 
 -- | Infers player positions of a team throughout a set.
-positions :: Team -> Name -> Set -> [P [Name]]
-positions team libero set = map (fmap convert) p
+positions :: Team -> Name -> Set -> IO [P (Var, [Name])]
+positions team libero set = do
+  mapM_ print c
+  return $ map (fmap convert) p
   where
-  (p, convert) = solve $ do
+  (p, convert') = solve f
+  convert a = (a, convert' a)
+  c = constraints' f
+  f = do
     p <- initP team libero set
     applyServers team libero p
     rotationsBetweenSubs team p
     rotationsAcrossSubs  team p
     return p
-
-{-
-pruneSubs :: [P] -> [P]
-pruneSubs = reverse . f [] . reverse
-  where
-  f :: [Name] -> [P] -> [P]
-  f subs a = case a of
-    [] -> []
-    Sub' a : rest -> f a rest
-    Volley' a b c d (Position p1 p2 p3 p4 p5 p6) : rest -> Volley' a b c d (Position (pr p1) (pr p2) (pr p3) (pr p4) (pr p5) (pr p6)) : f subs rest
-    where
-    pr = filter $ flip notElem subs
-    -}
 
 p1 (Positions a) = a !! 0
 p2 (Positions a) = a !! 1
@@ -108,11 +100,11 @@ rotationsBetweenSubs team a = case a of
 rotationsAcrossSubs :: Team -> [P Var] -> FD Name ()
 rotationsAcrossSubs team a = case a of
   [] -> return ()
-  Volley' st0 _ _ _ a : Sub' subs : v@(Volley' st1 _ _ _ b) : rest -> do
+  Volley' _ _ _ _ a : Sub' subs : v@(Volley' _ _ _ _ b) : rest -> do
     sequence_ [ assert $ sub :== f0 a :-> sub :/= f1 b | sub <- subs, f0 <- ps, f1 <- ps ]  -- XXX Does not work.
     sequence_ [ assert $ sub :== f0 b :-> sub :/= f1 a | sub <- subs, f0 <- ps, f1 <- ps ]
-    rotationsBetweenSubs team $ v : rest
-  _ : rest -> rotationsBetweenSubs team rest
+    rotationsAcrossSubs team $ v : rest
+  _ : rest -> rotationsAcrossSubs team rest
   where
   ps = [p1, p2, p3, p4, p5, p6]
 
