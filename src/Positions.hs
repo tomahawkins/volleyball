@@ -43,17 +43,16 @@ instance Functor P where
 -- | Infers player positions of a team throughout a set.
 positions :: Team -> Name -> Set -> IO [P (Var, [Name])]
 positions team libero set = do
-  mapM_ print c
+  mapM_ print constraints
   return $ map (fmap convert) p
   where
-  (p, convert') = solve f
-  convert a = (a, convert' a)
-  c = constraints' f
+  (p, convert, constraints) = solve' f
   f = do
     p <- initP team libero set
     applyServers team libero p
     rotationsBetweenSubs team p
     rotationsAcrossSubs  team p
+    mapM_ (applyBlockers team) p
     return p
 
 p1 (Positions a) = a !! 0
@@ -97,16 +96,33 @@ rotationsBetweenSubs team a = case a of
   _ : rest -> rotationsBetweenSubs team rest
 
 -- Propagate info across subs.
+-- TODO: look at Volley info for players and compare with subs to determine direction of sub.
 rotationsAcrossSubs :: Team -> [P Var] -> FD Name ()
 rotationsAcrossSubs team a = case a of
   [] -> return ()
   Volley' _ _ _ _ a : Sub' subs : v@(Volley' _ _ _ _ b) : rest -> do
-    sequence_ [ assert $ sub :== f0 a :-> sub :/= f1 b | sub <- subs, f0 <- ps, f1 <- ps ]  -- XXX Does not work.
+    sequence_ [ assert $ sub :== f0 a :-> sub :/= f1 b | sub <- subs, f0 <- ps, f1 <- ps ]
     sequence_ [ assert $ sub :== f0 b :-> sub :/= f1 a | sub <- subs, f0 <- ps, f1 <- ps ]
     rotationsAcrossSubs team $ v : rest
   _ : rest -> rotationsAcrossSubs team rest
   where
   ps = [p1, p2, p3, p4, p5, p6]
+
+applyBlockers :: Team -> P Var -> FD Name ()
+applyBlockers team a = case a of
+  Volley' _ _ t (KillBy _ _ (Just blocker)) p
+    | t /= team -> applyBlocker blocker p
+  Volley' _ _ t (AttackError _ blockers) p
+    | t == team -> mapM_ (flip applyBlocker p) blockers
+  _ -> return ()
+
+applyBlocker :: Name -> Positions Var -> FD Name ()
+applyBlocker blocker p = do
+  blocker <- newVar [blocker]
+  assert $ blocker :== p2 p :|| blocker :== p3 p :|| blocker :== p4 p
+  assert $ blocker :/= p5 p
+  assert $ blocker :/= p6 p
+  assert $ blocker :/= p1 p
 
 {-
 extractPositions :: [P] -> [Position [Name]]

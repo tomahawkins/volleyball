@@ -43,5 +43,5 @@ test seasons = do
   where
   --sets = concat [ concat [ sets | Match _ sets <- m ] | Season "CLAR" m <- seasons ]
   Match _ sets = last $ head [ m | Season "CLAR" m <- seasons ]
-  set1 : _ = sets
+  _ : set1 : _ = sets
 

@@ -6,9 +6,9 @@ module FDSolver
   , Var (..)
   , E (..)
   , solve
+  , solve'
   , newVar
   , assert
-  , constraints'
   ) where
 
 import Data.List
@@ -30,7 +30,7 @@ instance Show Var where show (Var i) = show i
 -- | Constraint expressions.
 data E where
   --(:&&) :: E -> E -> E
-  --(:||) :: E -> E -> E
+  (:||) :: E -> E -> E
   (:->) :: E -> E -> E
   (:==) :: Var -> Var -> E
   (:/=) :: Var -> Var -> E
@@ -38,7 +38,7 @@ data E where
 
 infix  4 :==, :/=
 --infixl 3 :&&
---infixl 2 :||
+infixl 2 :||
 infixr 1 :->
 
 -- | Solve a set of constraints and update a structure with solved domain values.
@@ -46,22 +46,23 @@ solve :: Eq a => FD a b -> (b, Var -> [a])
 solve fd =  (b, \ (Var i) -> solvedVars !! i)
   where
   (b, db) = runId $ runStateT (FDDB 0 [] []) fd
-  solvedVars = f0 (constraints db) $ variables db
+  solvedVars = applyConstraints (constraints db) $ variables db
 
-constraints' :: FD a b -> [E]
-constraints' a = constraints db
+solve' :: Eq a => FD a b -> (b, Var -> (Var, [a]), [E])
+solve' fd =  (b, \ (Var i) -> (Var i, solvedVars !! i), constraints db)
   where
-  (_, db) = runId $ runStateT (FDDB 0 [] []) a
+  (b, db) = runId $ runStateT (FDDB 0 [] []) fd
+  solvedVars = applyConstraints (constraints db) $ variables db
 
-f0 :: Eq a => [E] -> [[a]] -> [[a]]
-f0 constraints vars
+applyConstraints :: Eq a => [E] -> [[a]] -> [[a]]
+applyConstraints constraints vars
   | vars == vars' = vars
-  | otherwise     = f0 constraints vars'
+  | otherwise     = applyConstraints constraints vars'
   where
-  vars' = foldr f1 vars constraints
+  vars' = foldr applyConstraint vars constraints
 
-f1 :: Eq a => E -> [[a]] -> [[a]]
-f1 a vars = case a of
+applyConstraint :: Eq a => E -> [[a]] -> [[a]]
+applyConstraint a vars = case a of
   Var a :== Var b -> replace n a $ replace n b vars where n = (vars !! a) `intersect` (vars !! b)
   Var a :/= Var b
     | length (vars !! a) == 1 -> replace ((vars !! b) \\ (vars !! a)) b vars
@@ -70,12 +71,27 @@ f1 a vars = case a of
   a :-> b -> case eval vars a of
     Nothing    -> vars
     Just False -> vars
-    Just True  -> f1 b vars
+    Just True  -> applyConstraint b vars
+  _ :|| _
+    | length terms == length falses + 1 -> applyConstraint term vars
+    | otherwise -> vars
+    where
+    terms  = [ (t, eval vars t) | t <- orTerms a ]
+    falses = [ () | (_, Just False) <- terms ]
+    term   = head [ a | (a, v) <- terms, v /= Just False ]
   where
   replace a i l = take i l ++ [a] ++ drop (i + 1) l
+  orTerms a = case a of
+    a :|| b -> orTerms a ++ orTerms b
+    a       -> [a]
 
 eval :: Eq a => [[a]] -> E -> Maybe Bool
 eval vars a = case a of
+  a :|| b -> case (eval vars a, eval vars b) of
+    (Just False, Just False) -> Just False
+    (Just True, _) -> Just True
+    (_, Just True) -> Just True
+    _ -> Nothing
   a :-> b -> case eval vars a of
     Nothing -> Nothing
     Just True -> eval vars b
