@@ -42,6 +42,6 @@ test seasons = do
   mapM_ print p
   where
   --sets = concat [ concat [ sets | Match _ sets <- m ] | Season "CLAR" m <- seasons ]
-  Match _ sets = last $ head [ m | Season "CLAR" m <- seasons ]
-  _ : set1 : _ = sets
+  Match _ sets = (!! 11) $ reverse $ head [ m | Season "CLAR" m <- seasons ]
+  set1 : _ = sets
 

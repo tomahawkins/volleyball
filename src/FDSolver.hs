@@ -29,7 +29,7 @@ instance Show Var where show (Var i) = show i
 
 -- | Constraint expressions.
 data E where
-  --(:&&) :: E -> E -> E
+  (:&&) :: E -> E -> E
   (:||) :: E -> E -> E
   (:->) :: E -> E -> E
   (:==) :: Var -> Var -> E
@@ -37,7 +37,7 @@ data E where
   deriving Show
 
 infix  4 :==, :/=
---infixl 3 :&&
+infixl 3 :&&
 infixl 2 :||
 infixr 1 :->
 
@@ -72,6 +72,7 @@ applyConstraint a vars = case a of
     Nothing    -> vars
     Just False -> vars
     Just True  -> applyConstraint b vars
+  a :&& b -> applyConstraint a $ applyConstraint b vars
   _ :|| _
     | length terms == length falses + 1 -> applyConstraint term vars
     | otherwise -> vars
@@ -87,6 +88,11 @@ applyConstraint a vars = case a of
 
 eval :: Eq a => [[a]] -> E -> Maybe Bool
 eval vars a = case a of
+  a :&& b -> case (eval vars a, eval vars b) of
+    (Just True, Just True) -> Just True
+    (Just False, _) -> Just False
+    (_, Just False) -> Just False
+    _ -> Nothing
   a :|| b -> case (eval vars a, eval vars b) of
     (Just False, Just False) -> Just False
     (Just True, _) -> Just True
