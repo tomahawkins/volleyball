@@ -5,6 +5,7 @@ module Positions
 
 import Data.List
 import Data.Maybe
+import Debug.Trace
 
 import FDSolver
 import Match
@@ -27,34 +28,34 @@ instance Functor Positions where
 
 data P a
   = Volley' Team (Maybe Name) Team Volley (Positions a)
-  | Sub'    [Name] [a] (Positions a)
+  | Sub'    [Name] (Positions a)
   deriving Eq
 
 instance Show a => Show (P a) where
   show a = case a of
-    Sub' a _ p -> "Sub: " ++ show a ++ "\n" ++ show p
+    Sub' a p -> "Sub: " ++ show a ++ "\n" ++ show p
     Volley' st sp wt v p -> "Volley: " ++ show st ++ " " ++ show sp ++ " " ++ show wt ++ " " ++ show v ++ "\n" ++ show p
 
 instance Functor P where
   fmap f a = case a of
-    Sub' a b p -> Sub' a (map f b) (fmap f p)
+    Sub' a p -> Sub' a (fmap f p)
     Volley' a b c d e -> Volley' a b c d $ fmap f e
 
 -- | Infers player positions of a team throughout a set.
 positions :: Team -> Name -> Set -> IO [P (Var, [Name])]
-positions team libero set = do
+positions team liberoName set = do
   mapM_ print constraints
+  print $ convert libero
   print $ fmap convert fixed
   return $ map (fmap convert) p
   where
-  ((fixed, p), convert, constraints) = solve' f
+  ((libero, fixed, p), convert, constraints) = solve' f
   f = do
-    (fixed, p) <- initP team libero set
-    applyRotations team fixed p
-    applyServers team libero p
-    applySubs team [] p
-    mapM_ (applyBlockers team) p
-    return (fixed, p)
+    (libero, fixed, p) <- initP team liberoName set
+    applyRotations team libero fixed p
+    mapM_ (applyKnownPlayers team libero) p
+    applySubs team p
+    return (libero, fixed, p)
 
 p1 (Positions a) = a !! 0
 p2 (Positions a) = a !! 1
@@ -63,104 +64,190 @@ p4 (Positions a) = a !! 3
 p5 (Positions a) = a !! 4
 p6 (Positions a) = a !! 5
 
-applyServers :: Team -> Name -> [P Var] -> FD Name ()
-applyServers team libero = mapM_ $ \ a -> case a of
-  Volley' t (Just server) _ _ p
-    | t == team && server /= libero -> do
-        v <- newVar [server]
-        assert $ v :== p1 p
-    -- | t == team && server /= libero && elem server (p1 p) -> Volley' t (Just server) b c p { p1 = [server] }
-    -- | t == team && server /= libero -> error $ "applyServers: " ++ t ++ " " ++ server ++ " " ++ show (p1 p)
-  _ -> return ()
+applyKnownPlayers :: Team -> Var -> P Var -> FD Name ()
+applyKnownPlayers team libero a = do
+  applyServer
+  applyBlockers
+  case a of
+    Sub' _ _ -> return ()
+    Volley' st sp wt v p -> mapM_ (flip applyPlayer p) $ teamPlayersVolley team st sp wt v
+  where
+  applyPlayer :: Name -> Positions Var -> FD Name ()
+  applyPlayer player p = do
+    player <- newVar [player]
+    always $ player :== p1 p
+         :|| player :== p2 p
+         :|| player :== p3 p
+         :|| player :== p4 p
+         :|| player :== p5 p
+         :|| player :== p6 p
+
+  applyServer :: FD Name ()
+  applyServer = case a of
+    Volley' t (Just server) _ _ p
+      | t == team -> do
+          v <- newVar [server]
+          always $ v :== p1 p
+    _ -> return ()
+  
+  applyBlockers :: FD Name ()
+  applyBlockers = case a of
+    Volley' _ _ t (KillBy _ _ (Just blocker)) p
+      | t /= team -> applyBlocker blocker p
+    Volley' _ _ t (AttackError _ blockers) p
+      | t == team -> mapM_ (flip applyBlocker p) blockers
+    _ -> return ()
+  
+  applyBlocker :: Name -> Positions Var -> FD Name ()
+  applyBlocker blocker p = do
+    blocker <- newVar [blocker]
+    always $ blocker :== p2 p :|| blocker :== p3 p :|| blocker :== p4 p
+    always $ blocker :/= p5 p
+    always $ blocker :/= p6 p
+    always $ blocker :/= p1 p
+    always $ blocker :/= libero
+
+
 
 positionsOf :: P a -> Positions a
 positionsOf a = case a of
   Volley' _ _ _ _ p -> p
-  Sub' _ _ p -> p
+  Sub' _ p -> p
 
-applyRotations :: Team -> Positions Var -> [P Var] -> FD Name ()
-applyRotations team fixed a = case a of
+applyRotations :: Team -> Var -> Positions Var -> [P Var] -> FD Name ()
+applyRotations team libero fixed a = case a of
   [] -> return ()
   Volley' st _ wt _ a : b : rest -> do
     applyFixed a
     if st /= wt && wt == team
       then do
         rotate a $ positionsOf b
-        applyRotations team (rotateP fixed) $ b : rest
+        applyRotations team libero (rotateP fixed) $ b : rest
       else do
         dontRotate a $ positionsOf b
-        applyRotations team fixed $ b : rest
-  Sub' _ _ p : rest -> do
+        applyRotations team libero fixed $ b : rest
+  Sub' _ p : b : rest -> do
     applyFixed p
-    applyRotations team fixed rest
-  Volley' _ _ _ _ p : rest -> do
-    applyFixed p
-    applyRotations team fixed rest
+    applyRotations team libero fixed $ b : rest
+  [a] -> applyFixed (positionsOf a)
   where
   rotateP :: Positions Var -> Positions Var
   rotateP (Positions a) = Positions $ tail a ++ [head a]
 
   rotate :: Positions Var -> Positions Var -> FD Name ()
   rotate a b = do
-    assert $ p1 a :== p6 b 
-    assert $ p2 a :== p1 b 
-    assert $ p3 a :== p2 b 
-    assert $ p4 a :== p3 b 
-    assert $ p5 a :== p4 b 
-    assert $ p6 a :== p5 b 
+    always $ p1 a :== libero :|| p6 b :== libero :|| p1 a :== p6 b 
+    always $ p2 a :== p1 b :|| libero :== p1 b
+    always $ p3 a :== p2 b 
+    always $ p4 a :== p3 b 
+    always $ libero :/= p5 a :-> p5 a :== p4 b 
+    always $ p6 a :== libero :|| p5 b :== libero :|| p6 a :== p5 b 
 
   dontRotate :: Positions Var -> Positions Var -> FD Name ()
   dontRotate a b = do
-    assert $ p1 a :== p1 b 
-    assert $ p2 a :== p2 b 
-    assert $ p3 a :== p3 b 
-    assert $ p4 a :== p4 b 
-    assert $ p5 a :== p5 b 
-    assert $ p6 a :== p6 b 
+    usually $ p1 a :== p1 b 
+    usually $ p2 a :== p2 b 
+    usually $ p3 a :== p3 b 
+    usually $ p4 a :== p4 b 
+    usually $ p5 a :== p5 b 
+    usually $ p6 a :== p6 b 
 
   applyFixed :: Positions Var -> FD Name ()
   applyFixed p = do
-    assert $ p1 p :/= p2 fixed
-    assert $ p1 p :/= p3 fixed
-    assert $ p1 p :/= p4 fixed
-    assert $ p1 p :/= p5 fixed
-    assert $ p1 p :/= p6 fixed
+    -- Libero can't be in front.
+    always $ libero :/= p2 p
+    always $ libero :/= p3 p
+    always $ libero :/= p4 p
 
-    assert $ p2 p :/= p1 fixed
-    assert $ p2 p :/= p3 fixed
-    assert $ p2 p :/= p4 fixed
-    assert $ p2 p :/= p5 fixed
-    assert $ p2 p :/= p6 fixed
+    -- If position is not libero, bind it to fixed.
+    always $ p1 p :/= libero :-> p1 p :/= p2 fixed
+    always $ p1 p :/= libero :-> p1 p :/= p3 fixed
+    always $ p1 p :/= libero :-> p1 p :/= p4 fixed
+    always $ p1 p :/= libero :-> p1 p :/= p5 fixed
+    always $ p1 p :/= libero :-> p1 p :/= p6 fixed
+    always $                     p2 p :/= p1 fixed
+    always $                     p2 p :/= p3 fixed
+    always $                     p2 p :/= p4 fixed
+    always $                     p2 p :/= p5 fixed
+    always $                     p2 p :/= p6 fixed
+    always $                     p3 p :/= p1 fixed
+    always $                     p3 p :/= p2 fixed
+    always $                     p3 p :/= p4 fixed
+    always $                     p3 p :/= p5 fixed
+    always $                     p3 p :/= p6 fixed
+    always $                     p4 p :/= p1 fixed
+    always $                     p4 p :/= p2 fixed
+    always $                     p4 p :/= p3 fixed
+    always $                     p4 p :/= p5 fixed
+    always $                     p4 p :/= p6 fixed
+    always $ p5 p :/= libero :-> p5 p :/= p1 fixed
+    always $ p5 p :/= libero :-> p5 p :/= p2 fixed
+    always $ p5 p :/= libero :-> p5 p :/= p3 fixed
+    always $ p5 p :/= libero :-> p5 p :/= p4 fixed
+    always $ p5 p :/= libero :-> p5 p :/= p6 fixed
+    always $ p6 p :/= libero :-> p6 p :/= p1 fixed
+    always $ p6 p :/= libero :-> p6 p :/= p2 fixed
+    always $ p6 p :/= libero :-> p6 p :/= p3 fixed
+    always $ p6 p :/= libero :-> p6 p :/= p4 fixed
+    always $ p6 p :/= libero :-> p6 p :/= p5 fixed
 
-    assert $ p3 p :/= p1 fixed
-    assert $ p3 p :/= p2 fixed
-    assert $ p3 p :/= p4 fixed
-    assert $ p3 p :/= p5 fixed
-    assert $ p3 p :/= p6 fixed
-
-    assert $ p4 p :/= p1 fixed
-    assert $ p4 p :/= p2 fixed
-    assert $ p4 p :/= p3 fixed
-    assert $ p4 p :/= p5 fixed
-    assert $ p4 p :/= p6 fixed
-
-    assert $ p5 p :/= p1 fixed
-    assert $ p5 p :/= p2 fixed
-    assert $ p5 p :/= p3 fixed
-    assert $ p5 p :/= p4 fixed
-    assert $ p5 p :/= p6 fixed
-
-    assert $ p6 p :/= p1 fixed
-    assert $ p6 p :/= p2 fixed
-    assert $ p6 p :/= p3 fixed
-    assert $ p6 p :/= p4 fixed
-    assert $ p6 p :/= p5 fixed
-
-applySubs :: Team -> [P Var] -> [P Var] -> FD Name ()
-applySubs team before a = case a of
+applySubs :: Team -> [P Var] -> FD Name ()
+applySubs team a = case a of
   [] -> return ()
-  s@(Sub' subNames subs a) : b : rest -> do
-    -- TODO: If a sub in referenced by volley info on one side, ensure the sub is not pressent on the other.
+  Sub' subs a : b : rest -> do
+    subsOut <- newVar playersGoingOut
+    always $ p1 a :/= subsOut :-> p1 a :== p1 b'
+    always $ p2 a :/= subsOut :-> p2 a :== p2 b'
+    always $ p3 a :/= subsOut :-> p3 a :== p3 b'
+    always $ p4 a :/= subsOut :-> p4 a :== p4 b'
+    always $ p5 a :/= subsOut :-> p5 a :== p5 b'
+    always $ p6 a :/= subsOut :-> p6 a :== p6 b'
+
+    subsIn <- newVar playersGoingIn
+    always $ p1 b' :/= subsIn :-> p1 a :== p1 b'
+    always $ p2 b' :/= subsIn :-> p2 a :== p2 b'
+    always $ p3 b' :/= subsIn :-> p3 a :== p3 b'
+    always $ p4 b' :/= subsIn :-> p4 a :== p4 b'
+    always $ p5 b' :/= subsIn :-> p5 a :== p5 b'
+    always $ p6 b' :/= subsIn :-> p6 a :== p6 b'
+
+    flip mapM_ playersGoingIn $ \ p -> do
+      p <- newVar [p]
+      always $ p :== p1 b'
+           :|| p :== p2 b'
+           :|| p :== p3 b'
+           :|| p :== p4 b'
+           :|| p :== p5 b'
+           :|| p :== p6 b'
+
+      always $ p :/= p1 a
+      always $ p :/= p2 a
+      always $ p :/= p3 a
+      always $ p :/= p4 a
+      always $ p :/= p5 a
+      always $ p :/= p6 a
+
+    flip mapM_ playersGoingOut $ \ p -> do
+      p <- newVar [p]
+      always $ p :== p1 a
+           :|| p :== p2 a
+           :|| p :== p3 a
+           :|| p :== p4 a
+           :|| p :== p5 a
+           :|| p :== p6 a
+
+      always $ p :/= p1 b'
+      always $ p :/= p2 b'
+      always $ p :/= p3 b'
+      always $ p :/= p4 b'
+      always $ p :/= p5 b'
+      always $ p :/= p6 b'
+
+    applySubs team $ b : rest
+
+    --XXX
+    {-
+    -- If a sub in referenced by volley info on one side, ensure the sub is not pressent on the other.
     playersGoingIn  <- mapM (newVar . (:[])) $ subNames `intersect` teamPlayersUntilNextSub team rest
     playersGoingOut <- mapM (newVar . (:[])) $ subNames `intersect` teamPlayersUntilNextSub team before
     sequence_ [ assert $ sub :/= p a  | sub <- playersGoingIn,  p <- ps ]
@@ -174,28 +261,19 @@ applySubs team before a = case a of
     flip mapM_ ps $ \ p -> assert $ foldl1 (:&&) [ s :/= p a :&& s :/= p b' | s <- subs ] :-> p a :== p b'
 
     applySubs team (s : before) (b : rest)
+    -}
     where
     b' = positionsOf b
+    playersGoingIn :: [Name]
+    playersGoingIn  = everyOther subs
+    playersGoingOut = trace ("subs: " ++ show subs ++ show (everyOther subs) ++ show (everyOther $ tail subs)) everyOther $ tail subs
+    everyOther :: [a] -> [a]
+    everyOther a = case a of
+      [] -> []
+      a : _ : rest -> a : everyOther rest
+      [a] -> [a]
 
-  a : rest -> applySubs team (a : before) rest
-  where
-  ps = [p1, p2, p3, p4, p5, p6]
-
-applyBlockers :: Team -> P Var -> FD Name ()
-applyBlockers team a = case a of
-  Volley' _ _ t (KillBy _ _ (Just blocker)) p
-    | t /= team -> applyBlocker blocker p
-  Volley' _ _ t (AttackError _ blockers) p
-    | t == team -> mapM_ (flip applyBlocker p) blockers
-  _ -> return ()
-
-applyBlocker :: Name -> Positions Var -> FD Name ()
-applyBlocker blocker p = do
-  blocker <- newVar [blocker]
-  assert $ blocker :== p2 p :|| blocker :== p3 p :|| blocker :== p4 p
-  assert $ blocker :/= p5 p
-  assert $ blocker :/= p6 p
-  assert $ blocker :/= p1 p
+  _ : rest -> applySubs team rest
 
 newPositions :: [Name] -> FD Name (Positions Var)
 newPositions all = do
@@ -205,49 +283,53 @@ newPositions all = do
   p4 <- newVar all
   p5 <- newVar all
   p6 <- newVar all
-  assert $ p1 :/= p2
-  assert $ p1 :/= p3
-  assert $ p1 :/= p4
-  assert $ p1 :/= p5
-  assert $ p1 :/= p6
-  assert $ p2 :/= p3
-  assert $ p2 :/= p4
-  assert $ p2 :/= p5
-  assert $ p2 :/= p6
-  assert $ p3 :/= p4
-  assert $ p3 :/= p5
-  assert $ p3 :/= p6
-  assert $ p4 :/= p5
-  assert $ p4 :/= p6
-  assert $ p5 :/= p6
+  always $ p1 :/= p2
+  always $ p1 :/= p3
+  always $ p1 :/= p4
+  always $ p1 :/= p5
+  always $ p1 :/= p6
+  always $ p2 :/= p3
+  always $ p2 :/= p4
+  always $ p2 :/= p5
+  always $ p2 :/= p6
+  always $ p3 :/= p4
+  always $ p3 :/= p5
+  always $ p3 :/= p6
+  always $ p4 :/= p5
+  always $ p4 :/= p6
+  always $ p5 :/= p6
   return $ Positions [p1, p2, p3, p4, p5, p6]
 
-initP :: Team -> Name -> Set -> FD Name (Positions Var, [P Var])
+initP :: Team -> Name -> Set -> FD Name (Var, Positions Var, [P Var])
 initP team libero set@(Set events) = do
-  a <- newPositions all
-  p <- f events
-  return (a, p)
-  where
-  all = filter (/= libero) $ teamPlayersAll team set
-  f :: [Event] -> FD Name [P Var]
-  f a = case a of
-    [] -> return []
-    a : rest -> case a of
-      Timeout -> f rest
-      Unknown _ -> f rest
-      Sub t a
-        | t == team -> do
-            b <- mapM (newVar . (:[])) a
-            p <- newPositions all
-            rest <- f rest
-            return $ Sub' a b p : rest
-        | otherwise -> f rest
-      Volley a b c d -> do
-        p <- newPositions all
-        rest <- f rest
-        return $ Volley' a b c d p : rest
-      
+  libero <- newVar [libero]
+  --libero <- newVar $ all \\ subs
+  fixed <- newPositions all
+  -- Take the libero out of the fixed positions tracker.
+  always $ libero :/= p1 fixed
+  always $ libero :/= p2 fixed
+  always $ libero :/= p3 fixed
+  always $ libero :/= p4 fixed
+  always $ libero :/= p5 fixed
+  always $ libero :/= p6 fixed
 
+  p <- mapM f events >>= return . catMaybes
+  return (libero, fixed, p)
+  where
+  all  = teamPlayersAll team set
+  subs = teamPlayersSubs team set
+  f :: Event -> FD Name (Maybe (P Var))
+  f a = case a of
+    Timeout -> return Nothing
+    Unknown _ -> return Nothing
+    Sub t a
+      | t == team -> do
+          p <- newPositions all
+          return $ Just $ Sub' a p
+      | otherwise -> return Nothing
+    Volley a b c d -> do
+      p <- newPositions all
+      return $ Just $ Volley' a b c d p
 
 teamPlayersAll :: Team -> Set -> [Name]
 teamPlayersAll team (Set events) = nub $ concatMap f events
@@ -260,13 +342,18 @@ teamPlayersAll team (Set events) = nub $ concatMap f events
       | otherwise -> []
     Volley st sp wt v -> teamPlayersVolley team st sp wt v
 
+teamPlayersSubs :: Team -> Set -> [Name]
+teamPlayersSubs team (Set events) = nub $ concat [ a | Sub t a <- events, t == team ]
+      
+{-
 teamPlayersUntilNextSub :: Team -> [P Var] -> [Name]
 teamPlayersUntilNextSub team = nub . f
   where
   f a = case a of
     [] -> []
     Volley' st sp wt v _ : rest -> teamPlayersVolley team st sp wt v ++ f rest
-    Sub' _ _ _ : _ -> []
+    --Sub' _ _ _ : _ -> []
+-}
 
 teamPlayersVolley :: Team -> Team -> Maybe Name -> Team -> Volley -> [Name]  -- Team of interest, serving team, serving player, winning team, volley.
 teamPlayersVolley team st sp wt a = (if st == team then maybeToList sp else []) ++ case a of

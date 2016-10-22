@@ -5,10 +5,12 @@ module FDSolver
   ( FD
   , Var (..)
   , E (..)
+  , Constraint (..)
   , solve
   , solve'
   , newVar
-  , assert
+  , always
+  , usually
   ) where
 
 import Data.List
@@ -20,8 +22,10 @@ type FD a = StateT (FDDB a) Id
 data FDDB a = FDDB
   { nextId      :: Int
   , variables   :: [[a]]  -- Vars index into list.
-  , constraints :: [E]
+  , constraints :: [Constraint]
   }
+
+data Constraint = Always E | Usually E deriving Show
 
 -- | Variable.
 data Var = Var Int
@@ -48,18 +52,23 @@ solve fd =  (b, \ (Var i) -> solvedVars !! i)
   (b, db) = runId $ runStateT (FDDB 0 [] []) fd
   solvedVars = applyConstraints (constraints db) $ variables db
 
-solve' :: Eq a => FD a b -> (b, Var -> (Var, [a]), [E])
+solve' :: Eq a => FD a b -> (b, Var -> (Var, [a]), [Constraint])
 solve' fd =  (b, \ (Var i) -> (Var i, solvedVars !! i), constraints db)
   where
   (b, db) = runId $ runStateT (FDDB 0 [] []) fd
   solvedVars = applyConstraints (constraints db) $ variables db
 
-applyConstraints :: Eq a => [E] -> [[a]] -> [[a]]
+applyConstraints :: Eq a => [Constraint] -> [[a]] -> [[a]]
 applyConstraints constraints vars
   | vars == vars' = vars
   | otherwise     = applyConstraints constraints vars'
   where
-  vars' = foldr applyConstraint vars constraints
+  vars' = foldr applyConstraint' vars constraints
+
+applyConstraint' :: Eq a => Constraint -> [[a]] -> [[a]]
+applyConstraint' a = case a of
+  Always  a -> applyConstraint a
+  Usually a -> applyConstraint a
 
 applyConstraint :: Eq a => E -> [[a]] -> [[a]]
 applyConstraint a vars = case a of
@@ -119,10 +128,17 @@ newVar domain = do
   set db { nextId = nextId db + 1, variables = variables db ++ [domain] }
   return $ Var $ nextId db
 
--- | Add a constraint.
-assert :: E -> FD a ()
-assert a = do
+-- | Add a hard constraint.
+always :: E -> FD a ()
+always a = do
   db <- get
-  set db { constraints = constraints db ++ [a] }
+  set db { constraints = constraints db ++ [Always a] }
+
+-- | Add a soft constraint.
+usually :: E -> FD a ()
+usually a = do
+  db <- get
+  set db { constraints = constraints db ++ [Usually a] }
+
 
 

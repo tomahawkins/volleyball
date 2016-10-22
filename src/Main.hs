@@ -23,7 +23,7 @@ main = do
       f <- readFile file
       mapM_ (\ (t, r) -> printf "%-5s  %2.2f%%\n" t $ r * 100) $ rankings $ parseSeasons f
 
-    ["test", file] -> readFile file >>= test . parseSeasons
+    ["test", i, j, file] -> readFile file >>= test (read i) (read j) . parseSeasons
 
     _ -> return ()
 
@@ -33,15 +33,14 @@ schedules file = do
   f <- readFile file
   return [ head $ words l | l <- lines f, isPrefixOf "http" l ]
 
-test :: [Season] -> IO ()
-test seasons = do
+test :: Int -> Int ->[Season] -> IO ()
+test i j seasons = do
   --mapM_ print volleys
   --mapM_ print $ nub $ concatMap (teamPlayers "CLAR") sets
-
-  p <- positions "CLAR" "Catherine Ferragonio" set1
+  p <- positions "CLAR" "Catherine Ferragonio" set
   mapM_ print p
   where
   --sets = concat [ concat [ sets | Match _ sets <- m ] | Season "CLAR" m <- seasons ]
-  Match _ sets = (!! 11) $ reverse $ head [ m | Season "CLAR" m <- seasons ]
-  set1 : _ = sets
+  Match _ sets = (!! i) $ reverse $ head [ m | Season "CLAR" m <- seasons ]
+  set = sets !! j
 
