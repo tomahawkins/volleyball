@@ -77,9 +77,9 @@ parseEvents :: (Team, Team) -> (Int, Int) -> [[String]] -> [Event]
 parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
   [] -> []
   a : rest
-    | null textFull       -> Unknown ""             : rest'
-    | isTimeout           -> Timeout                : rest'
-    | isSub               -> Sub subTeam subPlayers : rest'
+    | null textFull       -> Unknown ""                : rest'
+    | isTimeout           -> Timeout                   : rest'
+    | isSub               -> Sub subTeam subPlayers [] : rest'
     | servingTeam == "--" -> Unknown (show a) : rest'
     | otherwise           -> Volley servingTeam servingPlayer scoringTeam volley' : rest''
     where

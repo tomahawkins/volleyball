@@ -10,6 +10,8 @@ module Match
   , team
   , points
   , parseSeasons
+  , teamPlayersAll
+  , teamPlayersVolley
   ) where
 
 import Data.List
@@ -22,8 +24,8 @@ data Match  = Match String [Set]    -- ^ Date and a list of sets.
 data Set    = Set   [Event]
 data Event
   = Timeout
-  | Sub     Team [Name]                      -- ^ Players going in or going out.  No convention.
-  | Volley  Team (Maybe Name) Team Volley    -- ^ Serving team, serving player, winning team, volley info.
+  | Sub     Team [Name] [Name]              -- ^ Players going in, players going out.
+  | Volley  Team (Maybe Name) Team Volley   -- ^ Serving team, serving player, winning team, volley info.
   | Unknown String
   deriving (Show, Read)
 
@@ -100,4 +102,39 @@ team a = case a of
       | b == d -> b
       | otherwise -> error "team"
   _ -> error "team"
+
+teamPlayersAll :: Team -> Set -> [Name]
+teamPlayersAll team (Set events) = nub $ concatMap f events
+  where
+  f a = case a of
+    Timeout -> []
+    Unknown _ -> []
+    Sub t a b
+      | t == team -> a ++ b
+      | otherwise -> []
+    Volley st sp wt v -> teamPlayersVolley team st sp wt v
+
+--teamPlayersSubs :: Team -> Set -> [Name]
+--teamPlayersSubs team (Set events) = nub $ concat [ a | Sub t a <- events, t == team ]
+      
+teamPlayersVolley :: Team -> Team -> Maybe Name -> Team -> Volley -> [Name]  -- Team of interest, serving team, serving player, winning team, volley.
+teamPlayersVolley team st sp wt a = (if st == team then maybeToList sp else []) ++ case a of
+  PointAwarded -> []
+  KillBy a b c
+    | wt == team -> catMaybes [a, b]
+    | otherwise  -> maybeToList c
+  AttackError a b
+    | wt == team -> b
+    | otherwise  -> maybeToList a
+  ServiceError -> []
+  ServiceAce a
+    | wt == team -> []
+    | otherwise  -> maybeToList a
+  BallHandlingError a
+    | wt == team -> []
+    | otherwise  -> maybeToList a
+  BadSet a
+    | wt == team -> []
+    | otherwise  -> maybeToList a
+
 

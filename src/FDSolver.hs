@@ -28,7 +28,7 @@ data FDDB a = FDDB
 data Constraint = Always E | Usually E deriving Show
 
 -- | Variable.
-data Var = Var Int
+data Var = Var Int deriving Eq
 instance Show Var where show (Var i) = show i
 
 -- | Constraint expressions.
