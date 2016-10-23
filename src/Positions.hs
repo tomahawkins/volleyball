@@ -43,19 +43,19 @@ instance Functor P where
 
 -- | Infers player positions of a team throughout a set.
 positions :: Team -> Name -> Set -> IO [P (Var, [Name])]
-positions team liberoName set = do
+positions team libero set = do
   mapM_ print constraints
-  print $ convert libero
+  --print $ convert libero
   print $ fmap convert fixed
   return $ map (fmap convert) p
   where
-  ((libero, fixed, p), convert, constraints) = solve' f
+  ((fixed, p), convert, constraints) = solve' f
   f = do
-    (libero, fixed, p) <- initP team liberoName set
-    applyRotations team libero fixed p
+    (fixed, p) <- initP team libero set
+    applyRotations team fixed p
     mapM_ (applyKnownPlayers team libero) p
     applySubs team p
-    return (libero, fixed, p)
+    return (fixed, p)
 
 p1 (Positions a) = a !! 0
 p2 (Positions a) = a !! 1
@@ -64,13 +64,13 @@ p4 (Positions a) = a !! 3
 p5 (Positions a) = a !! 4
 p6 (Positions a) = a !! 5
 
-applyKnownPlayers :: Team -> Var -> P Var -> FD Name ()
+applyKnownPlayers :: Team -> Name -> P Var -> FD Name ()
 applyKnownPlayers team libero a = do
   applyServer
-  applyBlockers
+  --applyBlockers
   case a of
     Sub' _ _ -> return ()
-    Volley' st sp wt v p -> mapM_ (flip applyPlayer p) $ teamPlayersVolley team st sp wt v
+    Volley' st sp wt v p -> mapM_ (flip applyPlayer p) $ filter (/= libero) $ teamPlayersVolley team st sp wt v
   where
   applyPlayer :: Name -> Positions Var -> FD Name ()
   applyPlayer player p = do
@@ -85,7 +85,7 @@ applyKnownPlayers team libero a = do
   applyServer :: FD Name ()
   applyServer = case a of
     Volley' t (Just server) _ _ p
-      | t == team -> do
+      | t == team && server /= libero -> do
           v <- newVar [server]
           always $ v :== p1 p
     _ -> return ()
@@ -105,30 +105,27 @@ applyKnownPlayers team libero a = do
     always $ blocker :/= p5 p
     always $ blocker :/= p6 p
     always $ blocker :/= p1 p
-    always $ blocker :/= libero
-
-
 
 positionsOf :: P a -> Positions a
 positionsOf a = case a of
   Volley' _ _ _ _ p -> p
   Sub' _ p -> p
 
-applyRotations :: Team -> Var -> Positions Var -> [P Var] -> FD Name ()
-applyRotations team libero fixed a = case a of
+applyRotations :: Team -> Positions Var -> [P Var] -> FD Name ()
+applyRotations team fixed a = case a of
   [] -> return ()
   Volley' st _ wt _ a : b : rest -> do
     applyFixed a
     if st /= wt && wt == team
       then do
         rotate a $ positionsOf b
-        applyRotations team libero (rotateP fixed) $ b : rest
+        applyRotations team (rotateP fixed) $ b : rest
       else do
         dontRotate a $ positionsOf b
-        applyRotations team libero fixed $ b : rest
+        applyRotations team fixed $ b : rest
   Sub' _ p : b : rest -> do
     applyFixed p
-    applyRotations team libero fixed $ b : rest
+    applyRotations team fixed $ b : rest
   [a] -> applyFixed (positionsOf a)
   where
   rotateP :: Positions Var -> Positions Var
@@ -136,12 +133,12 @@ applyRotations team libero fixed a = case a of
 
   rotate :: Positions Var -> Positions Var -> FD Name ()
   rotate a b = do
-    always $ p1 a :== libero :|| p6 b :== libero :|| p1 a :== p6 b 
-    always $ p2 a :== p1 b :|| libero :== p1 b
+    always $ p1 a :== p6 b 
+    always $ p2 a :== p1 b
     always $ p3 a :== p2 b 
     always $ p4 a :== p3 b 
-    always $ libero :/= p5 a :-> p5 a :== p4 b 
-    always $ p6 a :== libero :|| p5 b :== libero :|| p6 a :== p5 b 
+    always $ p5 a :== p4 b 
+    always $ p6 a :== p5 b 
 
   dontRotate :: Positions Var -> Positions Var -> FD Name ()
   dontRotate a b = do
@@ -154,42 +151,36 @@ applyRotations team libero fixed a = case a of
 
   applyFixed :: Positions Var -> FD Name ()
   applyFixed p = do
-    -- Libero can't be in front.
-    always $ libero :/= p2 p
-    always $ libero :/= p3 p
-    always $ libero :/= p4 p
-
-    -- If position is not libero, bind it to fixed.
-    always $ p1 p :/= libero :-> p1 p :/= p2 fixed
-    always $ p1 p :/= libero :-> p1 p :/= p3 fixed
-    always $ p1 p :/= libero :-> p1 p :/= p4 fixed
-    always $ p1 p :/= libero :-> p1 p :/= p5 fixed
-    always $ p1 p :/= libero :-> p1 p :/= p6 fixed
-    always $                     p2 p :/= p1 fixed
-    always $                     p2 p :/= p3 fixed
-    always $                     p2 p :/= p4 fixed
-    always $                     p2 p :/= p5 fixed
-    always $                     p2 p :/= p6 fixed
-    always $                     p3 p :/= p1 fixed
-    always $                     p3 p :/= p2 fixed
-    always $                     p3 p :/= p4 fixed
-    always $                     p3 p :/= p5 fixed
-    always $                     p3 p :/= p6 fixed
-    always $                     p4 p :/= p1 fixed
-    always $                     p4 p :/= p2 fixed
-    always $                     p4 p :/= p3 fixed
-    always $                     p4 p :/= p5 fixed
-    always $                     p4 p :/= p6 fixed
-    always $ p5 p :/= libero :-> p5 p :/= p1 fixed
-    always $ p5 p :/= libero :-> p5 p :/= p2 fixed
-    always $ p5 p :/= libero :-> p5 p :/= p3 fixed
-    always $ p5 p :/= libero :-> p5 p :/= p4 fixed
-    always $ p5 p :/= libero :-> p5 p :/= p6 fixed
-    always $ p6 p :/= libero :-> p6 p :/= p1 fixed
-    always $ p6 p :/= libero :-> p6 p :/= p2 fixed
-    always $ p6 p :/= libero :-> p6 p :/= p3 fixed
-    always $ p6 p :/= libero :-> p6 p :/= p4 fixed
-    always $ p6 p :/= libero :-> p6 p :/= p5 fixed
+    always $ p1 p :/= p2 fixed
+    always $ p1 p :/= p3 fixed
+    always $ p1 p :/= p4 fixed
+    always $ p1 p :/= p5 fixed
+    always $ p1 p :/= p6 fixed
+    always $ p2 p :/= p1 fixed
+    always $ p2 p :/= p3 fixed
+    always $ p2 p :/= p4 fixed
+    always $ p2 p :/= p5 fixed
+    always $ p2 p :/= p6 fixed
+    always $ p3 p :/= p1 fixed
+    always $ p3 p :/= p2 fixed
+    always $ p3 p :/= p4 fixed
+    always $ p3 p :/= p5 fixed
+    always $ p3 p :/= p6 fixed
+    always $ p4 p :/= p1 fixed
+    always $ p4 p :/= p2 fixed
+    always $ p4 p :/= p3 fixed
+    always $ p4 p :/= p5 fixed
+    always $ p4 p :/= p6 fixed
+    always $ p5 p :/= p1 fixed
+    always $ p5 p :/= p2 fixed
+    always $ p5 p :/= p3 fixed
+    always $ p5 p :/= p4 fixed
+    always $ p5 p :/= p6 fixed
+    always $ p6 p :/= p1 fixed
+    always $ p6 p :/= p2 fixed
+    always $ p6 p :/= p3 fixed
+    always $ p6 p :/= p4 fixed
+    always $ p6 p :/= p5 fixed
 
 applySubs :: Team -> [P Var] -> FD Name ()
 applySubs team a = case a of
@@ -300,24 +291,15 @@ newPositions all = do
   always $ p5 :/= p6
   return $ Positions [p1, p2, p3, p4, p5, p6]
 
-initP :: Team -> Name -> Set -> FD Name (Var, Positions Var, [P Var])
+initP :: Team -> Name -> Set -> FD Name (Positions Var, [P Var])
 initP team libero set@(Set events) = do
-  libero <- newVar [libero]
-  --libero <- newVar $ all \\ subs
   fixed <- newPositions all
-  -- Take the libero out of the fixed positions tracker.
-  always $ libero :/= p1 fixed
-  always $ libero :/= p2 fixed
-  always $ libero :/= p3 fixed
-  always $ libero :/= p4 fixed
-  always $ libero :/= p5 fixed
-  always $ libero :/= p6 fixed
 
   p <- mapM f events >>= return . catMaybes
-  return (libero, fixed, p)
+  return (fixed, p)
   where
-  all  = teamPlayersAll team set
-  subs = teamPlayersSubs team set
+  all  = filter (/= libero) $ teamPlayersAll team set
+  --subs = teamPlayersSubs team set
   f :: Event -> FD Name (Maybe (P Var))
   f a = case a of
     Timeout -> return Nothing
