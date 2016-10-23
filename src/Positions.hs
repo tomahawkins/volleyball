@@ -5,7 +5,6 @@ module Positions
 
 import Data.List
 import Data.Maybe
-import Debug.Trace
 
 import FDSolver
 import Match
@@ -53,7 +52,7 @@ positions team libero set = do
   f = do
     (fixed, p) <- initP team libero set
     applyRotations team fixed p
-    mapM_ (applyKnownPlayers team libero) p
+    mapM_ (applyServer team libero) p
     applySubs team p
     return (fixed, p)
 
@@ -64,48 +63,14 @@ p4 (Positions a) = a !! 3
 p5 (Positions a) = a !! 4
 p6 (Positions a) = a !! 5
 
-applyKnownPlayers :: Team -> Name -> P Var -> FD Name ()
-applyKnownPlayers team libero a = do
-  applyServer
-  --applyBlockers
-  case a of
-    Sub' _ _ -> return ()
-    Volley' st sp wt v p -> mapM_ (flip applyPlayer p) $ filter (/= libero) $ teamPlayersVolley team st sp wt v
-  where
-  applyPlayer :: Name -> Positions Var -> FD Name ()
-  applyPlayer player p = do
-    player <- newVar [player]
-    always $ player :== p1 p
-         :|| player :== p2 p
-         :|| player :== p3 p
-         :|| player :== p4 p
-         :|| player :== p5 p
-         :|| player :== p6 p
-
-  applyServer :: FD Name ()
-  applyServer = case a of
-    Volley' t (Just server) _ _ p
-      | t == team && server /= libero -> do
-          v <- newVar [server]
-          always $ v :== p1 p
-    _ -> return ()
+applyServer :: Team -> Name -> P Var -> FD Name ()
+applyServer team libero a = case a of
+  Volley' t (Just server) _ _ p
+    | t == team && server /= libero -> do
+        v <- newVar [server]
+        always $ v :== p1 p
+  _ -> return ()
   
-  applyBlockers :: FD Name ()
-  applyBlockers = case a of
-    Volley' _ _ t (KillBy _ _ (Just blocker)) p
-      | t /= team -> applyBlocker blocker p
-    Volley' _ _ t (AttackError _ blockers) p
-      | t == team -> mapM_ (flip applyBlocker p) blockers
-    _ -> return ()
-  
-  applyBlocker :: Name -> Positions Var -> FD Name ()
-  applyBlocker blocker p = do
-    blocker <- newVar [blocker]
-    always $ blocker :== p2 p :|| blocker :== p3 p :|| blocker :== p4 p
-    always $ blocker :/= p5 p
-    always $ blocker :/= p6 p
-    always $ blocker :/= p1 p
-
 positionsOf :: P a -> Positions a
 positionsOf a = case a of
   Volley' _ _ _ _ p -> p
@@ -186,13 +151,6 @@ applySubs :: Team -> [P Var] -> FD Name ()
 applySubs team a = case a of
   [] -> return ()
   Sub' subs a : b : rest -> do
-    subsOut <- newVar playersGoingOut
-    always $ p1 a :/= subsOut :-> p1 a :== p1 b'
-    always $ p2 a :/= subsOut :-> p2 a :== p2 b'
-    always $ p3 a :/= subsOut :-> p3 a :== p3 b'
-    always $ p4 a :/= subsOut :-> p4 a :== p4 b'
-    always $ p5 a :/= subsOut :-> p5 a :== p5 b'
-    always $ p6 a :/= subsOut :-> p6 a :== p6 b'
 
     subsIn <- newVar playersGoingIn
     always $ p1 b' :/= subsIn :-> p1 a :== p1 b'
@@ -218,6 +176,14 @@ applySubs team a = case a of
       always $ p :/= p5 a
       always $ p :/= p6 a
 
+    subsOut <- newVar playersGoingOut
+    always $ p1 a :/= subsOut :-> p1 a :== p1 b'
+    always $ p2 a :/= subsOut :-> p2 a :== p2 b'
+    always $ p3 a :/= subsOut :-> p3 a :== p3 b'
+    always $ p4 a :/= subsOut :-> p4 a :== p4 b'
+    always $ p5 a :/= subsOut :-> p5 a :== p5 b'
+    always $ p6 a :/= subsOut :-> p6 a :== p6 b'
+
     flip mapM_ playersGoingOut $ \ p -> do
       p <- newVar [p]
       always $ p :== p1 a
@@ -236,28 +202,11 @@ applySubs team a = case a of
 
     applySubs team $ b : rest
 
-    --XXX
-    {-
-    -- If a sub in referenced by volley info on one side, ensure the sub is not pressent on the other.
-    playersGoingIn  <- mapM (newVar . (:[])) $ subNames `intersect` teamPlayersUntilNextSub team rest
-    playersGoingOut <- mapM (newVar . (:[])) $ subNames `intersect` teamPlayersUntilNextSub team before
-    sequence_ [ assert $ sub :/= p a  | sub <- playersGoingIn,  p <- ps ]
-    sequence_ [ assert $ sub :/= p b' | sub <- playersGoingOut, p <- ps ]
-
-    -- If a sub is seen on one side, make sure it does not appear on the other.
-    sequence_ [ assert $ sub :== f0 a  :-> sub :/= f1 b' | sub <- subs, f0 <- ps, f1 <- ps ]
-    sequence_ [ assert $ sub :== f0 b' :-> sub :/= f1 a  | sub <- subs, f0 <- ps, f1 <- ps ]
-
-    -- If a position is none of the subs on both sides, bind the two sides together for that position.
-    flip mapM_ ps $ \ p -> assert $ foldl1 (:&&) [ s :/= p a :&& s :/= p b' | s <- subs ] :-> p a :== p b'
-
-    applySubs team (s : before) (b : rest)
-    -}
     where
     b' = positionsOf b
     playersGoingIn :: [Name]
     playersGoingIn  = everyOther subs
-    playersGoingOut = trace ("subs: " ++ show subs ++ show (everyOther subs) ++ show (everyOther $ tail subs)) everyOther $ tail subs
+    playersGoingOut = everyOther $ tail subs
     everyOther :: [a] -> [a]
     everyOther a = case a of
       [] -> []
@@ -299,7 +248,6 @@ initP team libero set@(Set events) = do
   return (fixed, p)
   where
   all  = filter (/= libero) $ teamPlayersAll team set
-  --subs = teamPlayersSubs team set
   f :: Event -> FD Name (Maybe (P Var))
   f a = case a of
     Timeout -> return Nothing
@@ -324,19 +272,9 @@ teamPlayersAll team (Set events) = nub $ concatMap f events
       | otherwise -> []
     Volley st sp wt v -> teamPlayersVolley team st sp wt v
 
-teamPlayersSubs :: Team -> Set -> [Name]
-teamPlayersSubs team (Set events) = nub $ concat [ a | Sub t a <- events, t == team ]
+--teamPlayersSubs :: Team -> Set -> [Name]
+--teamPlayersSubs team (Set events) = nub $ concat [ a | Sub t a <- events, t == team ]
       
-{-
-teamPlayersUntilNextSub :: Team -> [P Var] -> [Name]
-teamPlayersUntilNextSub team = nub . f
-  where
-  f a = case a of
-    [] -> []
-    Volley' st sp wt v _ : rest -> teamPlayersVolley team st sp wt v ++ f rest
-    --Sub' _ _ _ : _ -> []
--}
-
 teamPlayersVolley :: Team -> Team -> Maybe Name -> Team -> Volley -> [Name]  -- Team of interest, serving team, serving player, winning team, volley.
 teamPlayersVolley team st sp wt a = (if st == team then maybeToList sp else []) ++ case a of
   PointAwarded -> []
