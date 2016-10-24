@@ -5,6 +5,7 @@ module Positions
 
 import Control.Monad
 import Data.Maybe
+import Debug.Trace
 
 import FDSolver
 import Match
@@ -25,7 +26,6 @@ instance Show a => Show (Positions a) where
 instance Functor Positions where
   fmap f (Positions a) = Positions $ map f a
 
-
 data P a
   = Volley' Team (Maybe Name) Team Volley (Positions a)
   | Sub'    [a] [a] (Positions a)
@@ -43,15 +43,15 @@ instance Functor P where
 -- | Infers player positions of a team throughout a set.
 positions :: Team -> Name -> [Name] -> Set -> IO [P (Var, [Name])]
 positions team libero defense set = do
-  --mapM_ print constraints
+  mapM_ print constraints
   --print $ convert libero
   print $ fmap convert fixed
   return $ map (fmap convert) p
   where
-  ((fixed, p), convert, constraints) = solve' f
-  f = do
+  --((fixed, p), convert, constraints) = solve' f
+  ((fixed, p), convert, constraints) = solve' $ do
     (fixed, p) <- initP team libero $ substitutions team libero set
-    applyRotations team fixed p
+    applyRotations team [fixed] p
     mapM_ (applyServer team libero) p
     applySubs team p
     --applyDefense defense p
@@ -79,22 +79,26 @@ positionsOf a = case a of
   Volley' _ _ _ _ p -> p
   Sub' _ _ p -> p
 
-applyRotations :: Team -> Positions Var -> [P Var] -> FD Name ()
+applyRotations :: Team -> [Positions Var] -> [P Var] -> FD Name ()
 applyRotations team fixed a = case a of
   [] -> return ()
   Volley' st _ wt _ a : b : rest -> do
-    applyFixed a
+    mapM_ (applyFixed a) fixed
+    applyConventions a
     if st /= wt && wt == team
       then do
         rotate a $ positionsOf b
-        applyRotations team (rotateP fixed) $ b : rest
+        applyRotations team (map rotateP $ a : fixed) $ b : rest
       else do
         dontRotate a $ positionsOf b
-        applyRotations team fixed $ b : rest
-  Sub' _ _ p : b : rest -> do
-    applyFixed p
-    applyRotations team fixed $ b : rest
-  [a] -> applyFixed (positionsOf a)
+        applyRotations team (a : fixed) $ b : rest
+  Sub' _ _ a : b : rest -> do
+    mapM_ (applyFixed a) fixed
+    --applyConventions a
+    applyRotations team (a : fixed) $ b : rest
+  [a] -> do
+    applyConventions $ positionsOf a
+    mapM_ (applyFixed $ positionsOf a) fixed
   where
   rotateP :: Positions Var -> Positions Var
   rotateP (Positions a) = Positions $ tail a ++ [head a]
@@ -117,8 +121,8 @@ applyRotations team fixed a = case a of
     usually $ p5 a :== p5 b 
     usually $ p6 a :== p6 b 
 
-  applyFixed :: Positions Var -> FD Name ()
-  applyFixed p = do
+  applyFixed :: Positions Var -> Positions Var -> FD Name ()
+  applyFixed p fixed = do
     always $ p1 p :/= p2 fixed
     always $ p1 p :/= p3 fixed
     always $ p1 p :/= p4 fixed
@@ -150,25 +154,57 @@ applyRotations team fixed a = case a of
     always $ p6 p :/= p4 fixed
     always $ p6 p :/= p5 fixed
 
+applyConventions :: Positions Var -> FD Name ()
+applyConventions a = do
+  lauryn <- newVar ["Lauryn Driscoll"]
+  olivia <- newVar ["Olivia Olson"]
+  always $ lauryn :== p1 a :-> olivia :== p4 a
+
+  always $ lauryn :== p2 a :-> olivia :/= p1 a
+  always $ lauryn :== p2 a :-> olivia :/= p2 a
+  always $ lauryn :== p2 a :-> olivia :/= p3 a
+  always $ lauryn :== p2 a :-> olivia :/= p4 a
+  always $ lauryn :== p2 a :-> olivia :/= p6 a
+
+  always $ lauryn :== p3 a :-> olivia :/= p1 a
+  always $ lauryn :== p3 a :-> olivia :/= p2 a
+  always $ lauryn :== p3 a :-> olivia :/= p3 a
+  always $ lauryn :== p3 a :-> olivia :/= p4 a
+  always $ lauryn :== p3 a :-> olivia :/= p5 a
+
+  always $ lauryn :== p4 a :-> olivia :/= p2 a
+  always $ lauryn :== p4 a :-> olivia :/= p3 a
+  always $ lauryn :== p4 a :-> olivia :/= p4 a
+  always $ lauryn :== p4 a :-> olivia :/= p5 a
+  always $ lauryn :== p4 a :-> olivia :/= p6 a
+
+  always $ lauryn :== p5 a :-> olivia :== p2 a
+
+  always $ lauryn :== p6 a :-> olivia :== p3 a
+
 applySubs :: Team -> [P Var] -> FD Name ()
 applySubs team a = case a of
   [] -> return ()
   Sub' playersGoingIn playersGoingOut a : b' : rest -> do
+    let subs = playersGoingIn ++ playersGoingOut
 
     -- All subs are different players.
-    allDifferent $ playersGoingIn ++ playersGoingOut
+    allDifferent subs
 
     -- Propagte non subing players.
-    sequence_ [ always $ foldl1 (:&&) [ p b :/= s | s <- playersGoingIn  ] :-> p a :== p b | p <- ps ]
-    sequence_ [ always $ foldl1 (:&&) [ p a :/= s | s <- playersGoingOut ] :-> p a :== p b | p <- ps ]
+    sequence_ [ always $ foldl1 (:&&) [ p a :/= s :&& p b :/= s | s <- subs  ] :-> p a :== p b | p <- ps ]
+    --sequence_ [ always $ foldl1 (:&&) [ p a :/= s | s <- playersGoingOut ] :-> p a :== p b | p <- ps ]
 
     -- Players going in (out) should not be in previous (next) rotation.
-    sequence_ [ always $ s :/= p a | s <- playersGoingIn,  p <- ps ]
-    sequence_ [ always $ s :/= p b | s <- playersGoingOut, p <- ps ]
+    --sequence_ [ always $ s :/= p a | s <- playersGoingIn,  p <- ps ]
+    --sequence_ [ always $ s :/= p b | s <- playersGoingOut, p <- ps ]
+    sequence_ [ always $ p a :== s :|| p b :== s :-> p a :/= p b | s <- subs,  p <- ps ]
+    sequence_ [ always $ foldl1 (:||) [ s :== p a :|| s :== p b | p <- ps ] | s <- subs ]
+    --sequence_ [ always $ p b :== s :-> p a :/= p b | s <- playersGoingIn,  p <- ps ]
 
     -- Players going in (out) should be in next (previous) rotation.
-    sequence_ [ always $ foldl1 (:||) [ s :== p b | p <- ps ] | s <- playersGoingIn  ]
-    sequence_ [ always $ foldl1 (:||) [ s :== p a | p <- ps ] | s <- playersGoingOut ]
+    --sequence_ [ always $ foldl1 (:||) [ s :== p b | p <- ps ] | s <- playersGoingIn  ]
+    --sequence_ [ always $ foldl1 (:||) [ s :== p a | p <- ps ] | s <- playersGoingOut ]
 
     {-
     flip mapM_ playersGoingIn $ \ s -> do

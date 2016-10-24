@@ -81,6 +81,7 @@ parseEvents (vTeam, hTeam) (vScore, hScore) a = case a of
     | isTimeout           -> Timeout                   : rest'
     | isSub               -> Sub subTeam subPlayers [] : rest'
     | servingTeam == "--" -> Unknown (show a) : rest'
+    | vScore' == vScore && hScore' == hScore -> rest'
     | otherwise           -> Volley servingTeam servingPlayer scoringTeam volley' : rest''
     where
     servingTeam = team' $ a !! 0
