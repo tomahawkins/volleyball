@@ -9,6 +9,7 @@ import Boxscores
 import Match
 import Positions
 import Rankings
+import Recruit
 
 main :: IO ()
 main = do
@@ -24,6 +25,8 @@ main = do
       mapM_ (\ (t, r) -> printf "%-5s  %2.2f%%\n" t $ r * 100) $ rankings $ parseSeasons f
 
     ["test", i, j, file] -> readFile file >>= test (read i) (read j) . parseSeasons
+
+    ["recruit"] -> recruit
 
     _ -> return ()
 

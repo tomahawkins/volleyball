@@ -45,8 +45,28 @@ Unfortunately when this opporunity presents itself, this tactic is rarely employ
 - Angle arms and hand back to deflect ball up, not down.
 - Net penetration is not critical, less jumping energy expended by blockers.
   - Lower jumps may reduce touch out of bounds.
+- Spend more time getting into position and less time jumping.
 - Analysis: Outcomes of side deflects vs over top deflects.
 - Combined blocking to pass with attack-in-2.
+
+# Theory: Slide hitting is more effective than 2 foot take off hitting.
+
+- Can't get as high, but can use body rotation to increase hitting speed.
+- Measure outcomes of 1 vs 2 foot takes off hits.
+
+# Theory: Left side setter, twin right side hitters.
+
+- 2 players running slides: one in the middle, one of the right side.
+- Middle runs a pull shot, right side runs a fast slide.
+- Outside hitter (left) hitting 1s and 2s on the left side.
+- OH can fake a 1, and a backrow player can come up from behind and set the ball
+  into the corners or the doughnut.
+
+# Theory: Out of system play.
+
+- From back court, Libero sets a fast pass to middle.
+- Middle, with back to net and facing pass, jumps and deflects ball left or right.
+- Not a hard time, but change in direction will confuse defense.
 
 
 # Theory: All quick set offense.

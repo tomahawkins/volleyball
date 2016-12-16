@@ -43,7 +43,7 @@ instance Functor P where
 -- | Infers player positions of a team throughout a set.
 positions :: Team -> Name -> [Name] -> Set -> IO [P (Var, [Name])]
 positions team libero defense set = do
-  mapM_ print constraints
+  --mapM_ print constraints
   --print $ convert libero
   print $ fmap convert fixed
   return $ map (fmap convert) p
@@ -94,7 +94,6 @@ applyRotations team fixed a = case a of
         applyRotations team (a : fixed) $ b : rest
   Sub' _ _ a : b : rest -> do
     mapM_ (applyFixed a) fixed
-    --applyConventions a
     applyRotations team (a : fixed) $ b : rest
   [a] -> do
     applyConventions $ positionsOf a
@@ -156,8 +155,42 @@ applyRotations team fixed a = case a of
 
 applyConventions :: Positions Var -> FD Name ()
 applyConventions a = do
-  lauryn <- newVar ["Lauryn Driscoll"]
-  olivia <- newVar ["Olivia Olson"]
+  --applyOpposites a
+
+  --lauryn <- newVar ["Lauryn Driscoll"]
+  --olivia <- newVar ["Olivia Olson"]
+  setter <- newVar ["Leah Vensel", "Kaley Pitsley"]
+  middle <- newVar ["Lauryn Driscoll", "Olivia Olson"]
+  outside <- newVar ["Taylor Braunagel", "Marissa Robertson"]
+  opposite <- newVar ["Mackenzie Biggs", "Julia Holden"]
+  opposite1 <- newVar ["Mackenzie Biggs"]
+  opposite2 <- newVar ["Julia Holden"]
+  defense1 <- newVar ["Ashley Poling"]
+  defense2 <- newVar ["Morgan Herold"]
+
+  -- A setter on the court.
+  always $ foldl1 (:||) [ setter :== p a | p <- ps ]
+
+  -- One middle in the front row.
+  --always $ foldl1 (:||) [ middle :== p a | p <- [p2, p3, p4] ]
+
+  -- One outside hitter in the front row.
+  --always $ foldl1 (:||) [ outside :== p a | p <- [p2, p3, p4] ]
+
+  -- No defense in front row.
+  always $ foldl1 (:&&) [ defense1 :/= p a :&& defense2 :/= p a | p <- [p2, p3, p4] ]
+
+  always $ setter :== p1 a :-> opposite :== p4 a :&& opposite1 :/= p2 a :&& opposite1 :/= p3 a :&& opposite2 :/= p2 a :&& opposite2 :/= p3 a
+  always $ setter :== p5 a :-> opposite :== p2 a :&& opposite1 :/= p4 a :&& opposite1 :/= p3 a :&& opposite2 :/= p4 a :&& opposite2 :/= p3 a
+  always $ setter :== p6 a :-> opposite :== p3 a :&& opposite1 :/= p4 a :&& opposite1 :/= p2 a :&& opposite2 :/= p4 a :&& opposite2 :/= p2 a
+  return ()
+
+
+  {-
+  always $ olivia :/= p1 a
+  always $ olivia :/= p5 a
+  always $ olivia :/= p6 a
+
   always $ lauryn :== p1 a :-> olivia :== p4 a
 
   always $ lauryn :== p2 a :-> olivia :/= p1 a
@@ -181,6 +214,30 @@ applyConventions a = do
   always $ lauryn :== p5 a :-> olivia :== p2 a
 
   always $ lauryn :== p6 a :-> olivia :== p3 a
+  -}
+
+applyOpposites :: Positions Var -> FD Name ()
+applyOpposites a = do
+  flip mapM_ opposites $ \ (name, opps) -> do
+    name <- newVar [name]
+    opps <- newVar opps
+    always $ p1 a :== name :-> p4 a :== opps
+    always $ p2 a :== name :-> p5 a :== opps
+    always $ p3 a :== name :-> p6 a :== opps
+    always $ p4 a :== name :-> p1 a :== opps
+    always $ p5 a :== name :-> p2 a :== opps
+    always $ p6 a :== name :-> p3 a :== opps
+  where
+  opposites =
+    [ ("Taylor Braunagel",  ["Marissa Robertson", "Ashley Poling", "Morgan Herold"])
+    , ("Marissa Robertson", ["Taylor Braunagel" , "Ashley Poling", "Morgan Herold"])
+    , ("Leah Vensel",       ["Machenzie Biggs"  , "Ashley Poling", "Morgan Herold"])
+    , ("Machenzie Biggs",   ["Leah Vensel"      , "Ashley Poling", "Morgan Herold"])
+    , ("Lauryn Driscoll",   ["Olivia Olson"     , "Ashley Poling", "Morgan Herold"])
+    , ("Olivia Olson",      ["Lauryn Driscoll"  , "Ashley Poling", "Morgan Herold"])
+    ]
+
+
 
 applySubs :: Team -> [P Var] -> FD Name ()
 applySubs team a = case a of
@@ -239,6 +296,9 @@ applyDefense defense p = do
   flip mapM_ p $ \ p -> case p of
     Volley' _ _ _ _ a -> sequence_ [ always $ d :/= p a | d <- defense, p <- [p2, p3, p4] ]
     Sub' _ _ _ -> return ()
+
+
+
 
 allDifferent :: [Var] -> FD Name ()
 allDifferent a = sequence_ [ always $ m :/= n | m <- a, n <- a, m /= n ]
