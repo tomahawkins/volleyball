@@ -1,0 +1,274 @@
+# Early analysis of outcomes based on whether the block touched or missed the ball.
+
+blocking -t \
+  byu-h-final-2013.touch \
+  byu-h-tam-semi-2013.touch \
+  clarion-11-11.touch \
+  clarion-11-8.touch \
+  concordia-final-2013.touch \
+  wju-semi-2013.touch
+Advantage of all blocks       46%  (522)
+Advantage of touched blocks   44%  (223)
+Advantage of missed  blocks   48%  (299)
+
+
+
+# Women's division 2 data.
+
+blocking \
+  clarion-iup.match \
+  tampa-wju-2014.match \
+  tampa-fortsmith-2014.match \
+  tampa-sw-minn-2014.match \
+  byu_hi_concordia_2013.match \
+  edinboro-clarion-2014.match \
+  cal-clarion-2014.match \
+  hilldale-clarion-2015.match \
+  gannon-indy-2015.match
+Advantage analysis on individual matches:
+
+IUP vs Clarion advantage gained:
+  0 blockers:    IUP:  40% (   2 /    5)    Clarion: 100% (   4 /    4)
+  1 blockers:    IUP:  40% (   6 /   15)    Clarion:  31% (   4 /   13)
+  2 blockers:    IUP:  46% (  32 /   69)    Clarion:  52% (  34 /   65)
+  3 blockers:    IUP: NaN% (   0 /    0)    Clarion:   0% (   0 /    1)
+
+Tampa vs WJU advantage gained:
+  0 blockers:    Tampa:  86% (   6 /    7)    WJU: 100% (   7 /    7)
+  1 blockers:    Tampa:  47% (  18 /   38)    WJU:  39% (   9 /   23)
+  2 blockers:    Tampa:  43% (  29 /   68)    WJU:  50% (  33 /   66)
+  3 blockers:    Tampa: NaN% (   0 /    0)    WJU:   0% (   0 /    1)
+
+Fortsmith vs Tampa advantage gained:
+  0 blockers:    Fortsmith:  38% (   5 /   13)    Tampa:  64% (   9 /   14)
+  1 blockers:    Fortsmith:  52% (  27 /   52)    Tampa:  37% (  15 /   41)
+  2 blockers:    Fortsmith:  43% (  33 /   76)    Tampa:  48% (  37 /   77)
+  3 blockers:    Fortsmith:  75% (   3 /    4)    Tampa:  33% (   1 /    3)
+
+Tampa vs SW-Minn advantage gained:
+  0 blockers:    Tampa: 100% (   3 /    3)    SW-Minn:  36% (   4 /   11)
+  1 blockers:    Tampa:  42% (  13 /   31)    SW-Minn:  39% (  13 /   33)
+  2 blockers:    Tampa:  53% (  35 /   66)    SW-Minn:  47% (  30 /   64)
+  3 blockers:    Tampa: NaN% (   0 /    0)    SW-Minn: NaN% (   0 /    0)
+
+BYU_HI vs Concordia advantage gained:
+  0 blockers:    BYU_HI:  71% (   5 /    7)    Concordia:  60% (   3 /    5)
+  1 blockers:    BYU_HI:  55% (  12 /   22)    Concordia:  34% (  13 /   38)
+  2 blockers:    BYU_HI:  47% (  36 /   76)    Concordia:  64% (  38 /   59)
+  3 blockers:    BYU_HI: NaN% (   0 /    0)    Concordia: NaN% (   0 /    0)
+
+Edinboro vs Clarion advantage gained:
+  0 blockers:    Edinboro:  73% (   8 /   11)    Clarion:  60% (   6 /   10)
+  1 blockers:    Edinboro:  58% (  11 /   19)    Clarion:  68% (  13 /   19)
+  2 blockers:    Edinboro:  57% (  41 /   72)    Clarion:  55% (  41 /   74)
+  3 blockers:    Edinboro: 100% (   1 /    1)    Clarion:  50% (   1 /    2)
+
+California vs Clarion advantage gained:
+  0 blockers:    California:  87% (  13 /   15)    Clarion:  80% (  12 /   15)
+  1 blockers:    California:  62% (  13 /   21)    Clarion:  64% (  16 /   25)
+  2 blockers:    California:  60% (  52 /   86)    Clarion:  54% (  52 /   97)
+  3 blockers:    California: 100% (   1 /    1)    Clarion: NaN% (   0 /    0)
+
+Hilldale vs Clarion advantage gained:
+  0 blockers:    Hilldale:  80% (   4 /    5)    Clarion:  67% (   2 /    3)
+  1 blockers:    Hilldale:  60% (   3 /    5)    Clarion:  50% (   2 /    4)
+  2 blockers:    Hilldale:  56% (  14 /   25)    Clarion:  52% (  13 /   25)
+  3 blockers:    Hilldale: NaN% (   0 /    0)    Clarion: NaN% (   0 /    0)
+
+Gannon vs Indy advantage gained:
+  0 blockers:    Gannon: 100% (   1 /    1)    Indy: 100% (   3 /    3)
+  1 blockers:    Gannon:  40% (   2 /    5)    Indy:  33% (   1 /    3)
+  2 blockers:    Gannon:  69% (  11 /   16)    Indy:  47% (   9 /   19)
+  3 blockers:    Gannon: NaN% (   0 /    0)    Indy: NaN% (   0 /    0)
+
+
+Advantage gained:
+  0 blockers:    all teams:  70% (  97 /  139)    Clarion:  75% (  24 /   32)
+  1 blockers:    all teams:  47% ( 191 /  407)    Clarion:  57% (  35 /   61)
+  2 blockers:    all teams:  52% ( 570 / 1100)    Clarion:  54% ( 140 /  261)
+  3 blockers:    all teams:  54% (   7 /   13)    Clarion:  33% (   1 /    3)
+
+Point won from block:
+  0 blockers:    all teams:  10% (  14 /  139)    Clarion:  12% (   4 /   32)
+  1 blockers:    all teams:  13% (  52 /  407)    Clarion:  20% (  12 /   61)
+  2 blockers:    all teams:  17% ( 188 / 1100)    Clarion:  16% (  43 /  261)
+  3 blockers:    all teams:  15% (   2 /   13)    Clarion:   0% (   0 /    3)
+
+Point won from attack after block:
+  0 blockers:    all teams:  24% (  33 /  139)    Clarion:  31% (  10 /   32)
+  1 blockers:    all teams:  12% (  48 /  407)    Clarion:  13% (   8 /   61)
+  2 blockers:    all teams:  12% ( 131 / 1100)    Clarion:  10% (  27 /  261)
+  3 blockers:    all teams:  23% (   3 /   13)    Clarion:  33% (   1 /    3)
+
+Point won from block or attack after block:
+  0 blockers:    all teams:  34% (  47 /  139)    Clarion:  44% (  14 /   32)
+  1 blockers:    all teams:  25% ( 100 /  407)    Clarion:  33% (  20 /   61)
+  2 blockers:    all teams:  29% ( 319 / 1100)    Clarion:  27% (  70 /  261)
+  3 blockers:    all teams:  38% (   5 /   13)    Clarion:  33% (   1 /    3)
+
+
+
+
+
+# Men's 2012 gold medal match, Russia vs Brasil.
+
+Advantage analysis on individual matches:
+
+Russia vs Brasil advantage gained:
+  0 blockers:    Russia:   0% (   0 /    3)    Brasil:  33% (   1 /    3)
+  1 blockers:    Russia:  42% (  13 /   31)    Brasil:  50% (   8 /   16)
+  2 blockers:    Russia:  46% (  39 /   85)    Brasil:  41% (  42 /  102)
+  3 blockers:    Russia:  67% (   6 /    9)    Brasil:  31% (   4 /   13)
+
+
+Advantage gained:
+  0 blockers:    all teams:  17% (   1 /    6)
+  1 blockers:    all teams:  45% (  21 /   47)
+  2 blockers:    all teams:  43% (  81 /  187)
+  3 blockers:    all teams:  45% (  10 /   22)
+
+Point won from block:
+  0 blockers:    all teams:   0% (   0 /    6)
+  1 blockers:    all teams:  13% (   6 /   47)
+  2 blockers:    all teams:  20% (  37 /  187)
+  3 blockers:    all teams:  18% (   4 /   22)
+
+Point won from attack after block:
+  0 blockers:    all teams:   0% (   0 /    6)
+  1 blockers:    all teams:  15% (   7 /   47)
+  2 blockers:    all teams:   7% (  14 /  187)
+  3 blockers:    all teams:   5% (   1 /   22)
+
+Point won from block or attack after block:
+  0 blockers:    all teams:   0% (   0 /    6)
+  1 blockers:    all teams:  28% (  13 /   47)
+  2 blockers:    all teams:  27% (  51 /  187)
+  3 blockers:    all teams:  23% (   5 /   22)
+
+
+
+
+
+
+# Women's 1987 Championship, Hawaii vs Standford
+
+Advantage analysis on individual matches:
+
+Hawaii vs Standford advantage gained:
+  0 blockers:    Hawaii:  43% (   6 /   14)    Standford:  83% (   5 /    6)
+  1 blockers:    Hawaii:  55% (  16 /   29)    Standford:  50% (  16 /   32)
+  2 blockers:    Hawaii:  47% (  63 /  134)    Standford:  55% (  78 /  141)
+  3 blockers:    Hawaii:  50% (   1 /    2)    Standford:  50% (   1 /    2)
+
+
+Advantage gained:
+  0 blockers:    all teams:  55% (  11 /   20)
+  1 blockers:    all teams:  52% (  32 /   61)
+  2 blockers:    all teams:  51% ( 141 /  275)
+  3 blockers:    all teams:  50% (   2 /    4)
+
+Point won from block:
+  0 blockers:    all teams:   5% (   1 /   20)
+  1 blockers:    all teams:  21% (  13 /   61)
+  2 blockers:    all teams:  15% (  40 /  275)
+  3 blockers:    all teams:  25% (   1 /    4)
+
+Point won from attack after block:
+  0 blockers:    all teams:  25% (   5 /   20)
+  1 blockers:    all teams:   7% (   4 /   61)
+  2 blockers:    all teams:  10% (  28 /  275)
+  3 blockers:    all teams:  25% (   1 /    4)
+
+Point won from block or attack after block:
+  0 blockers:    all teams:  30% (   6 /   20)
+  1 blockers:    all teams:  28% (  17 /   61)
+  2 blockers:    all teams:  25% (  68 /  275)
+  3 blockers:    all teams:  50% (   2 /    4)
+
+
+
+
+
+
+# Women's 1964 gold medal match, Japan vs USSR.  First year of volleyball in olympics.
+
+Advantage analysis on individual matches:
+
+Japan vs USSR advantage gained:
+  0 blockers:    Japan:  60% (   3 /    5)    USSR:  45% (   5 /   11)
+  1 blockers:    Japan:  50% (   2 /    4)    USSR:  36% (   5 /   14)
+  2 blockers:    Japan:  39% (  13 /   33)    USSR:  30% (   9 /   30)
+  3 blockers:    Japan: NaN% (   0 /    0)    USSR: NaN% (   0 /    0)
+
+
+Advantage gained:
+  0 blockers:    all teams:  50% (   8 /   16)
+  1 blockers:    all teams:  39% (   7 /   18)
+  2 blockers:    all teams:  35% (  22 /   63)
+  3 blockers:    all teams: NaN% (   0 /    0)
+
+Point won from block:
+  0 blockers:    all teams:   6% (   1 /   16)
+  1 blockers:    all teams:  11% (   2 /   18)
+  2 blockers:    all teams:   6% (   4 /   63)
+  3 blockers:    all teams: NaN% (   0 /    0)
+
+Point won from attack after block:
+  0 blockers:    all teams:  19% (   3 /   16)
+  1 blockers:    all teams:   0% (   0 /   18)
+  2 blockers:    all teams:  11% (   7 /   63)
+  3 blockers:    all teams: NaN% (   0 /    0)
+
+Point won from block or attack after block:
+  0 blockers:    all teams:  25% (   4 /   16)
+  1 blockers:    all teams:  11% (   2 /   18)
+  2 blockers:    all teams:  17% (  11 /   63)
+  3 blockers:    all teams: NaN% (   0 /    0)
+
+
+
+
+
+
+
+# Last year's women's division 1 semi and final match.
+
+Advantage analysis on individual matches:
+
+PennState vs BYU advantage gained:
+  0 blockers:    PennState:  62% (   5 /    8)    BYU:  60% (   3 /    5)
+  1 blockers:    PennState:  60% (   9 /   15)    BYU:  57% (   8 /   14)
+  2 blockers:    PennState:  58% (  51 /   88)    BYU:  44% (  41 /   93)
+  3 blockers:    PennState:   0% (   0 /    2)    BYU: NaN% (   0 /    0)
+
+PennState vs Stanford advantage gained:
+  0 blockers:    PennState:  25% (   1 /    4)    Stanford:  38% (   3 /    8)
+  1 blockers:    PennState:  50% (  14 /   28)    Stanford:  45% (  13 /   29)
+  2 blockers:    PennState:  54% (  60 /  111)    Stanford:  47% (  56 /  119)
+  3 blockers:    PennState: NaN% (   0 /    0)    Stanford: 100% (   1 /    1)
+
+
+Advantage gained:
+  0 blockers:    all teams:  48% (  12 /   25)
+  1 blockers:    all teams:  51% (  44 /   86)
+  2 blockers:    all teams:  51% ( 208 /  411)
+  3 blockers:    all teams:  33% (   1 /    3)
+
+Point won from block:
+  0 blockers:    all teams:   4% (   1 /   25)
+  1 blockers:    all teams:  20% (  17 /   86)
+  2 blockers:    all teams:  13% (  55 /  411)
+  3 blockers:    all teams:  33% (   1 /    3)
+
+Point won from attack after block:
+  0 blockers:    all teams:   8% (   2 /   25)
+  1 blockers:    all teams:   6% (   5 /   86)
+  2 blockers:    all teams:  13% (  53 /  411)
+  3 blockers:    all teams:   0% (   0 /    3)
+
+Point won from block or attack after block:
+  0 blockers:    all teams:  12% (   3 /   25)
+  1 blockers:    all teams:  26% (  22 /   86)
+  2 blockers:    all teams:  26% ( 108 /  411)
+  3 blockers:    all teams:  33% (   1 /    3)
+
