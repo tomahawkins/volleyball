@@ -74,7 +74,13 @@ Unfortunately when this opporunity presents itself, this tactic is rarely employ
 What happens if offense almost always sets quick:  31 outside, 1 middle, sliding pull shot on the right.
 
 
-# Theory: Sets from backrow (result of a bad pass) do not justify full complement of blockers (3).
+# Theory: Situations for reduced blockers.
 
-# Theory: When the ball is set tight, 1 blocker is more effective than 2.
+- 1 or no blockers on a out-of-system set from middle to back row.
+- 1 or no blockers on a bad pass or if a non-setter is setting.
+- 1 or no blockers on identified weak hitters.
+- Only 1 blocker on tight sets where blocker can easily get their hands around the ball.
+- Only 1 blocker for hits out of the middle. Rational here is that the outsides have a hard time getting to the middle on semi-quick sets. Maybe better if they fall back to dig.
+- No blockers after a certain point in a long volley. Everyone is getting tired and hitting weak. Let the front row conserve energy and get in good attack position.
+
 
