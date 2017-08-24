@@ -3,8 +3,8 @@
 This is a collection of unconventional volleyball theories for
 various strategies and tactics, loosely backed with some analysis and
 suggested tests for verification.
-In all likelyhood, these theories are wrong.
-Yet maybe there are one or two jems in here that can break new ground.
+In all likelihood, these theories are wrong.
+Yet maybe there are one or two gems in here that can break new ground.
 
 The target level of play is NCAA Women's Division II.
 
@@ -17,27 +17,27 @@ potentially enabling her to selectively hit around the block.
 
 Blockers will have a hard time judging where to block.
 Watching the hitters body won't give much indication of when they are going to leave the ground.
-To guage where the shot is going to be,
+To gauge where the shot is going to be,
 an effective blocker has to watch the hitter's feet and the ball at the same time.
 
-Lefthanded hitters could run a pull shot on the left side.
+Left-handed hitters could run a pull shot on the left side.
 
 
 # Theory: Attack in 2 is undervalued.
 
 A free ball sent to the front of the court provides excellent
-opporunity to launch a hitting attack in 2 touches.  Though setter dumps are
+opportunity to launch a hitting attack in 2 touches.  Though setter dumps are
 common, an opposing team is almost never expecting a strong hit on the
 second touch.  The passer simply needs to place the ball at the net to an awaiting hitter.
-Unfortunately when this opporunity presents itself, this tactic is rarely employeed.
+Unfortunately when this opportunity presents itself, this tactic is rarely employed.
 
-- Link to Russian setter attack vs Brasil in olympics.
+- Link to Russian setter attack vs Brazil in Olympics.
 
 
 # Theory: Blocking to pass vs. blocking to block.  Blocking to pass yields better outcomes.
 
 - Blocks that deflect sideways vs off the top are more detrimental.
-- Pushing (penetrating net) increases likelyhood of waterfall.
+- Pushing (penetrating net) increases likelihood of waterfall.
 - Goal is to:
   - use the block as an extra pass
   - provide a controlled, energy absorbing deflection to defenders
@@ -82,5 +82,12 @@ What happens if offense almost always sets quick:  31 outside, 1 middle, sliding
 - Only 1 blocker on tight sets where blocker can easily get their hands around the ball.
 - Only 1 blocker for hits out of the middle. Rational here is that the outsides have a hard time getting to the middle on semi-quick sets. Maybe better if they fall back to dig.
 - No blockers after a certain point in a long volley. Everyone is getting tired and hitting weak. Let the front row conserve energy and get in good attack position.
+
+
+# Theory: No spin best metric for server quality.
+
+- No spin creates the most unpredictable floaters.
+- It's easy to gauge spin on a serve.
+- Train and measure players' serve at every pratice, graph progression.
 
 
