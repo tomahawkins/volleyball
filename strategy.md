@@ -61,7 +61,7 @@ Use feedback to get better.
   - "Zero Spin Serve.  Whoop!"
 - Make it quick, don't make a big deal out of it, don't be a jerk.
 
-###Outer Loop Feedback: Your Games
+### Outer Loop Feedback: Your Games
 
 - Analyze every game (real games and practice ones).
 - What went well?
