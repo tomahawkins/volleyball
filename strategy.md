@@ -5,8 +5,6 @@
 
 
 
-
-
 # Core Strategies
 
 1. Core Strategies
@@ -15,10 +13,10 @@
 
 Core strategies are our guiding principles of how we approach the game.
 
-Founding theories are precerived truths about the game,
+Founding theories are perceived truths about the game,
 which will shift, change, and grow, as our understanding improves and matures.
 
-Derived tactices are specific methods based on the founding theories
+Derived tactics are specific methods based on the founding theories
 designed to increase our chance of success at game time.
 
 
@@ -29,18 +27,14 @@ What can I do to help my team get better?
 
 Everyone has a bad day.  Help them out.
 
-Team spirit.  Team apperal for every practice and travel.
+Team spirit.  Team apparel for every practice and travel.
 
 
-## Intentional Practice
+## Intentional, Maximal Practice
 
-Make every contact an opportunity to get better.
-See Inner Loop Feedback.
-
-
-## Maximal Practice
-
-Maximize the number of contacts per practice.
+Make every contact an opportunity to get better,
+using feedback to improve.
+Maximize contacts per practice.
 
 - Lots of game play with fewer players per team.
 - Drills with pairs or triples.  No waiting in line.
@@ -51,11 +45,13 @@ Maximize the number of contacts per practice.
 Some of the best volleyball players are multisport athletes.
 
 
-## Closed Loop Control, aka. Feedback
+## Feedback
 
 Feedback makes us better.
 
-### Inner Loop Feedback: Yourself
+Identify useful tactics that are easy to measure and qualify.
+
+### Feedback from Yourself
 
 - After every contact, analyze.
 - Did I know what I was doing before I did it?
@@ -64,15 +60,16 @@ Feedback makes us better.
 - Did the ball go where I wanted it?
 - What did I do good?
 - What could have I done better?
+- Try small adjustments to see if it improves or worsens.
 
-### Middle Loop Feedback: Your Teammates
+### Feedback from your Teammates
 
 - Give feedback to your teammates.  Often.  Practice and games.
 - State the tactic and give a plus (whoop) or minus (buzzer).
   - "Zero Spin Serve.  Whoop!"
 - Make it quick, don't make a big deal out of it, don't be a jerk.
 
-### Outer Loop Feedback: Your Games
+### Feedback from your Games
 
 - Analyze every game (real games and practice ones).
 - What went well?
@@ -108,7 +105,7 @@ Apply: Keep passes low and fast, but still accurate.  This also speeds up the at
 
 ## Learn with Critical Thinking
 
-Lots of YouTube videos.  Identifiy the good advice from the bad.  Both are useful.
+Lots of YouTube videos.  Identify the good advice from the bad.  Both are useful.
 
 
 
@@ -125,10 +122,11 @@ Lots of YouTube videos.  Identifiy the good advice from the bad.  Both are usefu
 - Blocking poses many risks.
   - Touch out of bounds.
   - Returns ball allow opponents to attack again.
+  - Side block deflections hard to dig.
   - Net violations.
   - Ankle injuries.
-  - Side block deflections hard to dig.
-- Well rounded players vs specialists.
+  - Finger injuries.
+- Well rounded players better than specialists.
 
 
 
@@ -157,14 +155,14 @@ compensate and perform during the unexpected.
 ## Inside Voices
 
 Strong, assertive communication.
-Over powers a cheering crowd.  Indimitates oppointents.  Projects and strengthens team confidence.
+Over powers a cheering crowd.  Intimidates opponents.  Projects and strengthens team confidence.
 
 
 ## Logistics and Support
 
-Predict and identify when a teamate needs help.  Never wait for a call for help.
+Predict and identify when a teammate needs help.  Never wait for a call for help.
 On a shanked pass or used block, immediately establish the "supply line" to
-get the back back to the otherside.
+get the back back to the other side.
 
 
 ## Ready Five
@@ -235,5 +233,6 @@ Situations to reduce the number of blockers down to 1 or none.
 
 ## Eagle Eye
 
+Lots of serves fall near the endline.  Passers have a hard time judging in vs out.
 One player (maybe, position #1) dedicated to calling in/out on the serve.
 
