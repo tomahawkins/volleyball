@@ -1,29 +1,35 @@
 # Strategies, Tactics, and Theories
 
 
-
-
-
-# Strategic Hierarchy
-
-1. Core Strategies
-2. Core Tactics
-3. Founding Theories
-
-Core strategies is this list that guides everything else.
-
-Core tactics are specific game play tactics observed by the team.
-Each is given a name to be called out in feedback.  See Middle Loop Feedback.
-
-Founding theories are ideas about the game that are thought to be true.
-However, they may not be.
-Therefore the founding theories must evolve as our understand of the game improves.
+# Expectations
 
 
 
 
 
 # Core Strategies
+
+1. Core Strategies
+2. Founding Theories
+3. Derived Tactics
+
+Core strategies are our guiding principles of how we approach the game.
+
+Founding theories are precerived truths about the game,
+which will shift, change, and grow, as our understanding improves and matures.
+
+Derived tactices are specific methods based on the founding theories
+designed to increase our chance of success at game time.
+
+
+
+## Team Supporting Team
+
+What can I do to help my team get better?
+
+Everyone has a bad day.  Help them out.
+
+Team spirit.  Team apperal for every practice and travel.
 
 
 ## Intentional Practice
@@ -40,9 +46,14 @@ Maximize the number of contacts per practice.
 - Drills with pairs or triples.  No waiting in line.
 
 
-## Closed Loop Control (aka. Feedback)
+## Athletic Diversity
 
-Use feedback to get better.
+Some of the best volleyball players are multisport athletes.
+
+
+## Closed Loop Control, aka. Feedback
+
+Feedback makes us better.
 
 ### Inner Loop Feedback: Yourself
 
@@ -80,7 +91,7 @@ Sometimes we need to get our of our comfort zone to learn
 strange new skills to become a better player.
 
 
-## Identify Improvements or degradation, Generalize, and Apply
+## Identify Improvements, Generalize, and Apply
 
 See something work well?  Can a similar tactic we applied elsewhere in the game?
 
@@ -97,17 +108,94 @@ Apply: Keep passes low and fast, but still accurate.  This also speeds up the at
 
 ## Learn with Critical Thinking
 
-Lots of YouTube videos.  Know the good advice from the bad.  Both are useful.
+Lots of YouTube videos.  Identifiy the good advice from the bad.  Both are useful.
 
 
-## Get Stronger to Go Faster, Get Higher, Hit Harder
 
-Weight training.
+
+
+
+
+
+# Founding Theories and Observations
+
+- Slides are more efficient that 2-footed takeoff hits.
+- Zero spin serves increase aerodynamic flutter.
+- Fast attacks have higher likelihood of success.
+- Blocking poses many risks.
+  - Touch out of bounds.
+  - Returns ball allow opponents to attack again.
+  - Net violations.
+  - Ankle injuries.
+  - Side block deflections hard to dig.
+- Well rounded players vs specialists.
+
+
+
+
+
+
 
 
 # Core Tactics
 
-## Zero Spin Serve
+
+## Just Average
+
+Elevate the level of everyone's overall play.
+Do not emphasize specialization.
+
+Out of system play happens all the time, everyone must
+compensate and perform during the unexpected.
+
+- Everyone passes: No libero.
+- Everyone hits: 6-2 over a 5-1.
+- Everyone blocks: All players play MB.
+- Everyone sets: 6-6.
+
+
+## Inside Voices
+
+Strong, assertive communication.
+Over powers a cheering crowd.  Indimitates oppointents.  Projects and strengthens team confidence.
+
+
+## Logistics and Support
+
+Predict and identify when a teamate needs help.  Never wait for a call for help.
+On a shanked pass or used block, immediately establish the "supply line" to
+get the back back to the otherside.
+
+
+## Ready Five
+
+If you are not touching the ball or lining up to hit or block,
+just assume next the ball will be hit hard in your direction.
+
+Always be ready to pass.
+
+Predict where the ball is going to go and be there in advance.
+
+
+## Fast Attack
+
+- Fast transition from defense to offense.
+- Fast, accurate passing.
+- Fast, low arcing sets.
+- Quick hits.
+
+
+## Attack on Two
+
+When possible, attack on the second hit.
+
+
+## No Spin Zone
+
+Serves and downballs with zero spin have greater likelihood of
+aerodynamic flutter, making them hard to pass.
+Drive spin to zero.
+
 
 ## Block to Pass
 
@@ -119,36 +207,20 @@ Don't jump high.  Don't get used.
 Angle slightly back.
 Minimize chance of ball going off the side of the block.
 
+
 ## Late and Fast
 
-## Fast Pass
 
-Fast, accurate passing.
-
-## Pull Shot Slide
+## Pull Shot
 
 Slide hitters run with the direction of the set, can decided when to hit the ball
 along the net to make an opening in the block.
 
-## Predict Position
-
-- Predict where the ball will go.
-- Minimize movement needed to get there after the ball direction is clear.
-- Ready stance.  Get off your heels.
-
-## Predict Help
-
-- Cover hitting.
-- Run with team to support the save.
-  - Be in position if they manage to get it up.
-
-## Attack on 2
-
-When possible, attack on the second hit.
 
 ## Set from Left, Middle on Pin, Two Sliders
 
-## Reduced Blockers
+
+## Reduced Block
 
 Situations to reduce the number of blockers down to 1 or none.
 
@@ -161,34 +233,7 @@ Situations to reduce the number of blockers down to 1 or none.
   Let front row conserve energy for hitting.
 
 
+## Eagle Eye
 
-# Founding Theories
-
-## Slides are More Efficient that 2-Foot Takeoff Hits
-
-## Zero Spin Serves Increase Aerodynamic Flutter
-
-## Faster Attack Time has Higher Likelihood of Success
-
-- Faster, lower passes.
-- Faster, lower sets.
-- Attack on 2.
-
-
-## Blocking is a Risk
-
-Blocking has some bad outcomes:
-
-- Touch out of bounds.
-- Returns ball allow opponents to attack again.
-- Net violations.
-
-When block is defeated (ball clears net),
-when ball contacts top of the block instead of 
-side of the block, defense can more easily recover.
-Side of the block contacts leads to more out of bounds
-and ball deflections that are hard to dig.
-
-
-
+One player (maybe, position #1) dedicated to calling in/out on the serve.
 
