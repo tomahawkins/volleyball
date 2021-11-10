@@ -155,7 +155,8 @@ compensate and perform during the unexpected.
 ## Inside Voices
 
 Strong, assertive communication.
-Over powers a cheering crowd.  Intimidates opponents.  Projects and strengthens team confidence.
+Over powers a cheering crowd.  Intimidates opponents.
+Projects and strengthens self confidence and team confidence.
 
 
 ## Logistics and Support
@@ -163,6 +164,9 @@ Over powers a cheering crowd.  Intimidates opponents.  Projects and strengthens 
 Predict and identify when a teammate needs help.  Never wait for a call for help.
 On a shanked pass or used block, immediately establish the "supply line" to
 get the back back to the other side.
+
+Support your teammates on and off the court.  Something as simple as fetching a bottle
+and offering water can make all the difference.
 
 
 ## Ready Five
