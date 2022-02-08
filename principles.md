@@ -1,7 +1,58 @@
-# Strategies, Tactics, and Theories
+# Principles
+
+1. Have Fun
+2. Improve  (learn, adapt, overcome, get better)
+3. Promote Health  (get strong, increase endurance, prevent injury, physical and mental)
 
 
-# Expectations
+It's possible to have fun, but not improve.
+It's possible to improve, but not have fun.
+It's possible to stay healthy, but not have fun nor improve.
+
+We need all three.
+
+
+If a question arises -- should we or should we not do something --
+how it would affect our 3 principles.
+
+
+What about winning?
+
+Winning is usually fun.
+So if we win, we will probably be satisfying principle #1.
+But if winning means only letting the best players play, is that still fun?  No.
+If players don't play, are they learning anything?  No.
+Can we find a way to have fun even when we loose?  Playing in a highly competitive,
+evenly matched game is a lot of fun, regardless of the outcome.
+
+Winning is fun, but it often doesn't teach us much.
+We learn from mistakes; losses can teach us far more than wins.
+
+
+
+
+
+
+
+
+Learning is great.
+Learning how to learn is even better.
+We all face new and difficult challanges.
+Develop a common set of tools you can reach for to learn, adapt,
+and overcome new challanges.
+
+- Growth vs fixed mindset.
+- Intentianal practice.  Every touch is an opporunity to get better.
+- Try things.  Introduce variation and see what happens.
+  If a small adjustment in movement creates a positive outcome,
+  try a bigger adjustment.  How far can you push it?
+  If a small adjustment creates a negative outcome, try going the other way.
+  Explore the whole envelop.
+- Get out of your comfort zone.  Get comfortable being uncomfortable.
+
+
+
+
 
 
 
@@ -65,8 +116,8 @@ Identify useful tactics that are easy to measure and qualify.
 ### Feedback from your Teammates
 
 - Give feedback to your teammates.  Often.  Practice and games.
-- State the tactic and give a plus (whoop) or minus (buzzer).
-  - "Zero Spin Serve.  Whoop!"
+- State the tactic and give a plus (boom or whoop) or minus (come on!).
+  - "Zero Spin Serve.  Boom!"
 - Make it quick, don't make a big deal out of it, don't be a jerk.
 
 ### Feedback from your Games
@@ -187,12 +238,12 @@ Predict where the ball is going to go and be there in advance.
 - Quick hits.
 
 
-## Attack on Two
+## On Two
 
 When possible, attack on the second hit.
 
 
-## No Spin Zone
+## Zero Spiny
 
 Serves and downballs with zero spin have greater likelihood of
 aerodynamic flutter, making them hard to pass.
