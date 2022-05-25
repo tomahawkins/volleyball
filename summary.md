@@ -82,17 +82,36 @@ If slides are really that effective, is it possible to design a slide centric of
 
 
 
-# TODO: Effectiveness of Front Row Setter
+# In Progress: Effectiveness of Front Row Setter
 
-A back row setter is the default strategy for the reason that it
-increases hitting options from 2 to 3 front row attackers.
-But increasing attack options is not the same as increasing attack force.
-There are several benefits to setting out of the front row:
+5-1 and 6-2 are the only offenses employed.  Aside from
+subbing variations, no other methods are attempted.
+Are these the only optimal strategies or are there other options?
 
-- Post serve positioning and serve reception is easier.
+Consider the tradeoffs of setting from either front or back row:
+
+Benefits of back row setting:
+- 3 front row hitting options. 
+- Setter doesn't need to block or hit.  Small setters can sub out on a 6-2.
+
+Benefits of front row setting:
+- Setter can dump and hit.
 - Three dedicated passers in the back row.
+- Post serve positioning and serve reception is easier.
 - Less front row congestion, e.g. middle not tangled up with setter on bad pass.
-- Setter receivers fewer balls, thus fewer setter-out situations.
+- Setter receives fewer balls, fewer setter-out situations.
+
+Team effectiveness based on front row / back row setter is easily measurable,
+e.g. two teams playing a 5-1 have at least 2 positions where the setters are in
+different rows.
+
+What should we expect?  How to interpret results?  What could it mean?
+
+- If back row is significant:  Favor 6-2?
+- If front row is significant:  Favor 5-1 or 4-2?
+- If they are both the same:
+    - Then why train the complexities of back row setting?
+      Simplify offensive strategy.
 
 This seems like a lot to give up just for increasing attack options by 50%.
 
