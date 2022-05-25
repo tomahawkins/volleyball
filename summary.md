@@ -103,12 +103,4 @@ Most accurate if both teams are running a 5-1.
 A team running a 6-2 may be weaker and will never contribute to
 front row setter outcomes, which could bias the results.
 
-Preliminary Results:
-
-2632 points measured where one team has the setter in the front and 
-the other has the setter in the back row (inferred, assumes 5-1 with
-setters starting in p1 and p2).  Of these, 1355 (51.5%) points
-were won with setter in the front row and 1277 (48.5%) points won
-with setter in the back row.
-
 
