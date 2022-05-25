@@ -113,13 +113,4 @@ What should we expect?  How to interpret results?  What could it mean?
     - Then why train the complexities of back row setting?
       Simplify offensive strategy.
 
-This seems like a lot to give up just for increasing attack options by 50%.
-
-Possible study: Measure the outcomes of points when one team has
-a setter in the front row and the other team has their setter in the back row.
-
-Most accurate if both teams are running a 5-1.
-A team running a 6-2 may be weaker and will never contribute to
-front row setter outcomes, which could bias the results.
-
 
