@@ -169,7 +169,7 @@ For our problem, 'y' is the ball hitting height minus the net height,
 and 'x' is the distance the ball is set off the net.
 
 So here is a function that returns the attack angle for a given hitting height.
-Functions is Haskell are things that compute a new value from another.
+Functions in Haskell are things that compute a new value from another.
 Here we have a function that takes a "Double" as an input and returns a
 "Double" as a result, note the "Double -> Double" syntax to specify the 
 function type for "attackAngle":
