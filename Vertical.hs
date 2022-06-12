@@ -218,16 +218,17 @@ hitting heights and divide for total improvement.
 Print out the results.
 -}
 main :: IO ()
-main =
+main = do
   print
     $ attackSurface improvedHittingHeight
     / attackSurface initialHittingHeight
 
 
 {-
-    t@nenya:/net/home/t/volleyball$ runhaskell Vertical.hs
-    189.0
+Run the program:
 
+    $ runhaskell Vertical.hs
+    189.0
  
 WOW!  Improving our vertical by 12" increases our attack surface by 189 TIMES!!!
 
