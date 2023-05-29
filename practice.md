@@ -1,9 +1,5 @@
 # Possible Practice Plans
 
-Notation:
-- Numbered lists are done every practice.
-- Bulleted lists are possible options.
-
 
 # Overall Practice
 
