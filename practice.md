@@ -19,6 +19,7 @@ Each practice has the following phases:
 3. Shoulder warmup.
     - Toss and hit between partners.
     - Toss and hit with wall.
+        - Focus on correct arm swing.
 4. Passing warmup, bump and set.
     - Pass in pairs.
     - Weave passing with 3.
@@ -77,7 +78,7 @@ In all blocking drills defense players practice digging behind the block.
         - Like hitting be on time or late, not early.
         - Push, seal the net.
         - Proper hand and wrist position to protect fingers.
-        - Blocking is a counter attack, blocking is NOT a defensive strategy.
+        - Blocking is a counter attack, it's NOT a defensive strategy.
         - Fans cheer loudest for on an aggressive, successful block.
 
 - Single blocker against two hitters (middle, outside).
@@ -107,6 +108,17 @@ In all blocking drills defense players practice digging behind the block.
           No time to react.  Must get in position and be ready as ball is hit.
 
 
+## Out of System Attack Drills
+
+- Attack on 2.
+    - When oppositing team does a tip or push to the front row, prime opporunity to attack on 2.
+
+- Attack on 2, backrow edtion.
+
+- Pull shot slide.
+    - When setter is on the left, near the net, and is facing right, shoot a set to the rightside hitting slide.
+
+
 ## Passing, Setting, and Combined Drills
 
 - Two passers, equidistant from ball.
@@ -132,12 +144,25 @@ In all blocking drills defense players practice digging behind the block.
         - Fastest (lowest) possible pass and set that meets the objective.
         - If front row players have to step back to get the ball, they don't hit, backrow hits.
 
+- Diving digging, safely.
+    - Slow, exagurated movements for diving floor digs, left, right, and straight ahead.
+    - Establish the muscule memory and slowly increase the speed.
+
 
 # Mini Games
 
-- 4-on-4 queens: full front row hitting practice.
-- 3-on-3 queens, 10 foot exchange: backrow hitting practice, sparse passing practice.
-- 2-on-2 queens: sparse passing practice.
+- 4-on-4 queens.
+    - Full front row hitting practice.
+
+- 3-on-3 queens, 10 foot exchange.
+    - Backrow hitting practice, sparse passing practice.
+
+- 2-on-2 queens.
+    - Sparse passing practice.
+
+- Serving battleship.
+    - Two teams serve against each other.
+    - First team to hit a hoop in each of the six positions wins.
 
 
 # 6-on-6 Games
