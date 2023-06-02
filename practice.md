@@ -40,17 +40,17 @@ Each practice has the following phases:
     - Players do not swing, just lightly tap, to focus on timing and jump.
     - Every attempt is made to attack regardless of set condition.
     - Practice both two-footed and slide takeoffs, long and quick sets.
-    - Instruct team to watch for good or bad form in others and self assess.
+    - Instruct team to watch for good and bad form in others and self assess.
         - Good form:
             - Maximum approach acceleration, maximum jump.
-            - Adjusting early steps of approach to compensate for set position and time.
+            - Adjusting early steps of approach to compensate for set position and timing.
             - Maximum arm reach, meets the ball at the apex of the jump (on time).
             - Lowering the arm to compensate for timing (late, that's ok).
         - Bad form:
             - Stopping approach to wait for the ball (too early).
             - Using a slow approach to wait for the ball (too early).
             - Jumping too early and can't reach the ball (too early).
-            - Having to backup approach to get to ball (misread set).
+            - Having to backup to get to the ball (misread set).
     - Message:
         - We expect maximum effort for each jump.  A strong jump leads to a strong hit.
         - Be on time or late.  Don't be early.
@@ -62,11 +62,14 @@ Each practice has the following phases:
     - Message:
         - Do everything you did in #1.  Do not lapse back into bad form.
 
-3. #2 adding a player to practice dig hits.
+3. #2 adding a player to practice digging hits.
 
 4. #3 adding a player to practice blocking.
 
-5. Specific hits: unique hits that take specific practice.
+
+### Specialized Hitting Drills
+
+- Specific hits: unique hits that take specific practice.
     - Fast tempo:
         - Outside hut.
         - Rightside red.
@@ -74,7 +77,7 @@ Each practice has the following phases:
     - Slide (all positions).
     - Backrow attacks.
 
-6. Combination hitting plays.
+- Combination hitting plays.
     - X: middle 1, rightside cross 2.
     - Fake X.
 
