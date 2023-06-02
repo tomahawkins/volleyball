@@ -34,24 +34,39 @@ Each practice has the following phases:
 
 ## Hitting Drills
 
-- Approach timing and jumping hitting lines.
-    - Focus on timing and maximum jumping, not hitting the ball.
-    - Players are instructed not to swing, just lightly hit,
-      so they focus on the primary task.
-    - Each hitter handsets their ball to the setter.
+1. Approach timing and jumping hitting lines.
+    - Two setters, two hitting lines, one for left and right side.
+    - Each hitter handsets the ball to the setter to practice overhand passing.
+    - Players do not swing, just lightly tap, to focus on timing and jump.
     - Every attempt is made to attack regardless of set condition.
-    - Practice both two-footed and slide takeoffs.
+    - Practice both two-footed and slide takeoffs, long and quick sets.
+    - Instruct team to watch for good or bad form in others and self assess.
+        - Good form:
+            - Maximum approach acceleration, maximum jump.
+            - Adjusting early steps of approach to compensate for set position and time.
+            - Maximum arm reach, meets the ball at the apex of the jump (on time).
+            - Lowering the arm to compensate for timing (late, that's ok).
+        - Bad form:
+            - Stopping approach to wait for the ball (too early).
+            - Using a slow approach to wait for the ball (too early).
+            - Jumping too early and can't reach the ball (too early).
+            - Having to backup approach to get to ball (misread set).
     - Message:
-        - Each jump we expect maximum effort.
-        - It is better to be on time or late.  Do not be early.
-        - Expect all players to jump and hit well, including defense.
+        - We expect maximum effort for each jump.  A strong jump leads to a strong hit.
+        - Be on time or late.  Don't be early.
+        - All players must jump and hit well, including defense.
         - No such thing as a perfect set.  Make the most of every opportunity.
-          Attempt to attack every ball.
+          Attempt to attack every ball.  Learn how to compensate for imperfect conditions.
 
-- Hitting lines.
-    - Same as above, but with arm swing.
+2. #1 with arm swing and strong hitting.
+    - Message:
+        - Do everything you did in #1.  Do not lapse back into bad form.
 
-- Specific hits: unique hits that take specific practice.
+3. #2 adding a player to practice dig hits.
+
+4. #3 adding a player to practice blocking.
+
+5. Specific hits: unique hits that take specific practice.
     - Fast tempo:
         - Outside hut.
         - Rightside red.
@@ -59,7 +74,7 @@ Each practice has the following phases:
     - Slide (all positions).
     - Backrow attacks.
 
-- Combination hitting plays.
+6. Combination hitting plays.
     - X: middle 1, rightside cross 2.
     - Fake X.
 
@@ -111,9 +126,9 @@ In all blocking drills defense players practice digging behind the block.
 ## Out of System Attack Drills
 
 - Attack on 2.
-    - When oppositing team does a tip or push to the front row, prime opporunity to attack on 2.
+    - When opposing team does a tip or push to the front row, prime opportunity to attack on 2.
 
-- Attack on 2, backrow edtion.
+- Attack on 2, backrow edition.
 
 - Pull shot slide.
     - When setter is on the left, near the net, and is facing right, shoot a set to the rightside hitting slide.
@@ -145,8 +160,8 @@ In all blocking drills defense players practice digging behind the block.
         - If front row players have to step back to get the ball, they don't hit, backrow hits.
 
 - Diving digging, safely.
-    - Slow, exagurated movements for diving floor digs, left, right, and straight ahead.
-    - Establish the muscule memory and slowly increase the speed.
+    - Slow, exaggerated movements for diving floor digs, left, right, and straight ahead.
+    - Establish the muscle memory and slowly increase the speed.
 
 
 # Mini Games
@@ -173,7 +188,6 @@ In all blocking drills defense players practice digging behind the block.
 
 - Sprints.
 - Bench hops.
-- Single, double, triple blocking sequence pattern.
 - Pushups.
 - Pullups.
 
