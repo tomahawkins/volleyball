@@ -1,4 +1,157 @@
-# Principles
+# Strategic Plan for JV
+
+"The code is more what you'd call guidelines than actual rules."
+  -- Captain Barbossa
+
+
+# General Philosphy
+
+- **Safety Before All Else**
+    - Where your ankle braces.
+    - Protect your head.  Shield it with your arms when in the line of fire.
+    - Report all possible injuries and head contacts.
+    - Watch over your teammates.  Spot and callout hazzardous situations.
+    - Don't get in a situation where you are alone with an adult: coaches, other parents, etc.
+        - Most sexual assult victums know the perpetrator.
+    - Identify signs of a preditor grooming a potential victum: you or your teamates.
+        - Undue attention, "accidental" touching, contacting via side channels: social media, text.
+    - Buddy system at all times when you need to leave the group.  Groups of 2 ok, 3 is stronger.
+    - Arrange rides in advance.  We get back late, after dark on away games.
+    - Learn First Aid and CPR.
+    - Be comfortable calling 911.
+- **Eat Well, Sleep Well, Study Well**
+    - Big meal 3-4 hours before practice and games.
+    - Hydrate and eat after practice and games.
+    - 8-10 hours of solid sleep each night.  Leave the phone outside of your room at night.
+    - Devote the time to excell at your school work.  Ask for help if you need it.
+      The best athletics are often the best students.  It all counts for college.
+- **Intentional Practice**
+    - Use every contact as a chance to get better.
+    - Get out of your comfort zone.  Get comfortable being uncomfortable.
+    - Failure is how we learn.  If you fail, "So What?"  Push yourself to lean new things.
+      Don't shy away from something because you think it's hard.
+    - Try things.  Introduce variation and see what happens.
+      If a small adjustment in movement creates a positive outcome,
+      try a bigger adjustment.  How far can you push it?
+      If a small adjustment creates a negative outcome, try going the other way.
+      Explore the whole envelop.
+    - Interest compounds.  Small improvements everyday lead to big changes over the season.
+- **Well Rounded Players**
+    - We value the well rounded player over the specialist.
+    - Defensive players are expected to jump and hit the ball,
+      hitters need to dive and dig, and everyone needs to set and serve well.
+    - Karch was not the best at anything, but really good at everything.
+- **Team**
+    - Respect, support, and encourage your teammates.
+    - You are instrumental in helping your teammates get better, improving the team as a whole.
+
+
+# On the Court Mindset
+
+If you are not touching the ball at a given moment you need to
+be thinking: What is the next play and how do I get ready for it?
+
+Areas where we are too slow to think:
+
+- Covering the hit.
+- Setter not getting to the setting position on time.
+- Blockers not transitioning to a hitting approach fast enough.
+- Not helping teammates when they are scrambling to save a ball.
+
+
+
+# Warmup
+
+Shoulder Warmup:
+As soon as you are in the gym, grab a ball and warm up your shoulders against the wall.
+Start pounding balls when you are warm.  Both arms.
+Compete with your teamates: the lounder, the higher, the better.
+
+N+2 Approach Warmup:
+We don't care how many steps you take as long as the last two are two.
+And you swing your arms.
+- Run from the baseline to the net and jump with N+2.
+- Run back back to mid court then back to the net and jump.
+- Run back back to 10' line then back to the net and jump.
+- Run back to the baseline then repeat.
+
+Presicion Passing Warmup:
+- Ball with a group of 3 in a triangle.
+- Two overhand passers pass back to forearm passer.
+- Forearm passer passes from hip opposite target.
+- Switch from setting to occasional hits.
+
+Rapid Fire Hitting Lines:
+- 3 hitters, 3 blockers, 1 setter.  One cart full of balls.
+- Set quickly to all hitters at random.  Those out keep the hopper full.
+- Reload and regroup.
+
+Float Jump Serve Practice.
+
+
+# Approach
+
+Master the N+2 step.  Don't care how many steps you take
+as long as the last two are two and you swing your arms.
+
+- Warmup: From baseline run to the net and jump with N+2.
+    - Run back to mid cournt and back and jump.
+    - Run back to 10' line and back and jump.
+
+# Forearm Passing
+
+- Pass from the opposite hip of where you want the ball to go.
+- Leg slightly back.
+- Drop the shoulder.  Wall, not table.
+
+# Overhead Passing, Setting
+
+- Overhead pass whenever possible, more accurate.
+- Step into the ball to build mometum.
+- Use your legs to push further.
+
+
+# Serving
+
+4-step float jump serve is the default.
+Everyone needs to get good at this.
+
+# Serve Receive
+
+# Hitting
+
+# Blocking
+
+# Symetric Front Row
+
+Right-side hitters are underused and undervalued.
+Everyone expect the outside to be the default.
+We should be setting the right-side the same percentage as outside.
+
+- Setter sets from middle, faces either left or right, depending on situation.
+- Setter uses either P1 or P5 as home position.
+- Symetric pin hitting.  Right-side can call huts and gos.
+- Middle calls either front or back on the fly, depending on the situation.
+
+# In System Offense
+
+# Out of System Offense
+
+# Special Situations
+
+## Attack on 2
+
+## Attack on Short Freeball
+
+
+
+
+
+
+
+
+
+
 
 1. Have Fun
 2. Improve  (learn, adapt, overcome, get better)
