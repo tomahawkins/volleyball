@@ -1,4 +1,60 @@
-# Possible Practice Plans
+# Practice Plans
+
+# Practice Plan 8/28
+
+- Warmup
+  - Jog 2 laps, warming up shoulders.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Pair up w/ ball.  Toss, hit to the floor, forearm passing, overhead passing, peppering.
+  - N+2 step approach warmup: jog outward from net, on the signal, turn and make an approach.
+- Float Jump Serve Practice
+  - 4 step approach.  Precision toss, no spin.
+  - Pair up across the net.  Practice approach and straight hits to partner.
+  - Start at 10 feet and slowly increase distance.
+  - No ball spin.
+- Out-of-System with Vertical Practice
+  - Setters: Toss to self and step in and push with legs for high set to 5x5.  
+  - Hitters: Fast approach, big jump, reach for the ski and catch the ball.  Get as high as you can.
+  - Once hitters are consistently jumping, allow them to hit.
+- Out-of-System Queens
+- Out-of-System 6-on-6
+  - Constraints: Setter in P5.
+- Strength and Conditioning
+  - Pushups.
+  - Pullups in weight room if possible.
+
+
+# Practice Plan 8/26
+
+- Warmup
+  - Jog 2 laps, warming up shoulders.
+  - Dynamic stretches.  Quads, hamstrings, spiderman crawls.
+  - Pair up w/ ball.  Toss, hit to the floor.  Forearm passing, overhead passing, peppering.
+  - N+2 step approach warmup: jog outward from net, on the signal, turn and make an approach.
+- Float Jump Serve Practice
+  - Pair up across the net.  Practice approach and straight hits to partner.
+    Start at 10 feet and slowly increase distance.
+- Approach and Vert Practice
+  - Hitting lines w/ passers and setter, but just working on maximum jump.
+  - Catch the ball and dunk it over the net.
+- Out-of-System Practice
+  - 2 passers, 2 hitters.  Bounce ball in, passers pass and set a 5x5 to pins.
+  - Out-of-system queens:  4 on 4, only passers can pass/set, only hitters can hit.
+- 6-on-6
+  - Out-of-system constraints: Setter in P5.
+- Strength and Conditioning
+  - Pushups.
+  - Pullups in weight room if possible.
+
+
+
+
+
+
+
+
+
+
 
 
 # Overall Practice

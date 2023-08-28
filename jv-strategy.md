@@ -108,6 +108,7 @@ as long as the last two are two and you swing your arms.
 
 - Overhead pass whenever possible, more accurate.
 - Step into the ball to build mometum.
+- Ball over forehead, not chest.
 - Use your legs to push further.
 
 

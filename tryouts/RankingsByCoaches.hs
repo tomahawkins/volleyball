@@ -1,5 +1,6 @@
 module RankingsByCoaches
-  ( pins,
+  ( outsides,
+    rightsides,
     middles,
     defense,
     setters,
@@ -8,166 +9,86 @@ where
 
 import Players (Player (..))
 
-showRankings :: Bool
-showRankings = True
+outsides :: [Player]
+outsides =
+  [ Chayse,
+    Jayda,
+    Lily,
+    Indie,
+    Cassy,
+    SofiaC,
+    Isabel
+  ]
 
-showIt :: [Player] -> [Player]
-showIt p
-  | showRankings = p
-  | otherwise = []
-
-pins :: [Player]
-pins =
-  showIt
-    [ Chayse,
-      Jayda,
-      CatherineCh,
-      Merritt,
-      Lily,
-      AbiR,
-      Mary,
-      OliviaS,
-      Tierra,
-      Indie,
-      Bailey,
-      Prudence,
-      Layla,
-      Cora,
-      Wren,
-      SofiaC,
-      Cassy,
-      Cadence,
-      Eliza,
-      Kayla,
-      AbiM,
-      Hadley,
-      Violet,
-      Lulu,
-      Sarah,
-      Neybi,
-      Damaris
-    ]
-
-{- Unrated pins.
-Angel
-Chris
-Clea
-Clem
-Isabel
-Josiah
-Mariam
-Meysha
-Mia
-Samantha
-SophiaW
--}
+rightsides :: [Player]
+rightsides =
+  [ CatherineCh,
+    AbiR,
+    Bailey,
+    Prudence,
+    Cadence,
+    Cora,
+    Eliza
+  ]
 
 middles :: [Player]
 middles =
-  showIt
-    [ Mary,
-      Merritt,
-      OliviaS,
-      Lily,
-      Layla,
-      Prudence,
-      Alisha,
-      Eliza,
-      Clem,
-      Cadence,
-      Neybi,
-      Hadley,
-      AbiM,
-      Sarah,
-      Lulu
-    ]
-
-{- Unrated middles.
-AbiR
-Bailey
-CatherineCh
-Chayse
-Chris
-Clea
-Damaris
-Etta
-Indie
-Jayda
-Mia
-Samantha
-SophiaW
-Tierra
-Violet
--}
+  [ Mary,
+    OliviaS,
+    Merritt,
+    Layla,
+    Neybi,
+    Lulu,
+    Hadley
+  ]
 
 defense :: [Player]
 defense =
-  showIt
-    [ Ophelia,
-      Tierra,
-      Josiah,
-      Indie,
-      Lily,
-      Stephanie,
-      Wren,
-      Prudence,
-      Cassy,
-      Claire,
-      AbiR,
-      Sadie,
-      Avery,
-      Isabel,
-      Violet,
-      Sarah
-    ]
-
-{- Unrated defense.
-AbiM
-Alisha
-Cadence
-Caitlyn
-CatherineCh
-Chayse
-Chris
-Clea
-Clem
-Eliza
-Etta
-Gwen
-Jayda
-Kayla
-Layla
-Lulu
-Meysha
-Neybi
-Nyah
-OliviaS
--}
+  [ Ophelia,
+    Tierra,
+    Josiah,
+    Wren,
+    Indie,
+    Stephanie,
+    Claire,
+    Kayla,
+    Etta,
+    Nyah
+  ]
 
 setters :: [Player]
 setters =
-  showIt
-    [ Meysha,
-      Sadie,
-      Gwen,
-      Kayla,
-      Cassy,
-      Clea,
-      SofiaC,
-      Avery
-    ]
+  [ Meysha,
+    Sadie,
+    Gwen,
+    AbiM,
+    Mariam,
+    Clea
+  ]
 
-{- Unrated setters.
-AbiR
-AbiM
-Angel
-Chayse
-Chris
-Clem
-Eliza
-Lulu
-Mariam
-Mary
-Mia
-Ophelia
--}
+--Cassandra Miller (OS)
+--Sofia Challa (OS)
+--Eliza Ragsdale (OS)
+--
+--Neybi Vasquez (MB)
+--Louise Munro (MB)
+--Hadley Manning (MB)
+--
+--Isabel Figgess (RS)
+--Cadence Osage-Testa (RS)
+--Cora Allen (RS)
+--
+--Clea Cristofaro (Setter)
+--Mariam Najar (Setter)
+--
+--Kayla Morell (DS)
+--Etta Willard (DS)
+--Nyah Lockwood (DS)
+--Claire Verner (DS)
+
+
+
+
+
+
+
