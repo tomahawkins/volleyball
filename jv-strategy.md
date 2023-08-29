@@ -12,8 +12,8 @@
     - Report all possible injuries and head contacts.
     - Watch over your teammates.  Spot and callout hazzardous situations.
     - Don't get in a situation where you are alone with an adult: coaches, other parents, etc.
-        - Most sexual assult victums know the perpetrator.
-    - Identify signs of a preditor grooming a potential victum: you or your teamates.
+        - Most sexual assult victims know the perpetrator.
+    - Identify signs of a preditor grooming a potential victim: you or your teamates.
         - Undue attention, "accidental" touching, contacting via side channels: social media, text.
     - Buddy system at all times when you need to leave the group.  Groups of 2 ok, 3 is stronger.
     - Arrange rides in advance.  We get back late, after dark on away games.
@@ -89,14 +89,19 @@ Rapid Fire Hitting Lines:
 Float Jump Serve Practice.
 
 
-# Approach
+# Approach and Takeoff
 
-Master the N+2 step.  Don't care how many steps you take
-as long as the last two are two and you swing your arms.
+Master the N+2 step, where N is a positive integer.
+Don't lock yourself into a fixed step approach.
+We need you to be able to adapt to different situations on the fly.
 
-- Warmup: From baseline run to the net and jump with N+2.
-    - Run back to mid cournt and back and jump.
-    - Run back to 10' line and back and jump.
+- Start late and fast.
+- Last two steps landing 45 and 90 degrees.
+- Big arm swing.
+- Big body crouch.
+- Takeoff from both feet at the same time.
+- Climb as high as you can on every hit.
+
 
 # Forearm Passing
 
@@ -107,6 +112,8 @@ as long as the last two are two and you swing your arms.
 # Overhead Passing, Setting
 
 - Overhead pass whenever possible, more accurate.
+- Start using it more, get comfortable with it.
+- Serve receive.
 - Step into the ball to build mometum.
 - Ball over forehead, not chest.
 - Use your legs to push further.
@@ -114,29 +121,34 @@ as long as the last two are two and you swing your arms.
 
 # Serving
 
-4-step float jump serve is the default.
+4-step float jump serve is our default.
 Everyone needs to get good at this.
 
 # Serve Receive
 
 # Hitting
 
+Everyone needs to get good at hitting.
+Setters, DS, and libs.
+
 # Blocking
 
-# Symetric Front Row
+Do we do Vikings "Ball, Set, Baaallllll!" or
+do we focus on the hitter (hunter-killer)?
 
-Right-side hitters are underused and undervalued.
-Everyone expect the outside to be the default.
-We should be setting the right-side the same percentage as outside.
+5-1: Setters need to block.
 
-- Setter sets from middle, faces either left or right, depending on situation.
-- Setter uses either P1 or P5 as home position.
-- Symetric pin hitting.  Right-side can call huts and gos.
-- Middle calls either front or back on the fly, depending on the situation.
+- Loaded position: hand up, but crouched to jump.
+- 3-step swing block to get height.
+
 
 # In System Offense
 
 # Out of System Offense
+
+Out-of-system is where we score the bulk of our points.
+High sets to 5x5.  Use forearm passing more often than when in-system:
+- Line up the 5x5 target, either in front or back.
 
 # Special Situations
 

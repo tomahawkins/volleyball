@@ -91,3 +91,14 @@ What happens if offense almost always sets quick:  31 outside, 1 middle, sliding
 - Train and measure players' serve at every pratice, graph progression.
 
 
+# Symetric Front Row
+
+Right-side hitters are underused and undervalued.
+Everyone expect the outside to be the default.
+We should be setting the right-side the same percentage as outside.
+
+- Setter sets from middle, faces either left or right, depending on situation.
+- Setter uses either P1 or P5 as home position.
+- Symetric pin hitting.  Right-side can call huts and gos.
+- Middle calls either front or back on the fly, depending on the situation.
+

@@ -1,5 +1,30 @@
 # Practice Plans
 
+
+# Practice Plan 8/29
+
+- Warmup
+  - Vertical jump to basketball hoop.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - N+2 step approach warmup: jog outward from net, on the signal, turn and make an approach.
+  - Pair up w/ ball.  Toss, hit to the floor, forearm passing, overhead passing, peppering.
+- Float Jump Serve
+  - 4 step approach.  Precision toss, no spin.
+  - Pair up across the net.  Practice approach and straight hits to partner.
+  - Start at 10 feet and slowly increase distance.
+  - No ball spin.
+- Hitting Lines
+  - Fast tempo sets: 1s, gos, reds.
+    - Setter self toss.
+  - Add passers and blockers.  Free balls and down balls.
+- 5-1 Rotations
+- Lily w/ Gordon to work approach takeoff and hitting.
+- 6-on-N
+  - Serve receive with all 6 rotations.
+- Strength and Conditioning
+  - Pullups in weight room.
+
+
 # Practice Plan 8/28
 
 - Warmup
