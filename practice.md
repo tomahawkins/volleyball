@@ -1,6 +1,27 @@
 # Practice Plans
 
 
+# Practice Plan 8/31
+
+- Warmup
+  - Jog 2 laps.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Overhead passing: From light hit, pass overhead.  Straighten fingers, more palm contact, push up.
+  - Vertical jump to basketball hoop.  Solid approach, 2 foot takeoff, reach with both arms.
+- Back Row Hitting
+  - 3 hitting lines.  1 setter, 1 blocker, 2 passers.  Everyone rotate through.
+- Serve and Serve Receive
+  - Line of servers, setter, and blocker.
+  - 3 passers, DS and OH.
+  - Pass, set, hit, and block.
+- 5-1 Rotations, 6-on-N
+  - Serve and serve receive with all 6 rotations.
+- Strength and Conditioning
+  - Pushups.
+  - Pullups in weight room.
+
+
 # Practice Plan 8/30
 
 - Warmup
