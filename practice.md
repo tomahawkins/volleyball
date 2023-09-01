@@ -1,5 +1,25 @@
 # Practice Plans
 
+# Practice Plan 9/1
+
+- Warmup
+  - Jog 2 laps.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Overhead passing: From light hit, pass overhead.  Straighten fingers, more palm contact, push up.
+  - Vertical jump to basketball hoop.
+  - Pushups.
+- Serving
+  - Serving with 3 passers on each side.
+- Attack on 2, Attack on 1
+  - 2 on the court, freeball over.  Attempt an attack on 1 or 2.
+- Hitting X, Fake X
+  - 3 hitting lines, 1 setter.
+  - Setting gos, 1s, and X.
+- 5-1 Rotations, 6-on-N
+  - Serve and serve receive with all 6 rotations.
+  - Bonus points for gos, 1s, X, and Attack-on-1/2
+
 
 # Practice Plan 8/31
 
