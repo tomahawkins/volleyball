@@ -2,6 +2,9 @@
 
 # Practice Plan 9/1
 
+"Winning doesn’t always mean being first. Winning means you’re doing better than you’ve done before."
+-- Bonnie Blair, Olympic Speed Skater
+
 - Warmup
   - Jog 2 laps.
   - Dynamic stretches: quads, hamstrings, spiderman crawls.
