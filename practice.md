@@ -1,5 +1,34 @@
 # Practice Plans
 
+
+# Practice Plan 9/2
+
+"I've missed more than 9000 shots in my career. I've lost almost 300 games.
+26 times, I've been trusted to take the game winning shot and missed.
+I've failed over and over and over again in my life. And that is why I succeed."
+-- Michael Jordan
+
+- Talk
+  - Volleyball Mindset: What do I need to do for the next play?
+  - More sets to right side.
+- Warmup
+  - Jog 2 laps.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Overhead passing: From light hit, pass overhead.  Straighten fingers, more palm contact, push up.
+  - Vertical jump to basketball hoop.
+  - Pushups.
+- Defense
+  - Fast tempo hitting lines: Hut, gos, 1s, red, X.
+  - With 3 blockers and 3 passers.  Play it out.
+- Out-of-System
+  - 2 passers, 2 hitters.  Bounce the ball in, pass and set to 5x5.
+- 4-on-4 Back Row Queens
+- 6-on-6
+  - Serve and serve receive with all 6 rotations.
+  - Emphasize setting the right-side.
+
+
 # Practice Plan 9/1
 
 "Winning doesn’t always mean being first. Winning means you’re doing better than you’ve done before."
