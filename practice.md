@@ -1,6 +1,43 @@
 # Practice Plans
 
 
+# Practice Plan 9/4
+
+"But why, some say, the moon? Why choose this as our goal?
+And they may well ask why climb the highest mountain?
+Why, 35 years ago, fly the Atlantic? Why does Rice play Texas? 
+
+We choose to go to the moon. We choose to go to the moon in this decade and do the other things,
+not because they are easy, but because they are hard,
+because that goal will serve to organize and measure the best of our energies and skills,
+because that challenge is one that we are willing to accept,
+one we are unwilling to postpone, and one which we intend to win, and the others, too."
+--John F. Kennedy
+
+"Be yourself; everyone else is already taken." --Oscar Wilde
+
+- Talk
+  - Push now, intentional practice, interest compounds.
+  - Respect, support, and encourage, your teammates.
+    - Don't need to be best friends, but we need mutual respect, support, and encouragement.
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Precision forearm passing.  Pass from hips, switching hips each time.
+  - Pullups.
+  - Pushups.
+- Serve and Serve Receive
+  - 3 passers on each court.  Alternate serving sides.
+- Out-of-System
+  - 2 passers, 2 hitters.  Bounce the ball in, pass and set to 5x5.
+- Overview of Wednesday Game Plan
+  - Team 1, team 2.
+- 6-on-6
+  - Serve and serve receive with all 6 rotations.
+  - Emphasize setting the right-side.
+
+
 # Practice Plan 9/2
 
 "I've missed more than 9000 shots in my career. I've lost almost 300 games.
