@@ -1,4 +1,29 @@
-# Practice Plans
+# JV Practice Plans
+
+# Practice Plan 9/5
+
+"Make sure your worst enemy doesn’t live between your own two ears."
+--Laird Hamilton
+
+"Somewhere behind the athlete you’ve become and the hours of practice and the coaches who have pushed you
+is a little girl who fell in love with the game and never looked back... play for her."
+--Mia Hamm
+
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, spiderman crawls.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Precision forearm passing.  Pass from hips, switching hips each time.
+  - Precision overhead passing.
+  - Overhead digging.
+- Positions for Wed Game
+  - Walk through teams 1 and 2.
+- Back row queens.
+  - Front row queeens.
+- Full team verus N.
+  - Team 1 with Lib and DS.
+  - Team 2 with Lib and DS.
+
 
 
 # Practice Plan 9/4
