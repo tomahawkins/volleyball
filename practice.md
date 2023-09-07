@@ -1,5 +1,45 @@
 # JV Practice Plans
 
+# Practice Plan 9/7
+
+"Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."
+--Albert Einstein
+
+- Discussion
+  - Special day.
+  - Women and girls in STEM.
+    - Today Groq demos 240 tokens per second on LLama large language model using Groq's LPU.
+      - First chip that does 1 peta ops per second.
+    - Molly: Starting UW, majoring in aerospace engineering.
+    - The STEM gap: Still huge divide between men and women in STEM careers.
+    - Math and Programming: Foundation of STEM, Leads to good jobs and a comfortable living.
+  - Post game chat.
+    - Serving.
+    - Rotations.
+    - DS or Lib.
+      - RS: Bailey and Prudence
+      - OH: Lily, Abi, Indie
+        - Lily constraint: Can only play 2 sets so she can play in the Varsity game.
+      - MB: Merrit, Layla, Lily as option.
+      - Setters: Sadie, Abby, 
+      - DS/Libs: Josiah, Wren, Stephanie
+        - Each play lib for 1 set?  Backup with the remaining 2 as DS.
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow sprawling practice dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, overhead passing.
+  - Precision forearm passing.  Pass from hips, switching hips each time.
+  - Precision overhead passing.
+  - Overhead digging.
+  - Pullups, situps, pushups.
+- Hitting.
+  - Libs with OH and RS.
+  - Setters with MB to work on 1 and 31 hitting.
+    - Watch Al Scates video together.
+- Back row queens.
+- Full team verus N.
+
+
 # Practice Plan 9/5
 
 "Make sure your worst enemy doesn’t live between your own two ears."
