@@ -9,7 +9,7 @@
   - Special day.
   - Women and girls in STEM.
     - Today Groq demos 240 tokens per second on LLama large language model using Groq's LPU.
-      - First chip that does 1 peta ops per second.
+      - First chip that does 1 peta operations per second.
     - Molly: Starting UW, majoring in aerospace engineering.
     - The STEM gap: Still huge divide between men and women in STEM careers.
     - Math and Programming: Foundation of STEM, Leads to good jobs and a comfortable living.
@@ -36,8 +36,9 @@
   - Libs with OH and RS.
   - Setters with MB to work on 1 and 31 hitting.
     - Watch Al Scates video together.
-- Back row queens.
-- Full team verus N.
+- 6 player serve receive.
+  - Practice all rotations.
+- Scrimmage.
 
 
 # Practice Plan 9/5
