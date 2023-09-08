@@ -1,5 +1,32 @@
 # JV Practice Plans
 
+
+# Practice Plan 9/8
+
+"Is the dark side stronger?"
+"No, no.  No.  Quicker, easier, more seductive."
+"But how am I to know the good side from the bad?"
+--Luke and Yoda, Empire Strikes Back
+
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow sprawling practice dives.
+  - Core strengthening:
+    - side plank
+    - bridge
+    - leg press
+    - quadruped
+    - plank
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor.
+  - Precision forearm passing with ball drop.  Pass from opposite hip, opposite leg slightly back.
+  - Forearm digging.
+- Hitting.  Middle and right-side.
+  - 1s and 31s.
+  - Xs.
+- Team wide scrimmaging.
+
+
+
 # Practice Plan 9/7
 
 "Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning."
@@ -21,7 +48,7 @@
       - OH: Lily, Abi, Indie
         - Lily constraint: Can only play 2 sets so she can play in the Varsity game.
       - MB: Merrit, Layla, Lily as option.
-      - Setters: Sadie, Abby, 
+      - Setters: Sadie, Abby,
       - DS/Libs: Josiah, Wren, Stephanie
         - Each play lib for 1 set?  Backup with the remaining 2 as DS.
 - Warmup
@@ -71,7 +98,7 @@ is a little girl who fell in love with the game and never looked back... play fo
 
 "But why, some say, the moon? Why choose this as our goal?
 And they may well ask why climb the highest mountain?
-Why, 35 years ago, fly the Atlantic? Why does Rice play Texas? 
+Why, 35 years ago, fly the Atlantic? Why does Rice play Texas?
 
 We choose to go to the moon. We choose to go to the moon in this decade and do the other things,
 not because they are easy, but because they are hard,
@@ -235,7 +262,7 @@ I've failed over and over and over again in my life. And that is why I succeed."
   - Start at 10 feet and slowly increase distance.
   - No ball spin.
 - Out-of-System with Vertical Practice
-  - Setters: Toss to self and step in and push with legs for high set to 5x5.  
+  - Setters: Toss to self and step in and push with legs for high set to 5x5.
   - Hitters: Fast approach, big jump, reach for the ski and catch the ball.  Get as high as you can.
   - Once hitters are consistently jumping, allow them to hit.
 - Out-of-System Queens
