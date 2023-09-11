@@ -1,6 +1,47 @@
 # JV Practice Plans
 
 
+# Practice Plan 9/11
+
+
+"Here's to the crazy ones. The misfits. The rebels. The troublemakers.
+The round pegs in the square holes. The ones who see things differently.
+They're not fond of rules. And they have no respect for the status quo.
+You can quote them, disagree with them, glorify or vilify them.
+About the only thing you can't do is ignore them.
+Because they change things.  They push the human race forward.
+And while some may see them as the crazy ones, we see genius.
+Because the people who are crazy enough to think they can change the world, are the ones who do.”
+--Steve Jobs
+
+"You miss 100% of the shots you don't take."
+--Wayne Gretzky
+
+
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor.
+  - Precision forearm passing.  Pass from opposite hip, opposite leg slightly back.
+  - Forearm digging.
+  - Overhead digging.
+- Hitting with blockers.  Middle and right-side.
+  - 1s and 31s.
+  - Xs.
+- Serve receive
+  - 4 passers, 1 setter, line of servers.
+  - 6-on,  All rotations.  Bring RS to pass.
+- Scrimmaging.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+
+
+
+
 # Practice Plan 9/8
 
 "Is the dark side stronger?"
