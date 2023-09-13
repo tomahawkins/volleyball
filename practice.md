@@ -1,6 +1,53 @@
 # JV Practice Plans
 
 
+# Practice Plan 9/13
+
+
+"Tell me and I forget. Teach me and I remember. Involve me and I learn."
+-- Benjamin Franklin
+
+"Ignorance of Certain Subjects Is a Great Part of Wisdom."
+-- Hugo de Groot
+
+"Better to remain silent and be thought a fool than to speak out and remove all doubt."
+-- Abraham Lincoln
+
+
+- Post Game Discussion
+  - Need better rotations.
+  - Close on a few quick sets.
+  - Serving.
+  - Passing.
+  - Backrow.
+  - Tight pass setting.
+  - Transitioning from defense to offense.
+  - Out of out-of-system.
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor.
+  - Precision forearm passing.  Pass from opposite hip, opposite leg slightly back.
+  - Forearm digging.
+  - Overhead digging.
+- Rapid fire blocking.
+  - 3 hitting lines, one blocker, cycle through 9 hits.
+- Defense to offense transitions.
+  - 3 hitters, 1 setter vs full team.
+  - Start with block, then transition to hit.
+- Out-of-System Queens
+  - 2 passers, 2 hitters.
+  - Passers pass and set to 5x5.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+- Scrimmaging.
+
+
+
 # Practice Plan 9/11
 
 
