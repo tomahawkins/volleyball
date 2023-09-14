@@ -1,6 +1,60 @@
 # JV Practice Plans
 
 
+
+# Game Day 9/14
+
+"You can often change your circumstances by changing your attitude."
+
+"We do not have to become heroes overnight.
+Just a step at a time, meeting each thing that comes up,
+seeing it as not as dreadful as it appears,
+discovering that we have the strength to stare it down."
+
+"I am who I am today because of the choices I made yesterday."
+-- Eleanor Roosevelt
+
+
+- When things go wrong...
+  - There will be a point in the match where we are struggling: serve receive, offense, defense.
+  - Expect it.  Prepare for it.  Recognize it when it is happening and call it out.
+  - It's all psychological.
+  - Think less, feel more.
+  - Keep talking positive to your teammates.  Let them know your in it with them.
+  - Expect bad things will still happen, but not for long.
+- Serving
+  - Always serve strong.
+  - Missing a serve is only slightly worse than delivering an easy serve.
+  - Strive to miss 1/7.  If not, you're too conservative.
+  - Intentional warmup.
+- Setting
+  - Setters have to sprint.  You can't set if your not there.
+  - Passes close to the net are perfect passes.
+    - Jump set to save them.
+    - Perfect 1 opportunity.
+    - Don't just tip them over.
+  - On defense setters' first priority is to block.
+- Defense
+  - Watch your blockers, watch the opposing hitters.
+  - Figure out where you need to be before the ball is hit.
+  - Plan for multiple outcomes.
+  - Connected by string to outside blockers.  Move if they move.
+- Cover hits.
+  - Get in close on every hit with arms open.
+  - No one should be standing around watching.
+- Middles
+  - Coordinate with setter and plan for 1s.
+  - A hard dumped ball scores just as many points has a hit ball.
+  - Often easier to dump straight down than to hit straight down.
+- Pins
+  - Let's speed up the tempo.  Coordinate with setter for huts and reds.  Maybe gos.
+- Out-of-system
+  - Pins: See an out-of-system and call for 5x5.
+  - Backrow: Watch each set and anticipate an off set.  Call for the hit immediately.
+
+
+
+
 # Practice Plan 9/13
 
 
