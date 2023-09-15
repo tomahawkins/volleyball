@@ -1,6 +1,66 @@
 # JV Practice Plans
 
 
+# Practice Plan 9/15
+
+"Before I refuse to take your questions, I have an opening statement."
+
+"It's true hard work never killed anybody, but I figure, why take the chance?"
+
+"Thomas Jefferson once said, 'We should never judge a president by his age, only by his works.'
+And ever since he told me that, I stopped worrying."
+
+"If we love our country, we should also love our countrymen."
+
+"Each generation goes further than the generation preceding it because it
+stands on the shoulders of that generation.
+You will have opportunities beyond anything we've ever known."
+
+--Ronald Reagan
+
+
+- Post Game Discussion
+  - Setters aren't responsible for passes behind 15' line.
+    - Running one way to send a ball the opposite way rarely works.
+  - Few sets to the outside.
+  - Out-of-system are primarily to middle back row, not 5x5.
+  - More talk on serve receive: mine, it's-good, it's-out.
+  - Need better dumps.
+  - Transitioning from defense to offense.
+  - Rotations?  Happy with play time?
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor.
+  - Precision forearm passing.  Pass from opposite hip, opposite leg slightly back.
+    - 10, 15, 25 feet.
+    - Run forward to meet pass.
+    - Turn and run back (crossover step, both sides) to meet pass.
+  - Same for overhead passing.
+- Serve and Serve Receive
+  - 3 passers, one setter target, line of servers.
+  - Work on wall-not-table platform.  Static, no arm swing.
+  - Left and middle pass over left hip, right pass over right hip.
+- Dumping
+  - 3 hitting lines.
+  - 3 blockers.
+  - 2 passers.
+  - Dumps are not tips.  Almost as effective as hits.
+  - Approach and arm swing.  Must jump high to be effective.
+  - Swing your arm like you're going to hit.
+  - Direction control.
+  - Overhead dunks.
+- Digging
+  - 3 passers, one hitter, one setter; both sides of court.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+- Scrimmaging.
+
+
 
 # Game Day 9/14
 
