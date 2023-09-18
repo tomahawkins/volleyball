@@ -1,5 +1,54 @@
 # JV Practice Plans
 
+# Game Day 9/18
+
+"For me, becoming isn't about arriving somewhere or achieving a certain aim.
+I see it instead as forward motion, a means of evolving, a way to reach continuously toward a better self.
+The journey doesn't end."
+
+"You should never view your challenges as a disadvantage.
+Instead, it's important for you to understand that your experience facing and
+overcoming adversity is actually one of your biggest advantages."
+
+"Don’t ever make decisions based on fear.
+Make decisions based on hope and possibility.
+Make decisions based on what should happen, not what shouldn’t."
+
+"You may not always have a comfortable life and you will not always be
+able to solve all of the world’s problems at once.
+But don’t ever underestimate the importance you can have,
+because history has shown us that courage can be contagious,
+and hope can take on a life of its own."
+
+"Am I good enough? Yes, I am."
+
+-- Michelle Obama
+
+
+- When things go wrong...
+  - There will be a point in the match where we are struggling: serve receive, offense, defense.
+  - Expect it.  Prepare for it.  Recognize it when it is happening and call it out.
+  - It's all psychological.
+  - Think less, feel more.
+  - Stop and tie your shoe.
+  - Keep talking positive to your teammates.  Let them know your in it with them.
+  - Expect bad things will still happen, but not for long.
+- Dumps, not tips.
+- Cover our hits.
+- Setters:
+  - Work on jump sets.  Lots of tight passes can be saved with jump sets.
+  - Don't forget to block.
+- Defense:
+  - Watch your blockers and move when they move.
+  - Look for and anticipate the holes in the block.
+- Middles
+  - Coordinate with setter and plan for 1s.
+- Pins
+  - Let's speed up the tempo.  Coordinate with setter for huts and reds.  Maybe gos.
+- Out-of-system
+  - Pins: See an out-of-system and call for 5x5.
+  - Backrow: Watch each set and anticipate an off set.  Call for the hit immediately.
+
 
 # Practice Plan 9/15
 
