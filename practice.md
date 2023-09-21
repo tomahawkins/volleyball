@@ -1,5 +1,48 @@
 # JV Practice Plans
 
+# Practice 9/21
+
+"For me, becoming isn't about arriving somewhere or achieving a certain aim.
+I see it instead as forward motion, a means of evolving, a way to reach continuously toward a better self.
+The journey doesn't end."
+
+"You should never view your challenges as a disadvantage.
+Instead, it's important for you to understand that your experience facing and
+overcoming adversity is actually one of your biggest advantages."
+
+"Don’t ever make decisions based on fear.
+Make decisions based on hope and possibility.
+Make decisions based on what should happen, not what shouldn’t."
+
+"You may not always have a comfortable life and you will not always be
+able to solve all of the world’s problems at once.
+But don’t ever underestimate the importance you can have,
+because history has shown us that courage can be contagious,
+and hope can take on a life of its own."
+
+"Am I good enough? Yes, I am."
+
+-- Michelle Obama
+
+
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, pepper.
+  - Slow motion diving.
+- Hitting lines.
+- Hitter transitioning.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+- Scrimmaging.
+
+
+
+
 # Game Day 9/18
 
 "For me, becoming isn't about arriving somewhere or achieving a certain aim.
