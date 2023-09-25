@@ -1,5 +1,25 @@
 # JV Practice Plans
 
+
+# Practice 9/25
+
+- Warmup
+  - Jog 3 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, pepper.
+  - Slow motion diving.
+- Hitting lines, focus on pin hitting.
+- Queens, 3-on-3, pin hitting.
+- 6-2 rotation practice, with alternate setter placement on serve receieve.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+- Scrimmaging.
+
+
 # Practice 9/21
 
 "For me, becoming isn't about arriving somewhere or achieving a certain aim.

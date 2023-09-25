@@ -34,7 +34,7 @@ data Player
   | Indie
   | Josiah
   | Layla
-  | Merrit
+  | Merritt
   | Prudence
   | Sadie
   | Sofia
@@ -50,14 +50,13 @@ load this file, and start doing things with it.  This is what it would look like
     Prelude> :load LineUp.hs
     [1 of 1] Compiling LineUp           ( LineUp.hs, interpreted )
     Ok, one module loaded.
-    *LineUp>
 
 Whenever we make a change to the LineUp.hs file, we can reload it
 with the :reload command (or just :r):
 
     *LineUp> :reload
+    [1 of 1] Compiling LineUp           ( LineUp.hs, interpreted )
     Ok, one module loaded.
-    *LineUp>
 
 One thing we can do is type a player on the prompt to see what happens.
 Haskell reads the prompt, evaluates it, and then prints the result.
@@ -65,7 +64,6 @@ In this case it just prints exactly what we just typed:
 
     *LineUp> Prudence
     Prudence
-    *LineUp>
 
 But notice what happens if we misspell Prudence's name:
 
@@ -74,7 +72,6 @@ But notice what happens if we misspell Prudence's name:
     <interactive>:7:1: error:
         • Data constructor not in scope: Prudince
         • Perhaps you meant ‘Prudence’ (line 36)
-    *LineUp>
 
 Not only did Haskell see the error, it made a suggestion on how to fix it.
 That's pretty smart!
@@ -86,14 +83,12 @@ we check the type on 'Prudence':
 
     *LineUp> :type Prudence
     Prudence :: Player
-    *LineUp>
 
 It tells us that 'Prudence' is a 'Player'.  The '::' symbol in Haskell
 is a way to specify the type of a value.  We can use this on the prompt:
 
     *LineUp> Prudence :: Player
     Prudence
-    *LineUp>
 
 But look what happens if we say the Prudence is some other type:
 
@@ -103,7 +98,6 @@ But look what happens if we say the Prudence is some other type:
         • Couldn't match expected type ‘Integer’ with actual type ‘Player’
         • In the expression: Prudence :: Integer
           In an equation for ‘it’: it = Prudence :: Integer
-    *LineUp>
 
 Haskell catches the type problem and gives some hints on how to fix it.
 
@@ -126,7 +120,7 @@ rosterNumber player = case player of
   Indie -> 2
   Josiah -> 1
   Layla -> 12
-  Merrit -> 10
+  Merritt -> 10
   Prudence -> 5
   Sadie -> 9
   Sofia -> 7
@@ -145,7 +139,6 @@ An 'Int' is just a common integer.  And the interpreter confirms this for us:
 
     *LineUp> :type rosterNumber
     rosterNumber :: Player -> Int
-    *LineUp>
 
 What can we do with a function?  We can call it.  Meaning
 we can pass a value into it and it will return a result.
@@ -157,13 +150,11 @@ We can do this on the interpreter prompt:
 
     *LineUp> rosterNumber Bailey
     6
-    *LineUp>
 
 Yep!  Bailey is number 6!
 
     *LineUp> :type rosterNumber
     rosterNumber :: Player -> Int
-    *LineUp>
 
 An interesting thing about Haskell, and any functional programming language,
 is that functions are treated as regular values.  This means
@@ -177,19 +168,27 @@ That might sound complicated, but it is very useful.  Let's say
 we have a list of players and we want a corresponding list of their roster numbers.
 We can use 'map':
 
-    *LineUp> map rosterNumber [Merrit, Sadie, Wren, Indie, Gwen]
+    *LineUp> map rosterNumber [Merritt, Sadie, Wren, Indie, Gwen]
     [10,9,11,2,13]
-    *LineUp>
 
 This should give us some clues as how to proceed with the design of our program.
 At some point we just need to arrive at a list of players for the lineup
 serve order, then 'map' and 'rosterNumber' will do the rest.
 
+The type of 'map' shows the following:
+
+    *LineUp> :type map
+    map :: (a -> b) -> [a] -> [b]
+
+This says the first argument to 'map' (a -> b) is a function that goes from type 'a' to type 'b',
+the second argument [a] is a list of 'a', and it returns [b] which is list of 'b', where
+'a' and 'b' can be any types.
+
 -}
 
-
-
-
-
-
-
+lineup :: Int -> Player -> Player -> Player -> Player -> Player -> Player -> [Int]
+lineup startingRotation setter oh1 mb2 rs oh2 mb1 = map rosterNumber serveOrder
+  where
+    serveSequenceFromSetter :: [Player]
+    serveSequenceFromSetter = concat (repeat [setter, oh1, mb2, rs, oh2, mb1])
+    serveOrder = take 6 (drop (startingRotation - 1) elaborated)
