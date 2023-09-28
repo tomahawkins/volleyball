@@ -1,5 +1,49 @@
 # JV Practice Plans
 
+# Game Day 9/28
+
+"I have not failed. I’ve just found 10,000 ways that won’t work."
+-- Thomas A. Edison
+
+"Success is never final; failure is never fatal; it is the courage to continue that counts."
+-- Anonymous
+
+"He who says he can and he who says he can’t are both usually right."
+-- Confucius
+
+"The only way of discovering the limits of the possible is to venture a little way past them into the impossible."
+-- Arthur C. Clarke
+
+"Opportunity is often missed because it is dressed in overalls and looks like work."
+-- Anonymous
+
+"It is never too late to be what you might have been."
+-- Adelaide Anne Procter
+
+"A woman is like a tea bag -- you can't tell how strong she is until you put her in hot water."
+-- Eleanor Roosevelt
+
+
+- Warmup
+  - 8 minutes shared:
+    - Shuttle passing lines.
+    - Digging and setting.
+  - 6 minutes:
+    - 2 minutes: Serve.
+    - 4 minutes: 3-on-3 with setter.  Serve receive.  Play it out.
+
+- Game Talk
+  - Remember the bump set.  Use it for out of system.  High and far out.
+  - Bump, set, hit is the optimal strategy.
+    - It doesn't change if we are losing or in a long rally.
+  - When you must tip, push fast to the corners, not the middle of the court.
+  - If a pass is going in to the net, get there before
+    the ball does, stand right on the line and get low to catch it.
+    - It's possible we can still get a hit out of it.
+    - This is often easier than trying to jump and get it over.
+
+
+
 
 # Practice 9/25
 
@@ -10,7 +54,7 @@
   - Slow motion diving.
 - Hitting lines, focus on pin hitting.
 - Queens, 3-on-3, pin hitting.
-- 6-2 rotation practice, with alternate setter placement on serve receieve.
+- 6-2 rotation practice, with alternate setter placement on serve receive.
 - Core strengthening:
   - side plank
   - bridge
