@@ -1,5 +1,26 @@
 # JV Practice Plans
 
+# Practice 10/3
+
+- Warmup
+  - Jog 2 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, pepper.
+  - Slow motion diving.
+- Hitting lines.
+- Rapid fire blocking.
+- Running bump-sets with hitting.
+  - Run forward to make a bump-set to the pins.
+- Core strengthening:
+  - side plank
+  - bridge
+  - leg press
+  - quadruped
+  - plank
+- Queens with C-Team.
+
+
+
 # Game Day 9/28
 
 "I have not failed. I’ve just found 10,000 ways that won’t work."
