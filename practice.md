@@ -1,5 +1,61 @@
 # JV Practice Plans
 
+
+# Game Day 10/10
+
+"There's nothing worse than the feeling of wishing you had another chance
+at a play because you weren't ready.
+Every athlete has those feelings to mull over, and over and over ...
+Don't even expose yourself to the possibility to being caught off-guard."
+-- Karch Kiraly
+
+"Adversity, if you allow it to, will fortify you and make you the best you can be."
+-- Kerri Walsh Jennings
+
+"Over the years, I realized that if I'd done everything possible to prepare myself
+for matches and tournaments, it took a weight off my shoulders and allowed me to
+play without fear of losing. When you've done everything you can to train yourself
+for competition, you'll sleep well when the tournament is over, win or lose."
+-- Karch Kiraly
+
+"We are all going to fall short. We are going to have some bitter losses,
+very painful defeats and failures. We have to use those to come back even stronger.
+That's what makes it sweeter, when we can overcome those and figure out a way to win.
+The great teams can do that, and those are the gold medal winning teams."
+-- Karch Kiraly
+
+"If you want to stay fit, surround yourself with a couple of chicks who are fired up,
+so that the one day you're not, you can feed off their energy."
+-- Gabrielle Reece
+
+"You're either getting better or getting worse. I don't think you stay the same in sports.
+If we want to achieve something special in the game, then those players have to recognize
+that they're responsible every day for getting better."
+-- Russ Rose
+
+"Don't fire your opponents up. If they're down, don't tick them off. Let them stay down."
+-- Sinjin Smith
+
+
+- 8 minutes combined warmup
+  - Shuttles: forearm passing.
+  - Shuttles: overhead passing.
+  - Digging: Setters setting, middles hitting.
+- 6 minutes warmup
+  - 2 minutes serving.
+  - 4 minutes rapid hitting lines.
+
+
+- Maximize hitting opportunties.
+  - Best passes.
+  - Best sets, even if that mean bump-sets or calling for help.
+  - Attempt to jump and hit every ball that gets set.
+  - Backrow: call loud for it if the set is off.  Don't the the front row freeball it over.
+
+- Cover tips, protect dougnut.
+  - Middle back cover middle court?
+
+
 # Practice 10/5
 
 - Warmup
