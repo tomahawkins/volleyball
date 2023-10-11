@@ -1,5 +1,38 @@
 # JV Practice Plans
 
+# Practice 10/11
+
+- Post Game
+  - Great play, especially defense and passing.
+  - Lots of little mistakes.
+    - Missed serves.
+    - Missed, out-of-bounds downballs.
+    - Net violations.
+    - Failed in-the-net recoveries.
+    - Setters passing on freeballs.
+    - Setting middle in out-of-system.
+    - Sets to no one.
+    - Lots of front row sets 10' back.
+  - Areas to improve.
+    - Serve consistency.  Making a good first serve.
+    - Exploiting freeballs.
+    - Transitioning to offense.
+    - Hitting imperfect sets.
+    - No downballs.  Always jump to hit.
+- Warmup.
+  - 2 laps.
+  - Dynamic stretching.
+  - Shuttles.  Bump then sets.
+- Adaptive outside hitting.
+  - One foot take offs.
+  - High/low sets.  Adapt approach.
+  - Outside/inside sets.  Adapt approach.
+- Sets to pins.
+  - Toss ball from back row. Setter runs from the back to set.
+- 6-on-6 freeball drill.
+  - Bowl ball in.  Play out rally.  Teams get a point each time they produce a hit.
+
+
 
 # Game Day 10/10
 
