@@ -2,24 +2,39 @@
 
 # Game Day 10/12
 
-- We don't lose because we are out played.  We lose because of the accumulation of lots of small mistakes.
-  Death by 1000 cuts.  The common small mistakes:
-  - Missing first serve.  Difference between us serving about 3 balls instead of our opponent.
-  - Passes into the net.
-  - Taking two swipes at a ball in the net.
-  - Whole team not calling a freeball or failing to move when they do.
-  - Setters passing a freeball.
+- We don't lose because we are out played.  We lose due to the accumulation of lots of small mistakes.
+  Death by 1000 cuts.
+- A mistake is not just 1 point.  It's typically 3-4 opponent serves before we can recover.
+- Common small mistakes and how to prevent them:
+  - Missing first serve.  Intentional warmup.
+  - Passes into the net.  Run to the ball, get under it.
+  - Taking two swipes at a ball in the net.  Don't do it.  Get out of the way.
+  - Whole team not calling a freeball or failing to move when they do.  Communicate loudly and as a team.
+  - Setters passing a freeball.  Loudly call freeball.  Get the whole team moving.
   - Not knowing our positions.  Setters not knowing if they are in the back or front row.
-  - Setting to a nonexistent player.
-  - Multiple players not going for a ball.  (Not communicating.)
-  - Over powering a freeball and sending it out of bounds.
-  - Over powering a hit and sending it out of bounds, especially if you didn't jump.
-  - Blindly running into the net.
-  - Running into teammates.  (Not communicating.)
-  - Moving and getting in the setter's way.  Freeze if you are out of position so you don't disturb the play.
-  - Setting the off middle in out of system.
-  - Freeballing it over in 2.
-- Even when we can't make the perfect play, we must always make life difficult for our opponents.
+  - Setting to a nonexistent player.  Plan who you want to set to and have a backup.
+  - Multiple players not going for a ball.  Communicate.  If no one is moving, you move.
+  - Over powering a freeball and sending it out of bounds.  Know where you are and where you want to place the ball.
+    Don't just swing at it.
+  - Over powering a hit and sending it out of bounds, especially if you didn't jump.  Plan where you want the ball to go.
+    Don't just swing at it.  Only power up if you can confidently hit the ball down.
+  - Blindly running into the net.  Be aware of your position.  Communicate to teammates to help them be aware of theirs.
+  - Running into teammates.  Communicate.
+    - Communicating is not just calling mine.  Idle talks helps them know where you are even if they can't see you.
+    - Constantly talk with your teammates.  Do not be silent.
+    - Help them see things they can't see with their own eyes.
+      - How far off are you from the net.
+      - How many blockers are going up.
+      - Where is the best place to push the ball.
+      - Is the opposing setter front row or back row?
+  - Blocking a back row setter.  Know when the setter is front or back row.  Block accordingly.
+  - Getting in the setter's way.  If you have to get in the setter's way, freeze so they can easily get around you.
+  - Setting the off middle in out of system.  Always set the pins and the backrow when out-of-system.
+  - Freeballing it over in 2.  Don't panic.  Slow the game down and set the ball.
+  - Freezing and slowly diving to the floor and still missing the ball.  If you are slowly diving, you have time to take more steps.
+    It is better to be fast and on your feet than to be on the floor.
+- Constant Pressure
+  - Even when we can't make the perfect play, we must always make life difficult for our opponents.
   - Always try to hit the ball.  Dump if you must.
     - Slide approach to get to hard to reach sets.
   - Quickly change direction of hits and dumps.
@@ -29,6 +44,8 @@
     Don't just give it to them.
   - On off sets, backrow: hit the ball.  Frontrow: don't go backwards to get it.  Get out of the way.
   - If you must downball it over, jump to hit it.  It's easier to hit it right in the air than on the ground.
+  - Serve hard, but consistent.  Failure rate should be < 1/7.
+  - Identify weak passers, communicate with the rest of the team, and always serve them.
 
 
 
