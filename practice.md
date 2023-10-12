@@ -37,7 +37,7 @@
   - Even when we can't make the perfect play, we must always make life difficult for our opponents.
   - Always try to hit the ball.  Dump if you must.
     - Slide approach to get to hard to reach sets.
-  - Quickly change direction of hits and dumps.
+  - Quickly change direction of hits and dumps.  Hits don't have to be hard to be effective.
   - Dump the ball down.  Don't just tip it over.
   - Setup approach and jump as high as you can on every hit.
   - Freeballs don't have to be free.  Look for the open court and send it there.  Corners, sidelines.
@@ -46,6 +46,7 @@
   - If you must downball it over, jump to hit it.  It's easier to hit it right in the air than on the ground.
   - Serve hard, but consistent.  Failure rate should be < 1/7.
   - Identify weak passers, communicate with the rest of the team, and always serve them.
+  - Two people blocking every hit and downball.  Be aggressive blockers.  Watch the hitter, jump high, and push.
 
 
 
