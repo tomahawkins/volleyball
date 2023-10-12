@@ -1,5 +1,39 @@
 # JV Practice Plans
 
+# Game Day 10/12
+
+- We don't lose because we are out played.  We lose because of the accumulation of lots of small mistakes.
+  Death by 1000 cuts.  The common small mistakes:
+  - Missing first serve.  Difference between us serving about 3 balls instead of our opponent.
+  - Passes into the net.
+  - Taking two swipes at a ball in the net.
+  - Whole team not calling a freeball or failing to move when they do.
+  - Setters passing a freeball.
+  - Not knowing our positions.  Setters not knowing if they are in the back or front row.
+  - Setting to a nonexistent player.
+  - Multiple players not going for a ball.  (Not communicating.)
+  - Over powering a freeball and sending it out of bounds.
+  - Over powering a hit and sending it out of bounds, especially if you didn't jump.
+  - Blindly running into the net.
+  - Running into teammates.  (Not communicating.)
+  - Moving and getting in the setter's way.  Freeze if you are out of position so you don't disturb the play.
+  - Setting the off middle in out of system.
+  - Freeballing it over in 2.
+- Even when we can't make the perfect play, we must always make life difficult for our opponents.
+  - Always try to hit the ball.  Dump if you must.
+    - Slide approach to get to hard to reach sets.
+  - Quickly change direction of hits and dumps.
+  - Dump the ball down.  Don't just tip it over.
+  - Setup approach and jump as high as you can on every hit.
+  - Freeballs don't have to be free.  Look for the open court and send it there.  Corners, sidelines.
+    Don't just give it to them.
+  - On off sets, backrow: hit the ball.  Frontrow: don't go backwards to get it.  Get out of the way.
+  - If you must downball it over, jump to hit it.  It's easier to hit it right in the air than on the ground.
+
+
+
+
+
 # Practice 10/11
 
 - Post Game
