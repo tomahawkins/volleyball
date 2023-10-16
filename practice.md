@@ -1,5 +1,27 @@
 # JV Practice Plans
 
+# Practice 10/16
+
+- Warmup
+  - Jog 2 laps.
+  - Dynamic stretches: quads, hamstrings, slow motion sprawling dives.
+  - Warmup shoulders: Pair up w/ ball and toss, hit to the floor, pepper.
+  - Shuttle passing.
+- Setting basketball.
+- 1-on-1 across net.  Bump, set, hit.
+- 4-on-4 out-of-system.
+  - Two passers/setters, two hitters.
+  - Rotate.
+  - Downball, freeball.
+  - Games to 3.
+  - Team out, pepper.
+- 6-on-n defense to offense.
+  - Freeball, downball, or hit.
+  - Block and then transition to offense.
+  - Setter backrow.
+- 4-on-4 backrow queens.
+
+
 # Game Day 10/12
 
 - We don't lose because we are out played.  We lose due to the accumulation of lots of small mistakes.
