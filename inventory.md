@@ -4,15 +4,23 @@ Player     Jersy              Jacket    Shorts    Warmup
 ------     -----              ------    ------    ------
 Josiah      1 S                  S         S         S
 Indie       2 S                  M         S         M
-AbiM        3 S (gray) M (reg)   M         M         S
+AbiM        3 S (gray) M (red)   M         M         S
 AbiR        4 M                  M         S         M
 Prudence    5 M                  M         S         S
 Bailey      6 M                  M         M         S
-Lily        7 M                  M         M         L
+Sofia       7 M                  M         M         L
 Steph       8 M                  S         S         S
 Sadie       9 L                  M         M         L
 Merritt    10 L                  L         L         L
 Wren       11 L                  M         M         M
+Layla      12 ?                  ?         ?         ?
+Gwen       13 ?                  ?         ?         ?
+
+
+
+
+
+
 
 Spares
 ------
