@@ -9,7 +9,7 @@ where
 import Data.List (intercalate, intersect, (\\))
 import Match (match)
 import Players (Player (..), Spot (..), allPlayers)
-import RankingsByCoaches (outsides, rightsides, defense, middles, setters)
+import RankingsByCoaches (defense, middles, outsides, rightsides, setters)
 import RankingsByPlayers (rankingsByPlayers)
 
 main :: IO ()
@@ -19,7 +19,7 @@ report :: String
 report =
   convertToDos $
     unlines $
-      [ "2023 BHS Volleyball Tryout Match Report",
+      [ "2024 BHS Volleyball Tryout Match Report",
         "",
         "Total number of players: " <> show (length allPlayers),
         "",
@@ -68,7 +68,7 @@ report =
         "Match results:",
         "",
         unlines (formatMatch <$> matches)
-        --unlines ["  DevTeam: " <> show p | p <- unplacedPlayers]
+        -- unlines ["  DevTeam: " <> show p | p <- unplacedPlayers]
       ]
 
 convertToDos :: String -> String

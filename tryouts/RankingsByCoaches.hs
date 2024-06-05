@@ -11,22 +11,18 @@ import Players (Player (..))
 
 outsides :: [Player]
 outsides =
-  [ Chayse,
-    Jayda,
+  [ Jayda,
     Lily,
     Indie,
     Cassy,
-    SofiaC,
-    Isabel
+    SofiaC
   ]
 
 rightsides :: [Player]
 rightsides =
-  [ CatherineCh,
-    AbiR,
-    Bailey,
+  [ Abby,
+    BaileyB,
     Prudence,
-    Cadence,
     Cora,
     Eliza
   ]
@@ -36,21 +32,17 @@ middles =
   [ Mary,
     OliviaS,
     Merritt,
-    Layla,
+    LaylaM,
     Neybi,
-    Lulu,
-    Hadley
+    Lulu
   ]
 
 defense :: [Player]
 defense =
   [ Ophelia,
     Tierra,
-    Josiah,
     Wren,
     Indie,
-    Stephanie,
-    Claire,
     Kayla,
     Etta,
     Nyah
@@ -58,37 +50,9 @@ defense =
 
 setters :: [Player]
 setters =
-  [ Meysha,
-    Sadie,
-    Gwen,
-    AbiM,
+  [ Sadie,
+    GwenH,
+    Abby,
     Mariam,
     Clea
   ]
-
---Cassandra Miller (OS)
---Sofia Challa (OS)
---Eliza Ragsdale (OS)
---
---Neybi Vasquez (MB)
---Louise Munro (MB)
---Hadley Manning (MB)
---
---Isabel Figgess (RS)
---Cadence Osage-Testa (RS)
---Cora Allen (RS)
---
---Clea Cristofaro (Setter)
---Mariam Najar (Setter)
---
---Kayla Morell (DS)
---Etta Willard (DS)
---Nyah Lockwood (DS)
---Claire Verner (DS)
-
-
-
-
-
-
-

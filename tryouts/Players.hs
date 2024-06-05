@@ -7,74 +7,80 @@ module Players
 where
 
 data Player
-  = AbiR
-  | AbiM
+  = Aaliyah
+  | Abby
+  | AddieB
+  | AddyD
   | Alisha
-  | Aliyah
-  | Angel
-  | Angela
-  | Ashley
-  | Avery
-  | Bailey
-  | Cadence
-  | Caitlyn
+  | Amber
+  | Anja
+  | AnneKerry
+  | Ari
+  | AudreyS
+  | AudrieO
+  | Autumn
+  | Aylie
+  | BaileyB
+  | BaileyU
   | Cassy
-  | CatherineCa
-  | CatherineCh
-  | Chayse
-  | Chris
-  | Claire
+  | Chloe
   | Clea
-  | Clem
   | Cora
-  | Damaris
+  | Eden
   | Eliza
+  | ElizaP
   | Etta
-  | Fiona
-  | Gwen
-  | Hadley
+  | Faith
+  | Finnley
+  | GwenH
+  | GwynS
   | Indie
-  | Isabel
   | Jayda
-  | Josiah
+  | Kali
   | Kayla
-  | Kaylee
-  | Layla
+  | Lael
+  | Laine
+  | Lauren
+  | LaylaM
+  | LaylaW
   | Lila
   | Lily
+  | Lucy
   | Lulu
-  | Maddy
-  | Maiya
+  | Maeve
+  | Malaya
   | Mariam
   | Mary
-  | Maya
+  | Matilda
   | Merritt
-  | Meysha
-  | Mia
-  | Nadiya
+  | Morgan
   | Neybi
-  | Nika
   | Nyah
-  | OliviaE
+  | OliviaF
+  | OliviaN
   | OliviaS
+  | OliviaZ
   | Ophelia
   | Prudence
-  | Ruby
-  | Rylie
+  | RileyE
+  | RyleeD
+  | RyleeParks
   | Sadie
   | Samantha
-  | Sarah
+  | Selina
   | SofiaC
-  | SophiaW
-  | Stephanie
+  | Sonoma
+  | SophiaC
+  | Story
   | Tierra
-  | Vera
-  | Violet
+  | Violeta
+  | Vivian
   | Wren
+  | NolaD  -- Maybe Chloe?
   deriving (Show, Eq, Ord, Enum)
 
 allPlayers :: [Player]
-allPlayers = [AbiR .. Wren]
+allPlayers = [Aaliyah .. Wren]
 
 data Spot
   = VarsitySetter

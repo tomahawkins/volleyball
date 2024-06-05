@@ -6,7 +6,7 @@ import Players (Player (..), Spot (..))
 
 rankingsByPlayers :: Player -> [Spot]
 rankingsByPlayers = \case
-  AbiR ->
+  Abby ->
     [ JvOutside,
       JvRightside,
       JvDefense,
@@ -19,83 +19,22 @@ rankingsByPlayers = \case
       CteamRightside,
       CteamDefense
     ]
-  AbiM ->
-    [ JvSetter,
-      JvOutside,
-      JvDefense,
-      CteamMiddle
-    ]
   Alisha ->
     [ JvMiddle,
       JvDefense
     ]
-  Angel ->
-    [ CteamSetter,
-      CteamRightside
-    ]
-  Avery ->
-    [ VarsityDefense,
-      VarsitySetter,
-      JvDefense,
-      JvSetter,
-      CteamDefense,
-      CteamSetter
-    ]
-  Bailey ->
+  BaileyB ->
     [ VarsityRightside,
       VarsityOutside,
       JvRightside,
       JvOutside,
       JvMiddle
     ]
-  Cadence ->
-    [ JvRightside,
-      JvOutside,
-      JvDefense,
-      CteamOutside,
-      CteamRightside,
-      CteamDefense,
-      CteamMiddle
-    ]
-  Caitlyn ->
-    [ VarsityDefense,
-      JvDefense,
-      CteamDefense
-    ]
   Cassy ->
     [ JvRightside,
       VarsityRightside,
       JvDefense,
       CteamSetter
-    ]
-  CatherineCh ->
-    [ VarsityRightside,
-      VarsityOutside,
-      VarsityDefense,
-      VarsityMiddle,
-      JvOutside,
-      JvRightside,
-      JvMiddle,
-      JvDefense
-    ]
-  Chayse ->
-    [ VarsityOutside,
-      VarsitySetter,
-      VarsityRightside,
-      VarsityMiddle,
-      VarsityDefense
-    ]
-  Chris ->
-    [ CteamSetter,
-      CteamRightside,
-      CteamMiddle,
-      CteamOutside,
-      CteamDefense
-    ]
-  Claire ->
-    [ VarsityDefense,
-      JvDefense,
-      CteamDefense
     ]
   Clea ->
     [ JvSetter,
@@ -106,24 +45,9 @@ rankingsByPlayers = \case
       CteamRightside,
       CteamMiddle
     ]
-  Clem ->
-    [ JvMiddle,
-      CteamMiddle,
-      CteamOutside,
-      CteamRightside,
-      CteamSetter,
-      CteamDefense
-    ]
   Cora ->
     [ JvRightside,
       JvOutside
-    ]
-  Damaris ->
-    [ JvRightside,
-      CteamRightside,
-      JvOutside,
-      CteamOutside,
-      CteamMiddle
     ]
   Eliza ->
     [ JvMiddle,
@@ -140,16 +64,11 @@ rankingsByPlayers = \case
       CteamDefense,
       CteamMiddle
     ]
-  Gwen ->
+  GwenH ->
     [ JvSetter,
       CteamSetter,
       JvDefense,
       CteamDefense
-    ]
-  Hadley ->
-    [ JvRightside,
-      CteamRightside,
-      CteamMiddle
     ]
   Indie ->
     [ JvOutside,
@@ -158,12 +77,6 @@ rankingsByPlayers = \case
       CteamOutside,
       JvRightside
     ]
-  Isabel ->
-    [ VarsityDefense,
-      JvOutside,
-      JvDefense,
-      CteamOutside
-    ]
   Jayda ->
     [ VarsityOutside,
       VarsityRightside,
@@ -171,17 +84,12 @@ rankingsByPlayers = \case
       VarsityDefense,
       JvOutside
     ]
-  Josiah ->
-    [ VarsityDefense,
-      JvDefense,
-      JvOutside
-    ]
   Kayla ->
     [ JvDefense,
       JvRightside,
       CteamSetter
     ]
-  Layla ->
+  LaylaM ->
     [ VarsityMiddle,
       VarsityOutside,
       JvMiddle,
@@ -224,19 +132,6 @@ rankingsByPlayers = \case
       JvMiddle,
       JvOutside
     ]
-  Meysha ->
-    [ VarsitySetter,
-      VarsityDefense,
-      JvSetter,
-      JvDefense,
-      JvRightside
-    ]
-  Mia ->
-    [ JvSetter,
-      JvOutside,
-      JvMiddle,
-      CteamMiddle
-    ]
   Neybi ->
     [ JvMiddle,
       JvDefense,
@@ -277,35 +172,12 @@ rankingsByPlayers = \case
       JvDefense,
       CteamSetter
     ]
-  Samantha ->
-    [ JvOutside,
-      JvRightside,
-      JvMiddle,
-      CteamOutside,
-      CteamRightside,
-      CteamMiddle
-    ]
-  Sarah ->
-    [ CteamOutside,
-      CteamRightside,
-      CteamDefense,
-      JvOutside,
-      JvRightside,
-      JvDefense,
-      CteamMiddle
-    ]
   SofiaC ->
     [ JvOutside,
       VarsityOutside,
       VarsityRightside,
       JvRightside,
       JvSetter
-    ]
-  SophiaW ->
-    [ JvOutside,
-      CteamOutside,
-      JvMiddle,
-      CteamMiddle
     ]
   Tierra ->
     [ VarsityDefense,
@@ -314,13 +186,6 @@ rankingsByPlayers = \case
       VarsityMiddle,
       JvDefense,
       JvOutside
-    ]
-  Violet ->
-    [ JvRightside,
-      JvOutside,
-      CteamRightside,
-      JvMiddle,
-      JvDefense
     ]
   Wren ->
     [ VarsityDefense,
