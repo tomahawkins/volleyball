@@ -10,49 +10,39 @@ where
 import Players (Player (..))
 
 outsides :: [Player]
-outsides =
-  [ Jayda,
-    Lily,
-    Indie,
-    Cassy,
-    SofiaC
-  ]
+outsides = []
 
 rightsides :: [Player]
-rightsides =
-  [ Abby,
-    BaileyB,
-    Prudence,
-    Cora,
-    Eliza
-  ]
+rightsides = []
 
 middles :: [Player]
-middles =
-  [ Mary,
-    OliviaS,
-    Merritt,
-    LaylaM,
-    Neybi,
-    Lulu
-  ]
+middles = []
 
 defense :: [Player]
-defense =
-  [ Ophelia,
-    Tierra,
-    Wren,
-    Indie,
-    Kayla,
-    Etta,
-    Nyah
-  ]
+defense = []
 
 setters :: [Player]
-setters =
-  [ Sadie,
-    GwenH,
-    Abby,
-    Mariam,
-    Clea
+setters = []
+
+vSetters = [BaileyB, Sadie, Gwen, Lila]
+
+vMiddles = [Mary, Lily, Sonoma]
+
+vOutsdes = [Jada, Lily, Sonoma]
+
+vRightside = [OliviaS, Neybi, Tierra]
+
+vDefense = [Ophelia, Indie, BaileyB]
+
+mSetters = [Lael]
+
+mHitters =
+  [ Amber,
+    Alisha,
+    Cassy,
+    Cora,
+    Eliza,
+    Wren,
+    Sofia,
+    Prudence
   ]
