@@ -1,6 +1,7 @@
 module Inventory
-  ( ankleBraces
-  ) where
+  ( ankleBraces,
+  )
+where
 
 import Players
   ( Player (..),
